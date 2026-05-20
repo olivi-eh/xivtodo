@@ -1,0 +1,71 @@
+/*!
+ * Font Awesome Pro 7.1.0 by @fontawesome - https://fontawesome.com
+ * License - https://fontawesome.com/license (Commercial License)
+ * Copyright 2025 Fonticons, Inc.
+ */
+:root, :host {
+  --fa-family-thumbprint: "Font Awesome 7 Thumbprint";
+  --fa-font-thumbprint-light: normal 300 1em/1 var(--fa-family-thumbprint);
+  /* deprecated: this older custom property will be removed next major release */
+  --fa-style-family-thumbprint: var(--fa-family-thumbprint);
+}
+
+@font-face {
+  font-family: "Font Awesome 7 Thumbprint";
+  font-style: normal;
+  font-weight: 300;
+  font-display: block;
+  src: url("../webfonts/fa-thumbprint-light-300.woff2");
+}
+.fatl {
+  --fa-family: var(--fa-family-thumbprint);
+  --fa-style: 300;
+  position: relative;
+  letter-spacing: normal;
+}
+
+.fa-thumbprint {
+  --fa-family: var(--fa-family-thumbprint);
+  position: relative;
+  letter-spacing: normal;
+}
+
+.fa-light {
+  --fa-style: 300;
+}
+
+.fatl::before,
+.fa-thumbprint::before {
+  position: absolute;
+  color: var(--fa-primary-color, currentColor);
+  opacity: var(--fa-primary-opacity, 1);
+}
+
+.fatl::after,
+.fa-thumbprint::after {
+  color: var(--fa-secondary-color, currentColor);
+  opacity: var(--fa-secondary-opacity, 0.4);
+}
+
+.fa-swap-opacity .fatl::before,
+.fa-swap-opacity .fa-thumbprint::before,
+.fa-swap-opacity.fatl::before,
+.fa-swap-opacity.fa-thumbprint::before {
+  opacity: var(--fa-secondary-opacity, 0.4);
+}
+
+.fa-swap-opacity .fatl::after,
+.fa-swap-opacity .fa-thumbprint::after,
+.fa-swap-opacity.fatl::after,
+.fa-swap-opacity.fa-thumbprint::after {
+  opacity: var(--fa-primary-opacity, 1);
+}
+
+.fa-li.fatl,
+.fa-li.fa-thumbprint,
+.fa-stack-1x.fatl,
+.fa-stack-1x.fa-thumbprint,
+.fa-stack-2x.fatl,
+.fa-stack-2x.fa-thumbprint {
+  position: absolute;
+}

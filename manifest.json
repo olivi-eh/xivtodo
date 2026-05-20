@@ -1,0 +1,17 @@
+{
+    "name": "XIV ToDo",
+    "short_name": "XIV ToDo",
+    "description": "XIV ToDo provides useful dashboards, tailored checklists, and tools for Final Fantasy XIV.",
+    "start_url": "/",
+    "display": "standalone",
+    "background_color": "#1c2024",
+    "theme_color": "#41b883",
+    "icons": [
+        {
+            "src": "/icons/xivtodo/logo-512x512.png",
+            "sizes": "512x512",
+            "type": "image/png",
+            "purpose": "any maskable"
+        }
+    ]
+}

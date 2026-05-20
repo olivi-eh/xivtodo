@@ -1,0 +1,2 @@
+"use strict";(self["webpackChunkxivtodo"]=self["webpackChunkxivtodo"]||[]).push([[584],{239:function(t,e,n){n.r(e),n.d(e,{default:function(){return a}});var u=n(641);function r(t,e,n,r,i,o){return(0,u.uX)(),(0,u.CE)("div",null,"Signing out...")}n(4114);var i={name:"SignOut",mounted(){this.$store.commit("deleteUserData"),this.$router.push("/")}},o=n(6262);const s=(0,o.A)(i,[["render",r]]);var a=s}}]);
+//# sourceMappingURL=signout.90df1efd.js.map

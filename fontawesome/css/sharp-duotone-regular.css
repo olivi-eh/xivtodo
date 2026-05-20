@@ -1,0 +1,71 @@
+/*!
+ * Font Awesome Pro 7.1.0 by @fontawesome - https://fontawesome.com
+ * License - https://fontawesome.com/license (Commercial License)
+ * Copyright 2025 Fonticons, Inc.
+ */
+:root, :host {
+  --fa-family-sharp-duotone: "Font Awesome 7 Sharp Duotone";
+  --fa-font-sharp-duotone-regular: normal 400 1em/1 var(--fa-family-sharp-duotone);
+  /* deprecated: this older custom property will be removed next major release */
+  --fa-style-family-sharp-duotone: var(--fa-family-sharp-duotone);
+}
+
+@font-face {
+  font-family: "Font Awesome 7 Sharp Duotone";
+  font-style: normal;
+  font-weight: 400;
+  font-display: block;
+  src: url("../webfonts/fa-sharp-duotone-regular-400.woff2");
+}
+.fasdr {
+  --fa-family: var(--fa-family-sharp-duotone);
+  --fa-style: 400;
+  position: relative;
+  letter-spacing: normal;
+}
+
+.fa-sharp-duotone {
+  --fa-family: var(--fa-family-sharp-duotone);
+  position: relative;
+  letter-spacing: normal;
+}
+
+.fa-regular {
+  --fa-style: 400;
+}
+
+.fasdr::before,
+.fa-sharp-duotone::before {
+  position: absolute;
+  color: var(--fa-primary-color, currentColor);
+  opacity: var(--fa-primary-opacity, 1);
+}
+
+.fasdr::after,
+.fa-sharp-duotone::after {
+  color: var(--fa-secondary-color, currentColor);
+  opacity: var(--fa-secondary-opacity, 0.4);
+}
+
+.fa-swap-opacity .fasdr::before,
+.fa-swap-opacity .fa-sharp-duotone::before,
+.fa-swap-opacity.fasdr::before,
+.fa-swap-opacity.fa-sharp-duotone::before {
+  opacity: var(--fa-secondary-opacity, 0.4);
+}
+
+.fa-swap-opacity .fasdr::after,
+.fa-swap-opacity .fa-sharp-duotone::after,
+.fa-swap-opacity.fasdr::after,
+.fa-swap-opacity.fa-sharp-duotone::after {
+  opacity: var(--fa-primary-opacity, 1);
+}
+
+.fa-li.fasdr,
+.fa-li.fa-sharp-duotone,
+.fa-stack-1x.fasdr,
+.fa-stack-1x.fa-sharp-duotone,
+.fa-stack-2x.fasdr,
+.fa-stack-2x.fa-sharp-duotone {
+  position: absolute;
+}
