@@ -32,7 +32,7 @@
 
 2. Clone the repository:
    ```sh
-   git clone https://github.com/bourgeoisor/xivtodo
+   git clone https://github.com/olivi-eh/xivtodo
    cd xivtodo/frontend/
    ```
 
@@ -66,7 +66,7 @@ VUE_APP_BACKEND_API_URI=https://api.xivtodo.com
 
 2. Clone the repository:
    ```sh
-   git clone https://github.com/bourgeoisor/xivtodo
+   git clone https://github.com/olivi-eh/xivtodo
    cd xivtodo/backend/
    ```
 

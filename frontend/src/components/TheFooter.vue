@@ -28,7 +28,7 @@
         <small>{{ $t("page.discord") }}</small>
       </a>
       ·
-      <a href="https://github.com/bourgeoisor/xivtodo" target="_blank" rel="noopener noreferrer">
+      <a href="https://github.com/olivi-eh/xivtodo" target="_blank" rel="noopener noreferrer">
         <small>{{ $t("page.github") }}</small>
       </a>
       ·

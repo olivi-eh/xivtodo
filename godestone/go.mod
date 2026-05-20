@@ -1,4 +1,4 @@
-module github.com/bourgeoisor/xivtodo/functions
+module github.com/olivi-eh/xivtodo/functions
 
 go 1.23
 
