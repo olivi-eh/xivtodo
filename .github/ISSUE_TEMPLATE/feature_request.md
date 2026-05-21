@@ -1,7 +1,7 @@
 ---
 name: Feature request
 about: Suggest an idea for XIV ToDo
-title: '[FEATURE] '
+title: '[Feature] '
 labels: 'type: feature'
 assignees: ''
 

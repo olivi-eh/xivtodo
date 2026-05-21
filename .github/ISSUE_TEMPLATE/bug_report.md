@@ -1,7 +1,7 @@
 ---
 name: Bug report
 about: Create a report to help us improve XIV ToDo
-title: '[BUG] '
+title: '[Bug] '
 labels: 'type: bug'
 assignees: ''
 
