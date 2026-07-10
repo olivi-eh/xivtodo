@@ -7,16 +7,18 @@
   "latestCountdownID": 50,
   "countdowns": [
     {
-      "title": "The Make it Rain Campaign",
-      "type": "event",
-      "url": "https://na.finalfantasyxiv.com/lodestone/special/2026/the_make_it_rain_campaign/NX0yR0viwE",
-      "start": 1780041600,
-      "end": 1782313200
+      "title": "FanFest Berlin Keynote",
+      "type": "keynote",
+      "url": "https://na.finalfantasyxiv.com/lodestone/topics/detail/fa499f335a87707b8dfc578e8662aa2a724cdca4",
+      "start": 1784966400,
+      "end": 1784974500
     },
     {
-      "title": "Patch 7.51",
-      "type": "patch",
-      "start": 1780394400
+      "Title": "Letter from the Producer LIVE",
+      "type": "keynote",
+      "url": "https://na.finalfantasyxiv.com/lodestone/topics/detail/fa499f335a87707b8dfc578e8662aa2a724cdca4",
+      "start": 1784989800,
+      "end": 1784997000
     },
     {
       "title": "Patch 7.55",
