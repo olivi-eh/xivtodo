@@ -7,18 +7,11 @@
   "latestCountdownID": 50,
   "countdowns": [
     {
-      "title": "FanFest Berlin Keynote",
-      "type": "keynote",
-      "url": "https://na.finalfantasyxiv.com/lodestone/topics/detail/fa499f335a87707b8dfc578e8662aa2a724cdca4",
-      "start": 1784966400,
-      "end": 1784974500
-    },
-    {
-      "title": "Letter from the Producer LIVE",
-      "type": "keynote",
-      "url": "https://na.finalfantasyxiv.com/lodestone/topics/detail/fa499f335a87707b8dfc578e8662aa2a724cdca4",
-      "start": 1784989800,
-      "end": 1784997000
+      "title": "Yo-kai Watch",
+      "type": "event",
+      "url": "https://na.finalfantasyxiv.com/lodestone/special/2026/youkai-watch/u6bmhovibh",
+      "start": 1785830400,
+      "end": 1791212400
     },
     {
       "title": "Patch 7.55",
