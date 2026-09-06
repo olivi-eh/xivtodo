@@ -1,8 +1,8 @@
 {
   "maintenance": {
-    "updated": true,
-    "start": 1777345200,
-    "end": 1777370400
+    "updated": false,
+    "start": 1788847200,
+    "end": 1788861600
   },
   "latestCountdownID": 50,
   "countdowns": [
@@ -14,13 +14,6 @@
       "end": 1791212400
     },
     {
-      "title": "Moonfire Faire",
-      "type": "event",
-      "url": "https://na.finalfantasyxiv.com/lodestone/special/2026/Moonfire_Faire/1fxgakswoj",
-      "start": 1786521600,
-      "end": 1787756400
-    },
-    {
       "title": "The Rising",
       "type": "event",
       "url": "https://na.finalfantasyxiv.com/lodestone/special/2026/The_Rising/cula62e5jx",
@@ -28,9 +21,16 @@
       "end": 1789052400
     },
     {
-      "title": "Patch 7.55",
+      "title": "Moogle Treasure Trove",
+      "type": "event",
+      "url": "https://na.finalfantasyxiv.com/lodestone/special/mogmog-collection/202609/lsekubsk45",
+      "start": 1788940800,
+      "end": 1792422000
+    },
+    {
+      "title": "Patch 7.56",
       "type": "patch",
-      "start": 1785232800
+      "start": 1788861600
     }
   ],
   "latestID": 250214,
