@@ -1,0 +1,71 @@
+/*!
+ * Font Awesome Pro 7.1.0 by @fontawesome - https://fontawesome.com
+ * License - https://fontawesome.com/license (Commercial License)
+ * Copyright 2025 Fonticons, Inc.
+ */
+:root, :host {
+  --fa-family-jelly-duo: "Font Awesome 7 Jelly Duo";
+  --fa-font-jelly-duo-regular: normal 400 1em/1 var(--fa-family-jelly-duo);
+  /* deprecated: this older custom property will be removed next major release */
+  --fa-style-family-jelly-duo: var(--fa-family-jelly-duo);
+}
+
+@font-face {
+  font-family: "Font Awesome 7 Jelly Duo";
+  font-style: normal;
+  font-weight: 400;
+  font-display: block;
+  src: url("../webfonts/fa-jelly-duo-regular-400.woff2");
+}
+.fajdr {
+  --fa-family: var(--fa-family-jelly-duo);
+  --fa-style: 400;
+  position: relative;
+  letter-spacing: normal;
+}
+
+.fa-jelly-duo {
+  --fa-family: var(--fa-family-jelly-duo);
+  position: relative;
+  letter-spacing: normal;
+}
+
+.fa-regular {
+  --fa-style: 400;
+}
+
+.fajdr::before,
+.fa-jelly-duo::before {
+  position: absolute;
+  color: var(--fa-primary-color, currentColor);
+  opacity: var(--fa-primary-opacity, 1);
+}
+
+.fajdr::after,
+.fa-jelly-duo::after {
+  color: var(--fa-secondary-color, currentColor);
+  opacity: var(--fa-secondary-opacity, 0.4);
+}
+
+.fa-swap-opacity .fajdr::before,
+.fa-swap-opacity .fa-jelly-duo::before,
+.fa-swap-opacity.fajdr::before,
+.fa-swap-opacity.fa-jelly-duo::before {
+  opacity: var(--fa-secondary-opacity, 0.4);
+}
+
+.fa-swap-opacity .fajdr::after,
+.fa-swap-opacity .fa-jelly-duo::after,
+.fa-swap-opacity.fajdr::after,
+.fa-swap-opacity.fa-jelly-duo::after {
+  opacity: var(--fa-primary-opacity, 1);
+}
+
+.fa-li.fajdr,
+.fa-li.fa-jelly-duo,
+.fa-stack-1x.fajdr,
+.fa-stack-1x.fa-jelly-duo,
+.fa-stack-2x.fajdr,
+.fa-stack-2x.fa-jelly-duo {
+  position: absolute;
+}

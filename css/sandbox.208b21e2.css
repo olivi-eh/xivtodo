@@ -1,0 +1,1 @@
+.blur-maybe{color:transparent;text-shadow:0 0 20px var(--bs-secondary)}.blur-cleared{text-shadow:0 0 20px var(--bs-success)}.blur-cleared,.blur-uncleared{color:transparent;text-overflow:unset}.blur-uncleared{text-shadow:0 0 20px var(--bs-body-color)}.duty-list-item{overflow:hidden;white-space:nowrap;text-overflow:"… "}.duty-list-item-blur{text-overflow:" "}
