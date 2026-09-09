@@ -1,10 +1,10 @@
 @font-face {
   font-family: 'icomoon';
-  src:  url('fonts/icomoon.eot?dom3l7');
-  src:  url('fonts/icomoon.eot?dom3l7#iefix') format('embedded-opentype'),
-    url('fonts/icomoon.ttf?dom3l7') format('truetype'),
-    url('fonts/icomoon.woff?dom3l7') format('woff'),
-    url('fonts/icomoon.svg?dom3l7#icomoon') format('svg');
+  src:  url('fonts/icomoon.eot?lij0ya');
+  src:  url('fonts/icomoon.eot?lij0ya#iefix') format('embedded-opentype'),
+    url('fonts/icomoon.ttf?lij0ya') format('truetype'),
+    url('fonts/icomoon.woff?lij0ya') format('woff'),
+    url('fonts/icomoon.svg?lij0ya#icomoon') format('svg');
   font-weight: normal;
   font-style: normal;
   font-display: block;
@@ -25,8 +25,14 @@
   -moz-osx-font-smoothing: grayscale;
 }
 
-.icon-marker-msq:before {
-  content: "\e901";
+.icon-job-bst:before {
+  content: "\e931";
+}
+.icon-job-pct:before {
+  content: "\e932";
+}
+.icon-job-vpr:before {
+  content: "\e933";
 }
 .icon-exp-8x:before {
   content: "\e92e";
@@ -172,9 +178,6 @@
 .icon-job-drk:before {
   content: "\e900";
 }
-.icon-job-vpr:before {
-  content: "\e931";
-}
-.icon-job-pct:before {
-  content: "\e932";
+.icon-marker-msq:before {
+  content: "\e901";
 }

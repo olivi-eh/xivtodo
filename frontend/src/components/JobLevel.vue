@@ -74,8 +74,9 @@
 export default {
   data() {
     return {
-      maxLevel: 100,
+      maxLevelCommon: 100,
       maxLevelBlue: 80,
+      maxLevelBeast: 50,
       iconClass: "icon-job-" + this.initial,
     };
   },
@@ -94,16 +95,21 @@ export default {
     jobUnlocked() {
       return this.currentLevel != 0;
     },
-    isMaxLevel() {
+    maxLevel() {
       if (this.initial == "blu") {
-        return this.currentLevel == this.maxLevelBlue;
+        return this.maxLevelBlue;
+      } else if (this.initial == "bst") {
+        return this.maxLevelBeast;
       } else {
-        return this.currentLevel == this.maxLevel;
+        return this.maxLevelCommon;
       }
+    },
+    isMaxLevel() {
+      return this.currentLevel == this.maxLevel;
     },
     levelProgressPercentage() {
       const level = this.currentLevel;
-      const maxLevel = this.initial == "blu" ? this.maxLevelBlue : this.maxLevel;
+      const maxLevel = this.maxLevel;
 
       // Using a logarithmic scale to make the progress bar look more natural
       return (Math.pow(1.03, level + 1) / Math.pow(1.03, maxLevel + 1)) * 100;
