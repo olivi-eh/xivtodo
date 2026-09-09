@@ -152,9 +152,10 @@
             <JobLevel initial="rpr" :title="$t('profile.job.rpr')" type="dps" />
             <JobLevel initial="vpr" :title="$t('profile.job.vpr')" type="dps" />
             <JobLevel initial="arc" :title="$t('profile.job.arc')" type="dps" />
-            <JobLevel initial="brd" :title="$t('profile.job.brd')" type="dps" />
+            <JobLevel initial="bst" :title="$t('profile.job.bst')" type="dps" />
           </div>
           <div style="display: inline-block">
+            <JobLevel initial="brd" :title="$t('profile.job.brd')" type="dps" />
             <JobLevel initial="mch" :title="$t('profile.job.mch')" type="dps" />
             <JobLevel initial="dnc" :title="$t('profile.job.dnc')" type="dps" />
             <JobLevel initial="thm" :title="$t('profile.job.thm')" type="dps" />

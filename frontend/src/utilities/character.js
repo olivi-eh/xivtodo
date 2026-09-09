@@ -43,6 +43,7 @@ const jobInitials = {
   40: "sge",
   41: "vpr",
   42: "pct",
+  43: "bst", // Verify this
 };
 
 function hasMaxIDOneOf(achievements, encounter) {
