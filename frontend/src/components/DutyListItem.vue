@@ -70,9 +70,15 @@
     </div>
 
     <!-- Rewards -->
-    <div v-if="filters.rewards && !duty.blur && ('Mounts' in duty || 'Minions' in duty)" class="mx-2 mt-2">
+    <div
+      v-if="
+        !duty.blur &&
+        (('Mounts' in duty && filters.mounts) || ('Minions' in duty && filters.minions))
+      "
+      class="mx-2 mt-2"
+    >
       <!-- Mounts -->
-      <template v-if="'Mounts' in duty">
+      <template v-if="'Mounts' in duty && filters.mounts">
         <div
           v-for="mountID of duty.Mounts.split(' ')"
           :key="mountID"
@@ -102,7 +108,7 @@
       </template>
 
       <!-- Minions -->
-      <template v-if="'Minions' in duty">
+      <template v-if="'Minions' in duty && filters.minions">
         <div
           v-for="minionID of duty.Minions.split(' ')"
           :key="minionID"

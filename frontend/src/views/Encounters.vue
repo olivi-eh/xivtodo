@@ -1,15 +1,27 @@
 <template>
   <PageHeader title="page.encounters" subtitle="pageHeader.clearedByCharacter">
-    <button
-      v-if="this.$store.getters.hasCharacter"
-      type="button"
-      class="btn float-end"
-      :class="{ 'btn-outline-primary': !filters.rewards, 'btn-primary': filters.rewards }"
-      @click="filters.rewards = !filters.rewards"
-    >
-      <i class="fa-regular fa-treasure-chest"></i>
-      {{ $t("encounters.viewRewards") }}
-    </button>
+    <div v-if="this.$store.getters.hasCharacter" class="d-flex gap-2 float-end">
+      <button
+        type="button"
+        class="btn"
+        :class="{ 'btn-outline-primary': !filters.mounts, 'btn-primary': filters.mounts }"
+        :aria-pressed="filters.mounts"
+        @click="filters.mounts = !filters.mounts"
+      >
+        <i class="fa-fw fas fa-horse-saddle me-1"></i>
+        {{ $t("page.mounts") }}
+      </button>
+      <button
+        type="button"
+        class="btn"
+        :class="{ 'btn-outline-primary': !filters.minions, 'btn-primary': filters.minions }"
+        :aria-pressed="filters.minions"
+        @click="filters.minions = !filters.minions"
+      >
+        <i class="fa-fw fas fa-people-simple me-1"></i>
+        {{ $t("page.minions") }}
+      </button>
+    </div>
   </PageHeader>
 
   <div class="row">
@@ -127,7 +139,8 @@ export default {
     return {
       db: dbJson,
       filters: {
-        rewards: false,
+        mounts: false,
+        minions: false,
       },
     };
   },
