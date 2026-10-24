@@ -542,6 +542,18 @@ export default {
   unmounted() {
     clearInterval(this.intervalFunction);
   },
+  watch: {
+    // Erase any previous sign-in message when navigating away from Home. This must not live in a
+    // computed property: any store mutation re-evaluates it and would erase messages set mid-navigation.
+    $route: {
+      handler(to) {
+        if (to.name !== undefined && to.name !== "Home") {
+          this.$store.commit("signingIn", false);
+        }
+      },
+      immediate: true,
+    },
+  },
   computed: {
     windowTitle() {
       const routeName = this.$route.name;
@@ -549,9 +561,6 @@ export default {
       if (routeName === undefined || routeName === "Home") {
         return `XIV ToDo: ${this.$t("page.homeTitle")}`;
       } else {
-        // Erase any previous sign-in error
-        this.$store.commit("signingIn", false);
-
         const i18nRouteName = this.$t(`page.${routeName.toLowerCase()}`);
         return `XIV ToDo - ${i18nRouteName}`;
       }
