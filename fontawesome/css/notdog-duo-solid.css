@@ -1,0 +1,71 @@
+/*!
+ * Font Awesome Pro 7.1.0 by @fontawesome - https://fontawesome.com
+ * License - https://fontawesome.com/license (Commercial License)
+ * Copyright 2025 Fonticons, Inc.
+ */
+:root, :host {
+  --fa-family-notdog-duo: "Font Awesome 7 Notdog Duo";
+  --fa-font-notdog-duo-solid: normal 900 1em/1 var(--fa-family-notdog-duo);
+  /* deprecated: this older custom property will be removed next major release */
+  --fa-style-family-notdog-duo: var(--fa-family-notdog-duo);
+}
+
+@font-face {
+  font-family: "Font Awesome 7 Notdog Duo";
+  font-style: normal;
+  font-weight: 900;
+  font-display: block;
+  src: url("../webfonts/fa-notdog-duo-solid-900.woff2");
+}
+.fands {
+  --fa-family: var(--fa-family-notdog-duo);
+  --fa-style: 900;
+  position: relative;
+  letter-spacing: normal;
+}
+
+.fa-notdog-duo {
+  --fa-family: var(--fa-family-notdog-duo);
+  position: relative;
+  letter-spacing: normal;
+}
+
+.fa-solid {
+  --fa-style: 900;
+}
+
+.fands::before,
+.fa-notdog-duo::before {
+  position: absolute;
+  color: var(--fa-primary-color, currentColor);
+  opacity: var(--fa-primary-opacity, 1);
+}
+
+.fands::after,
+.fa-notdog-duo::after {
+  color: var(--fa-secondary-color, currentColor);
+  opacity: var(--fa-secondary-opacity, 0.4);
+}
+
+.fa-swap-opacity .fands::before,
+.fa-swap-opacity .fa-notdog-duo::before,
+.fa-swap-opacity.fands::before,
+.fa-swap-opacity.fa-notdog-duo::before {
+  opacity: var(--fa-secondary-opacity, 0.4);
+}
+
+.fa-swap-opacity .fands::after,
+.fa-swap-opacity .fa-notdog-duo::after,
+.fa-swap-opacity.fands::after,
+.fa-swap-opacity.fa-notdog-duo::after {
+  opacity: var(--fa-primary-opacity, 1);
+}
+
+.fa-li.fands,
+.fa-li.fa-notdog-duo,
+.fa-stack-1x.fands,
+.fa-stack-1x.fa-notdog-duo,
+.fa-stack-2x.fands,
+.fa-stack-2x.fa-notdog-duo {
+  position: absolute;
+}
