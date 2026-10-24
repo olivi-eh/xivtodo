@@ -560,7 +560,9 @@ export default {
       return "https://xivtodo.com" + this.$route.path;
     },
     globalError() {
-      if (this.$store.state.signingIn?.status == 401) {
+      if (this.$store.state.signingIn?.sessionExpired) {
+        return this.$t("message.sessionExpired", { url: this.$store.getters.discordAuthURI });
+      } else if (this.$store.state.signingIn?.status == 401) {
         return this.$t("message.signingUnauthorizedError");
       } else if (this.$store.state.signingIn?.status == 500) {
         return this.$t("message.signingUnknownError");

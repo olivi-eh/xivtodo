@@ -44,6 +44,7 @@
     "backendUnavailable": "XIV ToDo is currently unreachable. Try again later, or look on <a href='https://twitter.com/XIVToDo' class='alert-link' target='_blank' rel='noopener noreferrer'>Twitter</a> or <a href='https://discord.gg/zfzhKhG3zj' class='alert-link' target='_blank' rel='noopener noreferrer'>Discord</a> for a status update.",
     "signingDiscord": "Signing in with Discord...",
     "signingUnauthorizedError": "XIV ToDo was unable to authenticate with Discord. Make sure you are using valid Discord credentials.",
+    "sessionExpired": "Your sign-in has expired, possibly because you signed in from another browser or device. <a href='{url}' class='alert-link'>Sign in with Discord</a> again to continue.",
     "signingUnknownError": "XIV ToDo was unable to reach Discord. Try again later, or look on <a href='https://twitter.com/XIVToDo' class='alert-link' target='_blank' rel='noopener noreferrer'>Twitter</a> or <a href='https://discord.gg/zfzhKhG3zj' class='alert-link' target='_blank' rel='noopener noreferrer'>Discord</a> for a status update.",
     "updatingCharacter": "Updating character data, this may take a minute...",
     "achievementsNotPublic": "The achievements for this character are not set to public in Lodestone.",

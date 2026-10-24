@@ -1,7 +1,18 @@
 import store from "../store";
+import router from "../router";
 import { injectCharacterData } from "./character";
 
 const apiEndpoint = process.env.VUE_APP_BACKEND_API_URI;
+
+// The authorization code was rotated or revoked (e.g. by signing in elsewhere), so the local session is stale
+const signOutIfUnauthorized = (response) => {
+  if (response.status == 401 && store.getters.isSignedIn) {
+    // Not routed through /signout, since navigating to a non-Home page clears sign-in messages
+    store.commit("deleteUserData");
+    store.commit("signingIn", { sessionExpired: true });
+    router.push("/");
+  }
+};
 
 const getVersion = () =>
   new Promise((resolve, reject) => {
@@ -69,6 +80,7 @@ const getUserData = () =>
         if (response.ok) {
           return response.json();
         } else {
+          signOutIfUnauthorized(response);
           throw response;
         }
       })
@@ -102,6 +114,7 @@ const updateSettings = (payload) =>
         if (response.ok) {
           return response.json();
         } else {
+          signOutIfUnauthorized(response);
           throw response;
         }
       })
@@ -126,6 +139,7 @@ const addCharacter = (id) =>
         if (response.ok) {
           return response.json();
         } else {
+          signOutIfUnauthorized(response);
           throw response;
         }
       })
@@ -151,6 +165,7 @@ const removeCharacter = (id) =>
         if (response.ok) {
           resolve(response);
         } else {
+          signOutIfUnauthorized(response);
           throw response;
         }
       })
@@ -173,6 +188,7 @@ const updateChecklist = (id, payload) =>
         if (response.ok) {
           resolve(response);
         } else {
+          signOutIfUnauthorized(response);
           throw response;
         }
       })
@@ -195,6 +211,7 @@ const updateEncounterIDs = (id, payload) =>
         if (response.ok) {
           resolve(response);
         } else {
+          signOutIfUnauthorized(response);
           throw response;
         }
       })
