@@ -5,6 +5,7 @@ import (
 	"net/http"
 	"os"
 	"server/handlers"
+	"time"
 )
 
 func withHeaders(handler http.Handler) http.Handler {
@@ -54,5 +55,13 @@ func main() {
 	}
 
 	log.Println("listening to", host)
-	log.Fatal(http.ListenAndServe(host, mux))
+	server := &http.Server{
+		Addr:              host,
+		Handler:           mux,
+		ReadHeaderTimeout: 10 * time.Second,
+		ReadTimeout:       30 * time.Second,
+		WriteTimeout:      60 * time.Second,
+		IdleTimeout:       120 * time.Second,
+	}
+	log.Fatal(server.ListenAndServe())
 }

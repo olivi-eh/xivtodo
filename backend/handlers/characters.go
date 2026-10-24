@@ -22,10 +22,8 @@ func CharactersHandler() http.Handler {
 			return
 		}
 
-		characterID := r.URL.Query().Get("id")
-		if characterID == "" {
-			http.Error(w, http.StatusText(http.StatusBadRequest), http.StatusBadRequest)
-			log.Println("missing id query")
+		characterID, err := utils.GetCharacterIDOrFail(w, r)
+		if err != nil {
 			return
 		}
 
@@ -120,7 +118,7 @@ func CharacterInUser(userData *models.User, id string) bool {
 }
 
 func userHasMaxCharacters(userData *models.User) bool {
-	return len(userData.Characters) > 8
+	return len(userData.Characters) >= 8
 }
 
 func CharacterProfilePrivate(lodestoneData *models.LodestoneProfile) bool {

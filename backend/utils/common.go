@@ -1,14 +1,19 @@
 package utils
 
 import (
+	"crypto/subtle"
 	"encoding/json"
 	"errors"
 	"log"
 	"net/http"
 	"server/models"
 	"server/store"
+	"strconv"
 	"strings"
 )
+
+// MaxBodyBytes matches Firestore's maximum document size
+const MaxBodyBytes = 1 << 20
 
 func ValidateMethodOrFail(w http.ResponseWriter, r *http.Request, methods ...string) error {
 	for _, method := range methods {
@@ -37,7 +42,7 @@ func GetUserWithAuthnOrFail(w http.ResponseWriter, r *http.Request, userData *mo
 	if err != nil || !user.Exists() {
 		http.Error(w, http.StatusText(http.StatusNotFound), http.StatusNotFound)
 		log.Println(err)
-		return err
+		return errors.New("user not found")
 	}
 
 	m := user.Data()
@@ -53,11 +58,23 @@ func GetUserWithAuthnOrFail(w http.ResponseWriter, r *http.Request, userData *mo
 		return err
 	}
 
-	if userData.Settings.AuthorizationCode != authorizationCode {
+	if userData.Settings == nil ||
+		subtle.ConstantTimeCompare([]byte(userData.Settings.AuthorizationCode), []byte(authorizationCode)) != 1 {
 		http.Error(w, http.StatusText(http.StatusUnauthorized), http.StatusUnauthorized)
 		log.Println("invalid Authorization code")
 		return errors.New("invalid authorization code")
 	}
 
 	return nil
+}
+
+func GetCharacterIDOrFail(w http.ResponseWriter, r *http.Request) (string, error) {
+	characterID := r.URL.Query().Get("id")
+	if _, err := strconv.ParseUint(characterID, 10, 32); err != nil {
+		http.Error(w, http.StatusText(http.StatusBadRequest), http.StatusBadRequest)
+		log.Printf("invalid id query: %q", characterID)
+		return "", errors.New("invalid id query")
+	}
+
+	return characterID, nil
 }

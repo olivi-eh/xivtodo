@@ -21,15 +21,13 @@ func EncountersHandler() http.Handler {
 			return
 		}
 
-		characterID := r.URL.Query().Get("id")
-		if characterID == "" {
-			http.Error(w, http.StatusText(http.StatusBadRequest), http.StatusBadRequest)
-			log.Println("missing id query")
+		characterID, err := utils.GetCharacterIDOrFail(w, r)
+		if err != nil {
 			return
 		}
 
 		encounterIDs := []int{}
-		err := json.NewDecoder(r.Body).Decode(&encounterIDs)
+		err = json.NewDecoder(http.MaxBytesReader(w, r.Body, utils.MaxBodyBytes)).Decode(&encounterIDs)
 		if err != nil {
 			http.Error(w, http.StatusText(http.StatusInternalServerError), http.StatusInternalServerError)
 			log.Printf("failed to decode encounterIDs: %v", err)

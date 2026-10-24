@@ -4,14 +4,22 @@ import (
 	"encoding/json"
 	"errors"
 	"net/http"
+	"net/url"
 	"server/models"
 	"strconv"
+	"time"
 )
 
+var gcfClient = &http.Client{Timeout: 30 * time.Second}
+
 func GetLodestoneProfile(w http.ResponseWriter, characterID string, basic bool) (*models.LodestoneProfile, error) {
-	resp, err := http.Get("https://asia-northeast1-xiv-todo.cloudfunctions.net/lodestone-character?" +
-		"id=" + characterID + "&basic=" + strconv.FormatBool(basic))
+	query := url.Values{
+		"id":    {characterID},
+		"basic": {strconv.FormatBool(basic)},
+	}
+	resp, err := gcfClient.Get("https://asia-northeast1-xiv-todo.cloudfunctions.net/lodestone-character?" + query.Encode())
 	if err != nil {
+		http.Error(w, http.StatusText(http.StatusBadGateway), http.StatusBadGateway)
 		return nil, err
 	}
 	defer resp.Body.Close()
@@ -22,9 +30,15 @@ func GetLodestoneProfile(w http.ResponseWriter, characterID string, basic bool) 
 	} else if resp.StatusCode == http.StatusNotFound {
 		http.Error(w, http.StatusText(http.StatusNotFound), http.StatusNotFound)
 		return nil, errors.New(http.StatusText(http.StatusNotFound))
+	} else if resp.StatusCode != http.StatusOK {
+		http.Error(w, http.StatusText(http.StatusBadGateway), http.StatusBadGateway)
+		return nil, errors.New("unexpected status from lodestone-character: " + resp.Status)
 	}
 
 	lodestoneProfile := &models.LodestoneProfile{}
-	err = json.NewDecoder(resp.Body).Decode(lodestoneProfile)
-	return lodestoneProfile, err
+	if err := json.NewDecoder(resp.Body).Decode(lodestoneProfile); err != nil {
+		http.Error(w, http.StatusText(http.StatusBadGateway), http.StatusBadGateway)
+		return nil, err
+	}
+	return lodestoneProfile, nil
 }
