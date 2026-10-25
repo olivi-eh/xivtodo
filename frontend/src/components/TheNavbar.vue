@@ -21,7 +21,7 @@
           <ul class="navbar-nav navbar-nav-scroll ms-auto flex-grow-1 mb-2 mb-md-0">
             <!-- Profile -->
             <li v-if="this.appStore.hasCharacter" class="nav-item">
-              <router-link to="/profile/" class="nav-link" @click="collapseNav">
+              <router-link to="/profile" class="nav-link" @click="collapseNav">
                 <i class="fa-fw fas fa-user d-none d-md-inline-block d-xl-none"></i>
                 <span class="d-md-none d-xl-inline">{{ $t("page.profile") }}</span>
               </router-link>
@@ -29,7 +29,7 @@
 
             <!-- Encounters -->
             <li class="nav-item">
-              <router-link to="/encounters/" class="nav-link" @click="collapseNav">
+              <router-link to="/encounters" class="nav-link" @click="collapseNav">
                 <i class="fa-fw fas fa-swords d-none d-md-inline-block d-xl-none"></i>
                 <span class="d-md-none d-xl-inline">{{ $t("page.encounters") }}</span>
               </router-link>
@@ -37,7 +37,7 @@
 
             <!-- Questlines -->
             <li class="nav-item">
-              <router-link to="/questlines/" class="nav-link" @click="collapseNav">
+              <router-link to="/questlines" class="nav-link" @click="collapseNav">
                 <i class="fa-fw fas fa-map-marker-exclamation d-none d-md-inline-block d-xl-none"></i>
                 <span class="d-md-none d-xl-inline">{{ $t("page.questlines") }}</span>
               </router-link>
@@ -45,7 +45,7 @@
 
             <!-- Challenges -->
             <li class="nav-item">
-              <router-link to="/challenges/" class="nav-link" @click="collapseNav">
+              <router-link to="/challenges" class="nav-link" @click="collapseNav">
                 <i class="fa-fw fas fa-medal d-none d-md-inline-block d-xl-none"></i>
                 <span class="d-md-none d-xl-inline">{{ $t("page.challenges") }}</span>
               </router-link>
@@ -68,16 +68,16 @@
                 aria-labelledby="collectionDropdown"
               >
                 <li>
-                  <router-link to="/achievements/" class="dropdown-item" @click="collapseNav">
+                  <router-link to="/achievements" class="dropdown-item" @click="collapseNav">
                     <i class="fa-fw fas fa-trophy"></i> {{ $t("page.achievements") }}
                   </router-link>
-                  <router-link to="/titles/" class="dropdown-item" @click="collapseNav">
+                  <router-link to="/titles" class="dropdown-item" @click="collapseNav">
                     <i class="fa-fw fas fa-scroll"></i> {{ $t("page.titles") }}
                   </router-link>
-                  <router-link to="/mounts/" class="dropdown-item" @click="collapseNav">
+                  <router-link to="/mounts" class="dropdown-item" @click="collapseNav">
                     <i class="fa-fw fas fa-horse-saddle"></i> {{ $t("page.mounts") }}
                   </router-link>
-                  <router-link to="/minions/" class="dropdown-item" @click="collapseNav">
+                  <router-link to="/minions" class="dropdown-item" @click="collapseNav">
                     <i class="fa-fw fas fa-cat-space"></i> {{ $t("page.minions") }}
                   </router-link>
                 </li>
@@ -86,7 +86,7 @@
 
             <!-- Checklist -->
             <li class="nav-item">
-              <router-link to="/checklist/" class="nav-link" @click="collapseNav">
+              <router-link to="/checklist" class="nav-link" @click="collapseNav">
                 <span class="fa-fw fas fa-tasks d-none d-md-inline-block d-xl-none"></span>
                 <span class="d-md-none d-xl-inline">{{ $t("page.checklist") }}</span>
               </router-link>
@@ -98,7 +98,7 @@
 
             <!-- Sandbox -->
             <li v-if="this.appStore.isDevEnv" class="nav-item">
-              <router-link to="/sandbox/" class="nav-link" aria-label="Sandbox">
+              <router-link to="/sandbox" class="nav-link" aria-label="Sandbox">
                 <span class="fa-fw fas fa-vial"></span>
                 <span class="d-inline d-md-none ms-2">{{ $t("page.sandbox") }}</span>
               </router-link>
@@ -285,7 +285,7 @@
                   </h6>
                 </li>
                 <li>
-                  <router-link to="/signout/" class="dropdown-item" @click="collapseNav">
+                  <router-link to="/signout" class="dropdown-item" @click="collapseNav">
                     <i class="fa-fw fas fa-power-off"></i> {{ $t("page.signOut") }}
                   </router-link>
                 </li>
@@ -294,7 +294,7 @@
 
                 <!-- Settings -->
                 <li>
-                  <router-link to="/settings/" class="dropdown-item" @click="collapseNav">
+                  <router-link to="/settings" class="dropdown-item" @click="collapseNav">
                     <i class="fa-fw fas fa-cog"></i> {{ $t("page.settings") }}
                   </router-link>
                 </li>

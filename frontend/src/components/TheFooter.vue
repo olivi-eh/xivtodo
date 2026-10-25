@@ -16,11 +16,11 @@
     <div class="flex-fill text-center text-muted">
       <img src="@/assets/img/brand.png" alt="XIV ToDo branding" />
       <br />
-      <router-link to="/help/">
+      <router-link to="/help">
         <small>{{ $t("page.help") }}</small>
       </router-link>
       ·
-      <router-link to="/privacy/">
+      <router-link to="/privacy">
         <small>{{ $t("page.privacy") }}</small>
       </router-link>
       ·

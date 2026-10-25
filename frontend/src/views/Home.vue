@@ -2,7 +2,7 @@
   <!-- <template v-if="this.appStore.isSignedIn && this.appStore.hasCharacter"> -->
   <template v-if="false">
     <PageHeader title="page.home" :hideNotSignedInAlert="true" :hideNoCharactersAlert="true">
-      <router-link to="/settings/">
+      <router-link to="/settings">
         <button type="button" class="btn btn-outline-success">
           {{ $t("home.addCharacter") }}
         </button>
@@ -72,12 +72,12 @@
         <!-- Buttons -->
         <div class="d-grid gap-2 d-sm-flex mb-5 justify-content-center">
           <!-- First button -->
-          <router-link v-if="this.appStore.hasCharacter" to="/checklist/">
+          <router-link v-if="this.appStore.hasCharacter" to="/checklist">
             <button type="button" class="btn btn-outline-primary btn-lg px-4 gap-3">
               {{ $t("page.checklist") }}
             </button>
           </router-link>
-          <router-link v-else-if="this.appStore.isSignedIn" to="/settings/">
+          <router-link v-else-if="this.appStore.isSignedIn" to="/settings">
             <button type="button" class="btn btn-primary btn-lg px-4 gap-3">
               {{ $t("home.addCharacter") }}
             </button>
@@ -89,7 +89,7 @@
           </a>
 
           <!-- Second button -->
-          <router-link v-if="this.appStore.isSignedIn" to="/settings/">
+          <router-link v-if="this.appStore.isSignedIn" to="/settings">
             <button type="button" class="btn btn-outline-secondary btn-lg px-4 gap-3">
               {{ $t("page.settings") }}
             </button>

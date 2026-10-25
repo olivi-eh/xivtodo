@@ -137,4 +137,11 @@ const router = createRouter({
   },
 });
 
+// GitHub Pages only serves static routes without a trailing slash, so normalize URLs that have one
+router.beforeEach((to) => {
+  if (to.path !== "/" && to.path.endsWith("/")) {
+    return { path: to.path.replace(/\/+$/, ""), query: to.query, hash: to.hash, replace: true };
+  }
+});
+
 export default router;

@@ -22,7 +22,7 @@
       </p>
       <p>
         <i18n-t keypath="help.addingCharacters.text2">
-          <router-link to="/settings/">{{ $t("page.settings") }}</router-link>
+          <router-link to="/settings">{{ $t("page.settings") }}</router-link>
           <b>{{ $t("settings.addCharacter") }}</b>
         </i18n-t>
       </p>
@@ -49,7 +49,7 @@
       </p>
       <p>
         <i18n-t keypath="help.enablingPublicAchievements.text2">
-          <router-link to="/settings/">{{ $t("page.settings") }}</router-link>
+          <router-link to="/settings">{{ $t("page.settings") }}</router-link>
         </i18n-t>
       </p>
       <br />
@@ -59,7 +59,7 @@
       <p>
         <i18n-t keypath="help.customizingCharacterChecklists.text">
           <b>{{ $t("shared.customize") }}</b>
-          <router-link to="/checklist/">{{ $t("page.checklist") }}</router-link>
+          <router-link to="/checklist">{{ $t("page.checklist") }}</router-link>
           <b>{{ $t("shared.customize") }}</b>
         </i18n-t>
       </p>
@@ -70,7 +70,7 @@
       <p>{{ $t("help.encounterQuestlineCompletion.text1") }}</p>
       <p>
         <i18n-t keypath="help.encounterQuestlineCompletion.text2">
-          <router-link to="/settings/">{{ $t("page.settings") }}</router-link>
+          <router-link to="/settings">{{ $t("page.settings") }}</router-link>
         </i18n-t>
       </p>
       <p>{{ $t("help.encounterQuestlineCompletion.textState") }}</p>
