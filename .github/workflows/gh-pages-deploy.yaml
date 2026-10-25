@@ -6,10 +6,25 @@ on:
     paths:
       - .github/workflows/gh-pages-deploy.yaml
       - frontend/**
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+# Let an in-progress deployment finish, but skip any queued between it and the latest one
+concurrency:
+  group: pages
+  cancel-in-progress: false
+
 jobs:
-  gh-pages-deploy:
-    name: Deploying to GitHub Pages
+  build:
+    name: Build
     runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: frontend
     steps:
       - name: Checkout
         uses: actions/checkout@v7
@@ -21,48 +36,33 @@ jobs:
           cache: npm
           cache-dependency-path: frontend/package-lock.json
 
-      - name: Setup git config
-        run: |
-          git config user.name "GitHub Actions Bot"
-          git config user.email "<>"
+      - name: Setup Pages
+        uses: actions/configure-pages@v6
 
       - name: Install packages
-        run: |
-          cd frontend
-          npm ci
-          cd ..
+        run: npm ci
 
-      - name: Generate build number and date
-        run: |
-          APP_BUILD_NUM=$GITHUB_RUN_NUMBER.$GITHUB_SHA
-          APP_BUILD_DATE=`date`
-          cat << EOF > frontend/.env.production
-            VITE_BUILD_NUM=$APP_BUILD_NUM
-            VITE_BUILD_DATE=$APP_BUILD_DATE
-            VITE_BACKEND_API_URI=https://api.xivtodo.com
-            VITE_DISCORD_CLIENT_ID=933567168912719923
-            VITE_DISCORD_REDIRECT_URI=https://xivtodo.com/auth
-          EOF
+      - name: Build
+        env:
+          VITE_BUILD_NUM: ${{ github.run_number }}.${{ github.sha }}
+          VITE_BACKEND_API_URI: https://api.xivtodo.com
+          VITE_DISCORD_CLIENT_ID: "933567168912719923"
+          VITE_DISCORD_REDIRECT_URI: https://xivtodo.com/auth
+        run: VITE_BUILD_DATE="$(date)" npm run build
 
-      - name: Build and deploy to gh-pages
-        run: |
-          git checkout --orphan gh-pages-test
-          cd frontend
-          npm run build
-          paths=(
-            "profile"
-            "encounters"
-            "questlines"
-            "challenges"
-            "checklist"
-            "settings"
-            "help"
-            "privacy"
-          )
-          for path in ${paths[@]}; do
-            mkdir -p dist/$path
-            cp dist/index.html dist/$path/index.html
-          done
-          git --work-tree dist add --all
-          git --work-tree dist commit -m "Automated dist build"
-          git push origin HEAD:gh-pages --force
+      - name: Upload artifact
+        uses: actions/upload-pages-artifact@v5
+        with:
+          path: frontend/dist
+
+  deploy:
+    name: Deploy
+    needs: build
+    runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - name: Deploy to GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v5

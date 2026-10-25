@@ -3,6 +3,7 @@ import store from "../store";
 import Home from "../views/Home.vue";
 import { authenticate } from "../utilities/backend";
 
+// Static routes must also be listed in staticRoutes in vite.config.js to be served directly
 const routes = [
   {
     path: "/",
