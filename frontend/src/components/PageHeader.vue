@@ -4,18 +4,18 @@
       <!-- Title -->
       {{ $t(this.title) }}
 
-      <span v-if="this.subtitle && this.$store.getters.hasCharacter" class="fs-3 fw-lighter d-block d-lg-inline">
+      <span v-if="this.subtitle && this.appStore.hasCharacter" class="fs-3 fw-lighter d-block d-lg-inline">
         <!-- Subtitle -->
-        {{ $t(this.subtitle, { characterName: this.$store.getters.character.Name }) }}
+        {{ $t(this.subtitle, { characterName: this.appStore.character.Name }) }}
 
         <!-- Subtitle info: Updating character data... -->
-        <div v-if="this.$store.getters.activeCharacterOutOfDate" class="text-info fs-6">
+        <div v-if="this.appStore.activeCharacterOutOfDate" class="text-info fs-6">
           <div class="spinner-border spinner-border-sm" role="status"></div>
           {{ $t("message.updatingCharacter") }}
         </div>
 
         <!-- Subtitle info: Achievements not public -->
-        <div v-else-if="!this.$store.getters.achievementsPublic" class="text-warning fs-6">
+        <div v-else-if="!this.appStore.achievementsPublic" class="text-warning fs-6">
           {{ $t("message.achievementsNotPublic") }}
         </div>
       </span>
@@ -26,14 +26,14 @@
 
   <!-- Alert: Not signed in -->
   <AlertMsg
-    v-if="!this.hideNotSignedInAlert && !this.$store.getters.isSignedIn"
+    v-if="!this.hideNotSignedInAlert && !this.appStore.isSignedIn"
     type="normal"
-    :msg="$t('message.notSignedIn', { url: this.$store.getters.discordAuthURI })"
+    :msg="$t('message.notSignedIn', { url: this.appStore.discordAuthURI })"
   />
 
   <!-- Alert: No characters -->
   <AlertMsg
-    v-else-if="!this.hideNoCharactersAlert && !this.$store.getters.hasCharacter"
+    v-else-if="!this.hideNoCharactersAlert && !this.appStore.hasCharacter"
     type="normal"
     :msg="$t('message.noCharacters')"
   />
@@ -47,6 +47,7 @@
 
 <script>
 import AlertMsg from "@/components/AlertMsg.vue";
+import { useAppStore } from "@/store/app";
 
 export default {
   props: {
@@ -58,6 +59,9 @@ export default {
   },
   components: {
     AlertMsg,
+  },
+  setup() {
+    return { appStore: useAppStore() };
   },
 };
 </script>

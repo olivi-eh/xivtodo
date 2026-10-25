@@ -1,6 +1,8 @@
+import { useAppStore } from "@/store/app";
+
 function getLodestoneURL() {
   let url = "https://";
-  switch (this.$store.getters.language) {
+  switch (useAppStore().language) {
     case "ja":
       url += "jp";
       break;

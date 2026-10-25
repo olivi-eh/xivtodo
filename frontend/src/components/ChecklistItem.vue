@@ -4,9 +4,9 @@
     class="list-group-item fw-medium"
     :class="{
       'drag-hovered': dragHovered,
-      'list-group-item-action': this.$store.getters.hasCharacter,
-      'cursor-pointer': this.$store.getters.hasCharacter,
-      'user-select-none': this.$store.getters.hasCharacter,
+      'list-group-item-action': this.appStore.hasCharacter,
+      'cursor-pointer': this.appStore.hasCharacter,
+      'user-select-none': this.appStore.hasCharacter,
     }"
     @click="check"
     @mouseover="isHovering = true"
@@ -14,7 +14,7 @@
   >
     <span v-if="!itemCopy.hidden && !showHidden">
       <i
-        v-if="!showHidden && this.$store.getters.hasCharacter"
+        v-if="!showHidden && this.appStore.hasCharacter"
         class="me-2 fa-fw fal"
         :class="{
           'fa-check-circle': itemCopy.checked || isHovering,
@@ -63,8 +63,12 @@
 
 <script>
 import { updateChecklist } from "@/utilities/backend.js";
+import { useAppStore } from "@/store/app";
 
 export default {
+  setup() {
+    return { appStore: useAppStore() };
+  },
   data() {
     return {
       itemCopy: this.item,
@@ -88,7 +92,7 @@ export default {
       this.updateItem(false);
     },
     check() {
-      if (!this.$store.getters.hasCharacter) return;
+      if (!this.appStore.hasCharacter) return;
       if (this.showHidden) return;
 
       this.itemCopy.checked = !this.itemCopy.checked;
@@ -99,7 +103,7 @@ export default {
     },
     updateItem(toRemove) {
       if (this.type == "weekly") {
-        let weeklyChecklist = this.$store.getters.checklistWeeklies;
+        let weeklyChecklist = this.appStore.checklistWeeklies;
         for (let i = 0; i < weeklyChecklist.length; i++) {
           if (weeklyChecklist[i].name == this.item.name) {
             weeklyChecklist[i] = this.itemCopy;
@@ -109,11 +113,11 @@ export default {
           }
         }
 
-        this.$store.commit("setChecklistWeeklies", weeklyChecklist);
+        this.appStore.setChecklistWeeklies(weeklyChecklist);
       }
 
       if (this.type == "daily") {
-        let dailyChecklist = this.$store.getters.checklistDailies;
+        let dailyChecklist = this.appStore.checklistDailies;
         for (let i = 0; i < dailyChecklist.length; i++) {
           if (dailyChecklist[i].name == this.item.name) {
             dailyChecklist[i] = this.itemCopy;
@@ -123,11 +127,11 @@ export default {
           }
         }
 
-        this.$store.commit("setChecklistDailies", dailyChecklist);
+        this.appStore.setChecklistDailies(dailyChecklist);
       }
 
       if (this.type == "adhoc") {
-        let adhocChecklist = this.$store.getters.checklistAdhocs;
+        let adhocChecklist = this.appStore.checklistAdhocs;
         for (let i = 0; i < adhocChecklist.length; i++) {
           if (adhocChecklist[i].name == this.item.name) {
             adhocChecklist[i] = this.itemCopy;
@@ -137,11 +141,11 @@ export default {
           }
         }
 
-        this.$store.commit("setChecklistAdhocs", adhocChecklist);
+        this.appStore.setChecklistAdhocs(adhocChecklist);
       }
 
-      let characterID = this.$store.getters.lodestoneData.Character.ID;
-      updateChecklist(characterID, this.$store.getters.checklistData);
+      let characterID = this.appStore.lodestoneData.Character.ID;
+      updateChecklist(characterID, this.appStore.checklistData);
     },
   },
 };

@@ -1,4 +1,4 @@
-import store from "../store";
+import { useAppStore } from "../store/app";
 import router from "../router";
 import { injectCharacterData } from "./character";
 
@@ -6,12 +6,18 @@ const apiEndpoint = import.meta.env.VITE_BACKEND_API_URI;
 
 // The authorization code was rotated or revoked (e.g. by signing in elsewhere), so the local session is stale
 const signOutIfUnauthorized = (response) => {
-  if (response.status == 401 && store.getters.isSignedIn) {
+  const store = useAppStore();
+  if (response.status == 401 && store.isSignedIn) {
     // Not routed through /signout, since navigating to a non-Home page clears sign-in messages
-    store.commit("deleteUserData");
-    store.commit("signingIn", { sessionExpired: true });
+    store.deleteUserData();
+    store.setSigningIn({ sessionExpired: true });
     router.push("/");
   }
+};
+
+const authorization = () => {
+  const store = useAppStore();
+  return store.discordUser.id + ":" + store.settings.authorizationCode;
 };
 
 const getVersion = () =>
@@ -70,7 +76,7 @@ const getUserData = () =>
     const timestamp = Date.now();
     fetch(`${apiEndpoint}/users?t=${timestamp}`, {
       headers: {
-        Authorization: store.getters.discordUser.id + ":" + store.getters.settings.authorizationCode,
+        Authorization: authorization(),
         "Cache-Control": "no-cache, no-store, must-revalidate",
       },
       method: "GET",
@@ -104,7 +110,7 @@ const updateSettings = (payload) =>
   new Promise((resolve, reject) => {
     fetch(apiEndpoint + "/settings", {
       headers: {
-        Authorization: store.getters.discordUser.id + ":" + store.getters.settings.authorizationCode,
+        Authorization: authorization(),
       },
       body: JSON.stringify(payload),
       method: "PUT",
@@ -130,7 +136,7 @@ const addCharacter = (id) =>
   new Promise((resolve, reject) => {
     fetch(apiEndpoint + "/characters?id=" + id, {
       headers: {
-        Authorization: store.getters.discordUser.id + ":" + store.getters.settings.authorizationCode,
+        Authorization: authorization(),
       },
       method: "GET",
       cache: "no-cache",
@@ -156,7 +162,7 @@ const removeCharacter = (id) =>
   new Promise((resolve, reject) => {
     fetch(apiEndpoint + "/characters?id=" + id, {
       headers: {
-        Authorization: store.getters.discordUser.id + ":" + store.getters.settings.authorizationCode,
+        Authorization: authorization(),
       },
       method: "DELETE",
       cache: "no-cache",
@@ -178,7 +184,7 @@ const updateChecklist = (id, payload) =>
   new Promise((resolve, reject) => {
     fetch(apiEndpoint + "/checklist?id=" + id, {
       headers: {
-        Authorization: store.getters.discordUser.id + ":" + store.getters.settings.authorizationCode,
+        Authorization: authorization(),
       },
       body: JSON.stringify(payload),
       method: "PUT",
@@ -201,7 +207,7 @@ const updateEncounterIDs = (id, payload) =>
   new Promise((resolve, reject) => {
     fetch(apiEndpoint + "/encounters?id=" + id, {
       headers: {
-        Authorization: store.getters.discordUser.id + ":" + store.getters.settings.authorizationCode,
+        Authorization: authorization(),
       },
       body: JSON.stringify(payload),
       method: "PUT",

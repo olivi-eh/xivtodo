@@ -43,8 +43,8 @@
 
     <!-- Right-side info -->
     <div class="footer-copyrights text-muted text-end my-auto d-none d-xl-block col-4">
-      {{ $t("footer.buildVersion", { buildNum: this.$store.state.env.VITE_BUILD_NUM }) }}<br />
-      {{ $t("footer.buildDate", { buildDate: this.$store.state.env.VITE_BUILD_DATE }) }}
+      {{ $t("footer.buildVersion", { buildNum: this.appStore.env.VITE_BUILD_NUM }) }}<br />
+      {{ $t("footer.buildDate", { buildDate: this.appStore.env.VITE_BUILD_DATE }) }}
     </div>
   </footer>
 </template>
@@ -85,7 +85,12 @@ footer img:hover {
 </style>
 
 <script>
+import { useAppStore } from "@/store/app";
+
 export default {
+  setup() {
+    return { appStore: useAppStore() };
+  },
   Name: "TheFooter",
 };
 </script>

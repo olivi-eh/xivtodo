@@ -47,7 +47,7 @@
 
         <!-- Character list -->
         <h3>{{ $t("settings.myCharacters") }}</h3>
-        <div v-if="!this.$store.getters.hasCharacter" class="d-flex flex-column">
+        <div v-if="!this.appStore.hasCharacter" class="d-flex flex-column">
           <p>
             {{ $t("settings.myCharactersHelp") }}
           </p>
@@ -55,7 +55,7 @@
         </div>
         <ul v-else class="list-group list-group-flush">
           <li
-            v-for="(item, i) of this.$store.getters.characters"
+            v-for="(item, i) of this.appStore.characters"
             :key="item.ID"
             class="list-group-item d-flex justify-content-between align-items-start"
           >
@@ -71,7 +71,7 @@
                 – {{ item.lodestoneData.Character.World }}
                 <br />
                 <span
-                  v-if="this.updating == item.lodestoneData.Character.ID || this.$store.getters.characterOutOfDate(i)"
+                  v-if="this.updating == item.lodestoneData.Character.ID || this.appStore.characterOutOfDate(i)"
                   class="text-info"
                 >
                   <div class="spinner-border spinner-border-sm" role="status"></div>
@@ -97,7 +97,7 @@
               </div>
             </div>
             <a
-              v-if="!updating && !this.$store.getters.characterOutOfDate(i)"
+              v-if="!updating && !this.appStore.characterOutOfDate(i)"
               class="text-secondary cursor-pointer tt"
               @click="updateCharacter(item.lodestoneData.Character.ID)"
             >
@@ -116,7 +116,7 @@
             </a>
             &nbsp;&nbsp;
             <a
-              v-if="!updating && !this.$store.getters.characterOutOfDate(i)"
+              v-if="!updating && !this.appStore.characterOutOfDate(i)"
               class="text-danger cursor-pointer tt"
               @click="removeCharacter(i)"
             >
@@ -187,9 +187,13 @@ import PageHeader from "@/components/PageHeader.vue";
 import FormRadioSection from "@/components/FormRadioSection.vue";
 import { getLodestoneURL } from "@/utilities/shared.js";
 import { updateSettings, addCharacter, removeCharacter } from "@/utilities/backend.js";
+import { useAppStore } from "@/store/app";
 
 export default {
   name: "SettingsView",
+  setup() {
+    return { appStore: useAppStore() };
+  },
   data() {
     return {
       adding: false,
@@ -197,7 +201,7 @@ export default {
       updating: 0,
       error: {},
       profileURL: "",
-      settings: { ...this.$store.getters.settings },
+      settings: { ...this.appStore.settings },
     };
   },
   components: {
@@ -212,7 +216,7 @@ export default {
 
       updateSettings(this.settings)
         .then((response) => {
-          this.$store.commit("setSettings", response);
+          this.appStore.setSettings(response);
 
           this.error = {
             type: "success",
@@ -251,7 +255,7 @@ export default {
 
       addCharacter(characterID)
         .then((characterData) => {
-          this.$store.commit("addCharacter", characterData);
+          this.appStore.addCharacter(characterData);
 
           if (!characterData.lodestoneData.Achievements || characterData.lodestoneData.Achievements.length == 0) {
             this.error = {
@@ -300,7 +304,7 @@ export default {
 
       addCharacter(characterID)
         .then((characterData) => {
-          this.$store.commit("addCharacter", characterData);
+          this.appStore.addCharacter(characterData);
         })
         .catch((err) => {
           console.log(err);
@@ -315,8 +319,8 @@ export default {
       this.updating = true;
       this.error = {};
 
-      let characterID = this.$store.getters.characters[id].lodestoneData.Character.ID;
-      let characterName = this.$store.getters.characters[id].lodestoneData.Character.Name;
+      let characterID = this.appStore.characters[id].lodestoneData.Character.ID;
+      let characterName = this.appStore.characters[id].lodestoneData.Character.Name;
 
       if (!confirm(this.$t("settings.message.characterRemoveConfirm", { name: characterName }))) {
         this.updating = false;
@@ -325,7 +329,7 @@ export default {
 
       removeCharacter(characterID)
         .then(() => {
-          this.$store.commit("removeCharacter", id);
+          this.appStore.removeCharacter(id);
 
           this.error = {
             type: "success",

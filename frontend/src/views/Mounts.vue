@@ -43,13 +43,17 @@
 <script>
 import PageHeader from "@/components/PageHeader.vue";
 import mountsJson from "@/assets/dbs/en/mounts.json";
+import { useAppStore } from "@/store/app";
 
 export default {
   name: "MountsView",
+  setup() {
+    return { appStore: useAppStore() };
+  },
   data() {
     return {
       db: mountsJson,
-      mounts: this.$store.getters.mounts,
+      mounts: this.appStore.mounts,
     };
   },
   components: {

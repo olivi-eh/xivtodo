@@ -1,5 +1,5 @@
 <template>
-  <!-- <template v-if="this.$store.getters.isSignedIn && this.$store.getters.hasCharacter"> -->
+  <!-- <template v-if="this.appStore.isSignedIn && this.appStore.hasCharacter"> -->
   <template v-if="false">
     <PageHeader title="page.home" :hideNotSignedInAlert="true" :hideNoCharactersAlert="true">
       <router-link to="/settings/">
@@ -11,7 +11,7 @@
 
     <div class="row">
       <div
-        v-for="item of this.$store.getters.characters"
+        v-for="item of this.appStore.characters"
         :key="item.ID"
         class="container px-4 py-2 mb-3 border-bottom border-grey"
       >
@@ -72,24 +72,24 @@
         <!-- Buttons -->
         <div class="d-grid gap-2 d-sm-flex mb-5 justify-content-center">
           <!-- First button -->
-          <router-link v-if="this.$store.getters.hasCharacter" to="/checklist/">
+          <router-link v-if="this.appStore.hasCharacter" to="/checklist/">
             <button type="button" class="btn btn-outline-primary btn-lg px-4 gap-3">
               {{ $t("page.checklist") }}
             </button>
           </router-link>
-          <router-link v-else-if="this.$store.getters.isSignedIn" to="/settings/">
+          <router-link v-else-if="this.appStore.isSignedIn" to="/settings/">
             <button type="button" class="btn btn-primary btn-lg px-4 gap-3">
               {{ $t("home.addCharacter") }}
             </button>
           </router-link>
-          <a v-else :href="this.$store.getters.discordAuthURI">
+          <a v-else :href="this.appStore.discordAuthURI">
             <button type="button" class="btn btn-primary btn-lg px-4 gap-3">
               {{ $t("home.signInDiscord") }}
             </button>
           </a>
 
           <!-- Second button -->
-          <router-link v-if="this.$store.getters.isSignedIn" to="/settings/">
+          <router-link v-if="this.appStore.isSignedIn" to="/settings/">
             <button type="button" class="btn btn-outline-secondary btn-lg px-4 gap-3">
               {{ $t("page.settings") }}
             </button>
@@ -246,6 +246,7 @@
 import PageHeader from "@/components/PageHeader.vue";
 import brandImg from "@/assets/img/brand.png";
 import brandDarkImg from "@/assets/img/brand_dark.png";
+import { useAppStore } from "@/store/app";
 
 const screenshots = import.meta.glob("../assets/screenshots/*.png", { eager: true, import: "default" });
 
@@ -254,9 +255,12 @@ export default {
   components: {
     PageHeader,
   },
+  setup() {
+    return { appStore: useAppStore() };
+  },
   computed: {
     brandURI() {
-      const theme = this.$store.getters.theme;
+      const theme = this.appStore.theme;
 
       if (theme == "night") {
         return brandImg;
@@ -276,7 +280,7 @@ export default {
       window.scrollTo(0, top - 70);
     },
     changeActiveCharacter(i) {
-      this.$store.commit("changeActiveCharacter", i);
+      this.appStore.changeActiveCharacter(i);
     },
     taskCompletionPercentage(tasks) {
       let total = tasks.filter((x) => !x.hidden).length;

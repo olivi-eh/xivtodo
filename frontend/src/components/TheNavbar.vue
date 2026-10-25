@@ -20,7 +20,7 @@
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
           <ul class="navbar-nav navbar-nav-scroll ms-auto flex-grow-1 mb-2 mb-md-0">
             <!-- Profile -->
-            <li v-if="this.$store.getters.hasCharacter" class="nav-item">
+            <li v-if="this.appStore.hasCharacter" class="nav-item">
               <router-link to="/profile/" class="nav-link" @click="collapseNav">
                 <i class="fa-fw fas fa-user d-none d-md-inline-block d-xl-none"></i>
                 <span class="d-md-none d-xl-inline">{{ $t("page.profile") }}</span>
@@ -97,7 +97,7 @@
             <!-- Items below are right-aligned -->
 
             <!-- Sandbox -->
-            <li v-if="this.$store.getters.isDevEnv" class="nav-item">
+            <li v-if="this.appStore.isDevEnv" class="nav-item">
               <router-link to="/sandbox/" class="nav-link" aria-label="Sandbox">
                 <span class="fa-fw fas fa-vial"></span>
                 <span class="d-inline d-md-none ms-2">{{ $t("page.sandbox") }}</span>
@@ -119,7 +119,7 @@
                 <span class="fa-fw fas fa-hourglass-clock position-relative">
                   <span
                     v-if="
-                      this.$store.getters.isSignedIn && this.$store.getters.latestCountdownSeen < news.latestCountdownID
+                      this.appStore.isSignedIn && this.appStore.latestCountdownSeen < news.latestCountdownID
                     "
                     class="position-absolute top-0 start-100 translate-middle p-1 bg-success border border-light rounded-circle"
                   >
@@ -143,7 +143,7 @@
               >
                 <span class="fa-fw fas fa-newspaper position-relative">
                   <span
-                    v-if="this.$store.getters.isSignedIn && this.$store.getters.latestNewsSeen < news.latestID"
+                    v-if="this.appStore.isSignedIn && this.appStore.latestNewsSeen < news.latestID"
                     class="position-absolute top-0 start-100 translate-middle p-1 bg-success border border-light rounded-circle"
                   >
                   </span>
@@ -162,11 +162,11 @@
                 data-bs-toggle="dropdown"
                 aria-expanded="false"
                 aria-label="Language"
-                @click="this.$store.commit('setFlag', { key: 'languageClicked', value: true })"
+                @click="this.appStore.setFlag({ key: 'languageClicked', value: true })"
               >
                 <span class="fa-fw fas fa-language position-relative">
                   <span
-                    v-if="!this.$store.getters.flag('languageClicked')"
+                    v-if="!this.appStore.flag('languageClicked')"
                     class="position-absolute top-0 start-100 translate-middle p-1 bg-success border border-light rounded-circle"
                   >
                   </span>
@@ -179,28 +179,28 @@
                   <h6 class="dropdown-header">{{ $t("navbar.preferredLanguage") }}</h6>
                 </li>
                 <li>
-                  <span v-if="this.$store.getters.language == 'en'" class="dropdown-item active" @click="collapseNav">
+                  <span v-if="this.appStore.language == 'en'" class="dropdown-item active" @click="collapseNav">
                     English
                     <i class="fa-fw fal fa-check"></i>
                   </span>
                   <a v-else class="dropdown-item" href="#" @click="changeLanguage('en')">English</a>
                 </li>
                 <li>
-                  <span v-if="this.$store.getters.language == 'fr'" class="dropdown-item active" @click="collapseNav">
+                  <span v-if="this.appStore.language == 'fr'" class="dropdown-item active" @click="collapseNav">
                     Français
                     <i class="fa-fw fal fa-check"></i>
                   </span>
                   <a v-else class="dropdown-item" href="#" @click="changeLanguage('fr')">Français</a>
                 </li>
                 <li>
-                  <span v-if="this.$store.getters.language == 'de'" class="dropdown-item active" @click="collapseNav">
+                  <span v-if="this.appStore.language == 'de'" class="dropdown-item active" @click="collapseNav">
                     Deutsch
                     <i class="fa-fw fal fa-check"></i>
                   </span>
                   <a v-else class="dropdown-item" href="#" @click="changeLanguage('de')">Deutsch</a>
                 </li>
                 <li>
-                  <span v-if="this.$store.getters.language == 'ja'" class="dropdown-item active" @click="collapseNav">
+                  <span v-if="this.appStore.language == 'ja'" class="dropdown-item active" @click="collapseNav">
                     日本語
                     <i class="fa-fw fal fa-check"></i>
                   </span>
@@ -224,8 +224,8 @@
             </li>
 
             <!-- Sign-in -->
-            <li v-if="!this.$store.getters.isSignedIn" class="nav-item">
-              <a class="nav-link" :href="this.$store.getters.discordAuthURI">
+            <li v-if="!this.appStore.isSignedIn" class="nav-item">
+              <a class="nav-link" :href="this.appStore.discordAuthURI">
                 <span class="d-inline-block d-md-none fa-fw fas fa-sign-in me-2"></span>
                 <span>{{ $t("home.signInDiscord") }}</span>
               </a>
@@ -241,13 +241,13 @@
                 data-bs-toggle="dropdown"
                 aria-expanded="false"
               >
-                <span v-if="this.$store.getters.hasCharacter">
+                <span v-if="this.appStore.hasCharacter">
                   <span class="d-inline-block d-md-none fa-fw fas fa-cog me-2"></span>
-                  <span>{{ this.$store.getters.lodestoneData.Character.Name }}</span>
+                  <span>{{ this.appStore.lodestoneData.Character.Name }}</span>
                   <img
-                    v-if="this.$store.getters.hasCharacter"
+                    v-if="this.appStore.hasCharacter"
                     class="avatar-nav d-none d-md-inline"
-                    :src="this.$store.getters.character.Avatar"
+                    :src="this.appStore.character.Avatar"
                     :alt="$t('shared.portraitAlt')"
                   />
                 </span>
@@ -261,11 +261,11 @@
                 <li>
                   <h6 class="dropdown-header">{{ $t("navbar.changeActiveCharacter") }}</h6>
                 </li>
-                <li v-if="!this.$store.getters.hasCharacter">
+                <li v-if="!this.appStore.hasCharacter">
                   <span class="dropdown-item disabled">{{ $t("navbar.noCharacters") }}</span>
                 </li>
-                <li v-for="(item, i) of this.$store.getters.characters" :key="item.ID">
-                  <span v-if="i == this.$store.state.activeCharacterID" class="dropdown-item active">
+                <li v-for="(item, i) of this.appStore.characters" :key="item.ID">
+                  <span v-if="i == this.appStore.activeCharacterID" class="dropdown-item active">
                     <b>{{ item.lodestoneData.Character.Name }}</b>
                     – {{ item.lodestoneData.Character.World }}
                     <i class="fa-fw fal fa-check"></i>
@@ -281,7 +281,7 @@
                 <!-- Discord username & sign-out -->
                 <li>
                   <h6 class="dropdown-header">
-                    {{ this.$store.getters.discordUsername }}
+                    {{ this.appStore.discordUsername }}
                   </h6>
                 </li>
                 <li>
@@ -369,8 +369,12 @@ import TheNewsCanvas from "@/components/TheNewsCanvas.vue";
 import TheCountdownsCanvas from "@/components/TheCountdownsCanvas.vue";
 import news from "@/assets/news.json";
 import { updateSettings } from "@/utilities/backend.js";
+import { useAppStore } from "@/store/app";
 
 export default {
+  setup() {
+    return { appStore: useAppStore() };
+  },
   Name: "TheNavbar",
   data() {
     return {
@@ -384,7 +388,7 @@ export default {
   methods: {
     changeLanguage(lang) {
       this.$i18n.locale = lang;
-      this.$store.commit("setLanguage", lang);
+      this.appStore.setLanguage(lang);
       this.collapseNav();
     },
     collapseNav() {
@@ -392,27 +396,27 @@ export default {
       navCollapse.classList.remove("show");
     },
     changeActiveCharacter(i) {
-      this.$store.commit("changeActiveCharacter", i);
+      this.appStore.changeActiveCharacter(i);
       this.collapseNav();
     },
     seenLatestNews() {
-      if (!this.$store.getters.isSignedIn) return;
+      if (!this.appStore.isSignedIn) return;
 
-      let settings = { ...this.$store.getters.settings };
+      let settings = { ...this.appStore.settings };
       if (settings.latestNewsSeen == news.latestID) return;
 
       settings.latestNewsSeen = news.latestID;
-      this.$store.commit("setSettings", settings);
+      this.appStore.setSettings(settings);
       updateSettings(settings);
     },
     seenLatestCountdown() {
-      if (!this.$store.getters.isSignedIn) return;
+      if (!this.appStore.isSignedIn) return;
 
-      let settings = { ...this.$store.getters.settings };
+      let settings = { ...this.appStore.settings };
       if (settings.latestCountdownSeen == news.latestCountdownID) return;
 
       settings.latestCountdownSeen = news.latestCountdownID;
-      this.$store.commit("setSettings", settings);
+      this.appStore.setSettings(settings);
       updateSettings(settings);
     },
   },

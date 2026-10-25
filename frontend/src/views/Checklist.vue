@@ -1,7 +1,7 @@
 <template>
   <PageHeader title="page.checklist" subtitle="pageHeader.forCharacter">
     <button
-      v-if="this.$store.getters.hasCharacter"
+      v-if="this.appStore.hasCharacter"
       type="button"
       class="btn float-end"
       :class="{ 'btn-outline-primary': !showHidden, 'btn-primary': showHidden }"
@@ -35,7 +35,7 @@
 
       <ul class="list-group list-group-flush">
         <ChecklistItem
-          v-for="item of [...this.$store.getters.checklistWeeklies]"
+          v-for="item of [...this.appStore.checklistWeeklies]"
           :key="item.name"
           :item="item"
           type="weekly"
@@ -75,7 +75,7 @@
 
       <ul class="list-group list-group-flush">
         <ChecklistItem
-          v-for="item of [...this.$store.getters.checklistDailies]"
+          v-for="item of [...this.appStore.checklistDailies]"
           :key="item.ID"
           :item="item"
           type="daily"
@@ -92,14 +92,14 @@
         />
       </ul>
       <br />
-      <span v-if="this.$store.getters.checklistLenHiddens > 0" class="d-none d-md-block">
+      <span v-if="this.appStore.checklistLenHiddens > 0" class="d-none d-md-block">
         <span class="text-muted float-end">
-          {{ $t("checklist.hiddenTasks", this.$store.getters.checklistLenHiddens) }}<br /><br />
+          {{ $t("checklist.hiddenTasks", this.appStore.checklistLenHiddens) }}<br /><br />
         </span>
       </span>
     </div>
   </div>
-  <div v-if="showHidden || this.$store.getters.checklistAdhocs.length > 0" class="row">
+  <div v-if="showHidden || this.appStore.checklistAdhocs.length > 0" class="row">
     <div class="col">
       <h3>{{ $t("checklist.scratchpad") }}</h3>
       <span class="text-muted">{{ $t("checklist.scratchpadDesc") }}</span>
@@ -119,7 +119,7 @@
 
       <ul class="list-group list-group-flush">
         <ChecklistItem
-          v-for="item of [...this.$store.getters.checklistAdhocs]"
+          v-for="item of [...this.appStore.checklistAdhocs]"
           :key="item.ID"
           :item="item"
           type="adhoc"
@@ -134,7 +134,7 @@
           @dragenter.prevent
           :dragHovered="item.name == this.draggedOverName"
         />
-        <li v-if="this.$store.getters.checklistAdhocs.length == 0" class="list-group-item">
+        <li v-if="this.appStore.checklistAdhocs.length == 0" class="list-group-item">
           {{ $t("checklist.scratchpadHelp") }}
         </li>
       </ul>
@@ -148,9 +148,13 @@ import PageHeader from "@/components/PageHeader.vue";
 import ChecklistItem from "@/components/ChecklistItem.vue";
 import { updateChecklist } from "@/utilities/backend.js";
 import { swapChecklistItems } from "@/utilities/checklist.js";
+import { useAppStore } from "@/store/app";
 
 export default {
   name: "ChecklistView",
+  setup() {
+    return { appStore: useAppStore() };
+  },
   data() {
     return {
       intervalFunction: null,
@@ -240,31 +244,31 @@ export default {
       let resetHappened = false;
 
       // Skip this if no active character is set.
-      if (!this.$store.getters.hasCharacter) return;
+      if (!this.appStore.hasCharacter) return;
 
       // Clear checked if past weekly reset time.
-      if (this.$store.getters.checklistNextWeeklyReset < Date.now()) {
+      if (this.appStore.checklistNextWeeklyReset < Date.now()) {
         resetHappened = true;
-        this.$store.commit("checklistNextWeeklyReset", this.weeklyResetTime());
-        let checklistWeeklies = this.$store.getters.checklistWeeklies;
+        this.appStore.setChecklistNextWeeklyReset(this.weeklyResetTime());
+        let checklistWeeklies = this.appStore.checklistWeeklies;
         for (let i = 0; i < checklistWeeklies.length; i++) {
           checklistWeeklies[i].checked = false;
         }
       }
 
       // Clear checked if past daily reset time.
-      if (this.$store.getters.checklistNextDailyReset < Date.now()) {
+      if (this.appStore.checklistNextDailyReset < Date.now()) {
         resetHappened = true;
-        this.$store.commit("checklistNextDailyReset", this.dailyResetTime());
-        let checklistDailies = this.$store.getters.checklistDailies;
+        this.appStore.setChecklistNextDailyReset(this.dailyResetTime());
+        let checklistDailies = this.appStore.checklistDailies;
         for (let i = 0; i < checklistDailies.length; i++) {
           checklistDailies[i].checked = false;
         }
       }
 
       if (resetHappened) {
-        let characterID = this.$store.getters.lodestoneData.Character.ID;
-        updateChecklist(characterID, this.$store.getters.checklistData);
+        let characterID = this.appStore.lodestoneData.Character.ID;
+        updateChecklist(characterID, this.appStore.checklistData);
       }
     },
     addCustomWeekly() {
@@ -275,13 +279,13 @@ export default {
         hidden: false,
       };
 
-      let weeklyChecklist = [...this.$store.getters.checklistWeeklies];
+      let weeklyChecklist = [...this.appStore.checklistWeeklies];
       weeklyChecklist.push(newItem);
-      this.$store.commit("setChecklistWeeklies", weeklyChecklist);
+      this.appStore.setChecklistWeeklies(weeklyChecklist);
 
       this.customWeekly = "";
-      let characterID = this.$store.getters.lodestoneData.Character.ID;
-      updateChecklist(characterID, this.$store.getters.checklistData);
+      let characterID = this.appStore.lodestoneData.Character.ID;
+      updateChecklist(characterID, this.appStore.checklistData);
     },
     addCustomDaily() {
       let newItem = {
@@ -291,13 +295,13 @@ export default {
         hidden: false,
       };
 
-      let dailyChecklist = [...this.$store.getters.checklistDailies];
+      let dailyChecklist = [...this.appStore.checklistDailies];
       dailyChecklist.push(newItem);
-      this.$store.commit("setChecklistDailies", dailyChecklist);
+      this.appStore.setChecklistDailies(dailyChecklist);
 
       this.customDaily = "";
-      let characterID = this.$store.getters.lodestoneData.Character.ID;
-      updateChecklist(characterID, this.$store.getters.checklistData);
+      let characterID = this.appStore.lodestoneData.Character.ID;
+      updateChecklist(characterID, this.appStore.checklistData);
     },
     addCustomAdhoc() {
       let newItem = {
@@ -307,13 +311,13 @@ export default {
         hidden: false,
       };
 
-      let adhocChecklist = [...this.$store.getters.checklistAdhocs];
+      let adhocChecklist = [...this.appStore.checklistAdhocs];
       adhocChecklist.push(newItem);
-      this.$store.commit("setChecklistAdhocs", adhocChecklist);
+      this.appStore.setChecklistAdhocs(adhocChecklist);
 
       this.customAdhoc = "";
-      let characterID = this.$store.getters.lodestoneData.Character.ID;
-      updateChecklist(characterID, this.$store.getters.checklistData);
+      let characterID = this.appStore.lodestoneData.Character.ID;
+      updateChecklist(characterID, this.appStore.checklistData);
     },
     startDrag(evt, item) {
       evt.dataTransfer.dropEffect = "move";
@@ -331,8 +335,8 @@ export default {
 
       swapChecklistItems(fromName, toName);
 
-      let characterID = this.$store.getters.lodestoneData.Character.ID;
-      updateChecklist(characterID, this.$store.getters.checklistData);
+      let characterID = this.appStore.lodestoneData.Character.ID;
+      updateChecklist(characterID, this.appStore.checklistData);
     },
     onDragOver(evt, item) {
       this.draggedOverName = item.name;

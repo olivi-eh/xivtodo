@@ -1,6 +1,6 @@
 <template>
   <PageHeader title="page.encounters" subtitle="pageHeader.clearedByCharacter">
-    <div v-if="this.$store.getters.hasCharacter" class="d-flex gap-2 float-end">
+    <div v-if="this.appStore.hasCharacter" class="d-flex gap-2 float-end">
       <button
         type="button"
         class="btn"
@@ -132,9 +132,13 @@ import PageHeader from "@/components/PageHeader.vue";
 import DutyList from "@/components/DutyList.vue";
 
 import dbJson from "@/assets/db.json";
+import { useAppStore } from "@/store/app";
 
 export default {
   name: "EncountersView",
+  setup() {
+    return { appStore: useAppStore() };
+  },
   data() {
     return {
       db: dbJson,

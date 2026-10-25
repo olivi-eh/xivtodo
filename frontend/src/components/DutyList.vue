@@ -16,6 +16,7 @@
 
 <script>
 import DutyListItem from "@/components/DutyListItem.vue";
+import { useAppStore } from "@/store/app";
 
 export default {
   props: {
@@ -27,12 +28,15 @@ export default {
   components: {
     DutyListItem,
   },
+  setup() {
+    return { appStore: useAppStore() };
+  },
   methods: {
     injectDutyCompletion(duties) {
-      const achievements = this.$store.getters.achievements;
-      const spoilersOption = this.$store.getters.settings.spoilersOption || 0;
-      const encounterIDs = this.$store.getters.encounterIDs;
-      const verifiedEncounters = this.$store.getters.encountersVerified;
+      const achievements = this.appStore.achievements;
+      const spoilersOption = this.appStore.settings.spoilersOption || 0;
+      const encounterIDs = this.appStore.encounterIDs;
+      const verifiedEncounters = this.appStore.encountersVerified;
 
       for (let item of duties) {
         let cleared = verifiedEncounters[item.UUID];
@@ -46,7 +50,7 @@ export default {
           if (spoilersOption == "1" || (cleared == 0 && !showIfAllowed)) {
             blur = true;
           }
-          if (!this.$store.getters.achievementsPublic && !showIfAllowed) blur = true;
+          if (!this.appStore.achievementsPublic && !showIfAllowed) blur = true;
         }
         if (item.Expansion == "2x" && !achievements.has(788)) blur = true;
         if (item.Expansion == "3x" && !achievements.has(1139)) blur = true;

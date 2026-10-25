@@ -1,19 +1,19 @@
 <template>
   <PageHeader title="page.profile" subtitle="pageHeader.ofCharacter" />
 
-  <div v-if="!this.$store.getters.profilePublic" class="row">
+  <div v-if="!this.appStore.profilePublic" class="row">
     <p>{{ $t('message.profileNotPublic') }}</p>
   </div>
   <div v-else class="row">
     <!-- Character portrait & bio -->
     <div class="col-lg d-none d-lg-block">
       <!-- Portrait -->
-      <img id="character-portrait" :src="this.$store.getters.character.Portrait" :alt="$t('shared.portraitAlt')" />
+      <img id="character-portrait" :src="this.appStore.character.Portrait" :alt="$t('shared.portraitAlt')" />
       <br />
 
       <!-- Bio -->
       <blockquote v-if="this.hasBio" class="blockquote fs-6 text-break p-2">
-        <p>“{{ this.$store.getters.character.Bio }}”</p>
+        <p>“{{ this.appStore.character.Bio }}”</p>
       </blockquote>
     </div>
 
@@ -25,7 +25,7 @@
       <div class="info-block">
         <b>{{ $t("profile.world") }}</b>
         <br />
-        {{ this.$store.getters.character.World }} ({{ this.$store.getters.character.DC }})
+        {{ this.appStore.character.World }} ({{ this.appStore.character.DC }})
       </div>
 
       <!-- Info: Race & clan -->
@@ -42,7 +42,7 @@
       <div class="info-block">
         <b>{{ $t("profile.nameday") }}</b>
         <br />
-        {{ this.$store.getters.character.Nameday }}
+        {{ this.appStore.character.Nameday }}
       </div>
 
       <!-- Info: Guardian -->
@@ -50,14 +50,14 @@
         <b>{{ $t("profile.guardian") }}</b>
         <br />
         <img :src="this.guardianImageURI" />
-        {{ this.localeName(this.$store.getters.character.GuardianDeity) }}
+        {{ this.localeName(this.appStore.character.GuardianDeity) }}
       </div>
 
       <!-- Info: Free Company -->
-      <div v-if="this.$store.getters.character.FreeCompanyName" class="info-block">
+      <div v-if="this.appStore.character.FreeCompanyName" class="info-block">
         <b>{{ $t("profile.freeCompany") }}</b>
         <br />
-        {{ this.$store.getters.character.FreeCompanyName }}
+        {{ this.appStore.character.FreeCompanyName }}
       </div>
 
       <!-- Info: City-state -->
@@ -65,19 +65,19 @@
         <b>{{ $t("profile.cityState") }}</b>
         <br />
         <img :src="this.cityStateImageURI" />
-        {{ this.localeName(this.$store.getters.character.Town) }}
+        {{ this.localeName(this.appStore.character.Town) }}
       </div>
 
       <!-- Info: Grand Company -->
-      <div v-if="this.$store.getters.character.GrandCompanyInfo?.GrandCompany" class="info-block">
+      <div v-if="this.appStore.character.GrandCompanyInfo?.GrandCompany" class="info-block">
         <b>{{ $t("profile.grandCompany") }}</b>
         <br />
         <img :src="this.grandCompanyImageURI" />
-        {{ this.localeName(this.$store.getters.character.GrandCompanyInfo.GrandCompany) }}
+        {{ this.localeName(this.appStore.character.GrandCompanyInfo.GrandCompany) }}
       </div>
 
       <!-- Info: Playing since -->
-      <div v-if="this.$store.getters.achievementsPublic" class="info-block">
+      <div v-if="this.appStore.achievementsPublic" class="info-block">
         <b>{{ $t("profile.playingSince") }}</b>
         <br />
         {{ this.playingSince }}
@@ -202,7 +202,7 @@
   <h1>
     {{ $t("page.encounters")}}
     <span class="fs-3 fw-lighter d-block d-lg-inline">
-      {{ $t("pageHeader.clearedByCharacter", { characterName: this.$store.getters.character.Name }) }}
+      {{ $t("pageHeader.clearedByCharacter", { characterName: this.appStore.character.Name }) }}
     </span>
   </h1>
   <hr />
@@ -268,7 +268,7 @@
   <h1>
     {{ $t("page.questlines")}}
     <span class="fs-3 fw-lighter d-block d-lg-inline">
-      {{ $t("pageHeader.clearedByCharacter", { characterName: this.$store.getters.character.Name }) }}
+      {{ $t("pageHeader.clearedByCharacter", { characterName: this.appStore.character.Name }) }}
     </span>
   </h1>
   <hr />
@@ -302,7 +302,7 @@
   <h1>
     {{ $t("page.challenges")}}
     <span class="fs-3 fw-lighter d-block d-lg-inline">
-      {{ $t("pageHeader.clearedByCharacter", { characterName: this.$store.getters.character.Name }) }}
+      {{ $t("pageHeader.clearedByCharacter", { characterName: this.appStore.character.Name }) }}
     </span>
   </h1>
   <hr />
@@ -393,9 +393,13 @@ import JobLevel from "@/components/JobLevel.vue";
 import DutyProgress from "@/components/DutyProgress.vue";
 
 import dbJson from "@/assets/db.json";
+import { useAppStore } from "@/store/app";
 
 export default {
   name: "ProfileView",
+  setup() {
+    return { appStore: useAppStore() };
+  },
   data() {
     return {
       maxLevelEureka: 60,
@@ -410,41 +414,41 @@ export default {
   },
   computed: {
     hasBio() {
-      return this.$store.getters.character.Bio != "-";
+      return this.appStore.character.Bio != "-";
     },
     isMasculine() {
-      return this.$store.getters.character.Gender == 1;
+      return this.appStore.character.Gender == 1;
     },
     gender() {
       return this.isMasculine ? "Masculine" : "Feminine";
     },
     race() {
-      return this.genderedLocaleName(this.$store.getters.character.Race, this.gender);
+      return this.genderedLocaleName(this.appStore.character.Race, this.gender);
     },
     clan() {
-      return this.genderedLocaleName(this.$store.getters.character.Tribe, this.gender);
+      return this.genderedLocaleName(this.appStore.character.Tribe, this.gender);
     },
     guardianImageURI() {
-      return "/icons/guardian-" + this.$store.getters.character.GuardianDeity.ID + ".png";
+      return "/icons/guardian-" + this.appStore.character.GuardianDeity.ID + ".png";
     },
     cityStateImageURI() {
-      return "/icons/town-" + this.$store.getters.character.Town.ID + ".png";
+      return "/icons/town-" + this.appStore.character.Town.ID + ".png";
     },
     grandCompanyImageURI() {
-      const grandCompanyID = this.$store.getters.character.GrandCompanyInfo.GrandCompany.ID;
-      const grandCompanyRankID = this.$store.getters.character.GrandCompanyInfo.RankID;
+      const grandCompanyID = this.appStore.character.GrandCompanyInfo.GrandCompany.ID;
+      const grandCompanyRankID = this.appStore.character.GrandCompanyInfo.RankID;
       return "/icons/gc-" + grandCompanyID + "-" + grandCompanyRankID + ".png";
     },
     playingSince() {
-      const date = new Date(this.$store.getters.lodestoneData.PlayingSince);
+      const date = new Date(this.appStore.lodestoneData.PlayingSince);
       const locale = this.$i18n.locale;
       return date.toLocaleDateString(locale, { year: "numeric", month: "long", day: "numeric" });
     },
     levelEureka() {
-      return this.$store.getters.character.ClassJobElemental?.Level || 0;
+      return this.appStore.character.ClassJobElemental?.Level || 0;
     },
     levelBozja() {
-      return this.$store.getters.character.ClassJobBozjan?.Level || 0;
+      return this.appStore.character.ClassJobBozjan?.Level || 0;
     },
     isMaxLevelEureka() {
       return this.levelEureka == this.maxLevelEureka;

@@ -1,15 +1,15 @@
 <template>
-  <div id="root" class="d-flex flex-column min-vh-100" :data-bs-theme="this.$store.getters.theme">
+  <div id="root" class="d-flex flex-column min-vh-100" :data-bs-theme="this.appStore.theme">
     <TheNavbar />
 
     <main class="flex-shrink-0">
       <!-- Alert: Backend offline -->
-      <div v-if="this.$store.getters.backendOffline" class="container">
+      <div v-if="this.appStore.backendOffline" class="container">
         <AlertMsg type="danger" :msg="$t('message.backendUnavailable')" />
       </div>
 
       <!-- Alert: New version available -->
-      <!-- <div v-else-if="!this.$store.getters.versionMatches" class="container">
+      <!-- <div v-else-if="!this.appStore.versionMatches" class="container">
         <AlertMsg
           type="success"
           msg="A new version is available! <a href='javascript:window.location.reload()' class='alert-link'>Reload and update the page</a>."
@@ -22,7 +22,7 @@
       </div>
 
       <!-- Alert: Signing in... -->
-      <div v-if="this.$store.state.signingIn == true" class="container">
+      <div v-if="this.appStore.signingIn == true" class="container">
         <AlertMsg type="normal" :msg="$t('message.signingDiscord')" />
       </div>
 
@@ -508,6 +508,7 @@ import TheFooter from "@/components/TheFooter.vue";
 import AlertMsg from "@/components/AlertMsg.vue";
 import { getVersion, getUserData, addCharacter } from "@/utilities/backend.js";
 import news from "@/assets/news.json";
+import { useAppStore } from "@/store/app";
 
 export default {
   name: "App",
@@ -515,6 +516,9 @@ export default {
     TheNavbar,
     TheFooter,
     AlertMsg,
+  },
+  setup() {
+    return { appStore: useAppStore() };
   },
   data() {
     return {
@@ -548,7 +552,7 @@ export default {
     $route: {
       handler(to) {
         if (to.name !== undefined && to.name !== "Home") {
-          this.$store.commit("signingIn", false);
+          this.appStore.setSigningIn(false);
         }
       },
       immediate: true,
@@ -569,11 +573,11 @@ export default {
       return "https://xivtodo.com" + this.$route.path;
     },
     globalError() {
-      if (this.$store.state.signingIn?.sessionExpired) {
-        return this.$t("message.sessionExpired", { url: this.$store.getters.discordAuthURI });
-      } else if (this.$store.state.signingIn?.status == 401) {
+      if (this.appStore.signingIn?.sessionExpired) {
+        return this.$t("message.sessionExpired", { url: this.appStore.discordAuthURI });
+      } else if (this.appStore.signingIn?.status == 401) {
         return this.$t("message.signingUnauthorizedError");
-      } else if (this.$store.state.signingIn?.status == 500) {
+      } else if (this.appStore.signingIn?.status == 500) {
         return this.$t("message.signingUnknownError");
       } else {
         return "";
@@ -646,30 +650,30 @@ export default {
       window.addEventListener("pagehide", onWindowFocusChange);
     },
     setLanguage() {
-      if (this.$store.getters.language === null) {
+      if (this.appStore.language === null) {
         let locale = navigator.language.split("-")[0];
         if (locale === "fr" || locale === "de" || locale === "ja") {
-          this.$store.commit("setLanguage", locale);
+          this.appStore.setLanguage(locale);
         } else {
-          this.$store.commit("setLanguage", "en");
+          this.appStore.setLanguage("en");
         }
       }
-      this.$i18n.locale = this.$store.getters.language;
+      this.$i18n.locale = this.appStore.language;
     },
     checkUpstreamVersion() {
       getVersion()
         .then((version) => {
-          this.$store.commit("setUpstreamVersion", version);
+          this.appStore.setUpstreamVersion(version);
         })
         .catch(() => {
-          this.$store.commit("setUpstreamVersion", "OFFLINE");
+          this.appStore.setUpstreamVersion("OFFLINE");
         });
     },
     updateUserData() {
-      if (this.$store.getters.isSignedIn) {
+      if (this.appStore.isSignedIn) {
         getUserData()
           .then((userData) => {
-            this.$store.commit("setUserData", userData);
+            this.appStore.setUserData(userData);
           })
           .catch((err) => {
             console.log(err);
@@ -678,22 +682,22 @@ export default {
     },
     updateCharactersData() {
       let i = 0;
-      for (let character of this.$store.getters.characters) {
-        if (this.$store.getters.characterOutOfDate(i)) {
+      for (let character of this.appStore.characters) {
+        if (this.appStore.characterOutOfDate(i)) {
           let localID = i;
           console.log("Updating data for " + character.lodestoneData.Character.Name + "...");
 
           let characterID = character.lodestoneData.Character.ID;
           addCharacter(characterID)
             .then((characterData) => {
-              this.$store.commit("addCharacter", characterData);
+              this.appStore.addCharacter(characterData);
               console.log("Data for " + characterData.lodestoneData.Character.Name + " updated.");
             })
             .catch((err) => {
               console.log(err);
               this.error = err;
               if (err.status == 404) {
-                this.$store.commit("invalidateCharacter", localID);
+                this.appStore.invalidateCharacter(localID);
               }
             });
         }

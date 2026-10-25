@@ -26,7 +26,12 @@
 </style>
 
 <script>
+import { useAppStore } from "@/store/app";
+
 export default {
+  setup() {
+    return { appStore: useAppStore() };
+  },
   data() {
     return {};
   },
@@ -37,8 +42,8 @@ export default {
   },
   computed: {
     cleared() {
-      const encounterIDs = this.$store.getters.encounterIDs;
-      const verifiedEncounters = this.$store.getters.encountersVerified;
+      const encounterIDs = this.appStore.encounterIDs;
+      const verifiedEncounters = this.appStore.encountersVerified;
       return this.duties.filter((duty) => verifiedEncounters[duty.UUID] === 1 || encounterIDs.has(~~duty.UUID)).length;
     },
     total() {

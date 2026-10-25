@@ -10,11 +10,11 @@
   },
   "dependencies": {
     "@unhead/vue": "^3.4.3",
+    "pinia": "^4.1.0",
     "vue": "^3.5.44",
     "vue-gtag": "^3.7.1",
     "vue-i18n": "^11.4.16",
-    "vue-router": "^5.4.0",
-    "vuex": "^4.1.0"
+    "vue-router": "^5.4.0"
   },
   "devDependencies": {
     "@eslint/js": "^10.0.1",

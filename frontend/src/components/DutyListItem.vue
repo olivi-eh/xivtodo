@@ -3,8 +3,8 @@
     class="list-group-item align-items-center fs-6"
     :class="{
       'list-group-item-action':
-        this.$store.getters.hasCharacter && isHovering && (duty.cleared == -1 || duty.cleared == 2),
-      'cursor-pointer': this.$store.getters.hasCharacter && (duty.cleared == -1 || duty.cleared == 2),
+        this.appStore.hasCharacter && isHovering && (duty.cleared == -1 || duty.cleared == 2),
+      'cursor-pointer': this.appStore.hasCharacter && (duty.cleared == -1 || duty.cleared == 2),
     }"
     @click="check"
     @mouseover="isHovering = true"
@@ -13,8 +13,8 @@
     <div
       class="d-flex justify-content-between align-items-center"
       :class="{
-        'text-secondary': duty.cleared == -1 && this.$store.getters.isSignedIn,
-        'text-success': duty.cleared >= 1 && this.$store.getters.isSignedIn,
+        'text-secondary': duty.cleared == -1 && this.appStore.isSignedIn,
+        'text-success': duty.cleared >= 1 && this.appStore.isSignedIn,
       }"
     >
       <span
@@ -26,7 +26,7 @@
       >
         <!-- Completion icon -->
         <i
-          v-if="this.$store.getters.isSignedIn"
+          v-if="this.appStore.isSignedIn"
           class="me-2 fa-fw fal"
           :class="{
             'fa-question-circle': duty.cleared == -1 && !(duty.cleared == -1 && isHovering),
@@ -39,10 +39,10 @@
         <!-- Duty name -->
         <span
           :class="{
-            'blur-maybe': duty.blur && duty.cleared == -1 && this.$store.getters.isSignedIn,
+            'blur-maybe': duty.blur && duty.cleared == -1 && this.appStore.isSignedIn,
             'blur-cleared': duty.blur && duty.cleared == 1,
             'blur-uncleared': duty.blur && duty.cleared == 0,
-            'user-select-none': duty.blur && this.$store.getters.isSignedIn,
+            'user-select-none': duty.blur && this.appStore.isSignedIn,
             'fw-bolder': duty.Bold,
           }"
         >
@@ -83,7 +83,7 @@
           v-for="mountID of duty.Mounts.split(' ')"
           :key="mountID"
           class="pb-2"
-          :class="{ 'text-muted': this.$store.getters.mounts[mountID] }"
+          :class="{ 'text-muted': this.appStore.mounts[mountID] }"
         >
           <img
             v-if="mountID"
@@ -91,11 +91,11 @@
             width="40"
             height="40"
             :src="dbs.mounts[mountID].icon"
-            :class="{ 'filter-bright-50': this.$store.getters.mounts[mountID] }"
+            :class="{ 'filter-bright-50': this.appStore.mounts[mountID] }"
           />
           {{ dbs.mounts[mountID].name }}
           <i
-            v-if="this.$store.getters.mounts[mountID]"
+            v-if="this.appStore.mounts[mountID]"
             class="fa-fw fal fa-check"
             :title="$t('encounters.obtained')"
           ></i>
@@ -113,7 +113,7 @@
           v-for="minionID of duty.Minions.split(' ')"
           :key="minionID"
           class="pb-2"
-          :class="{ 'text-muted': this.$store.getters.minions[minionID] }"
+          :class="{ 'text-muted': this.appStore.minions[minionID] }"
         >
           <template v-if="minionID in dbs.minions">
             <img
@@ -122,11 +122,11 @@
               width="40"
               height="40"
               :src="dbs.minions[minionID].icon"
-              :class="{ 'filter-bright-50': this.$store.getters.minions[minionID] }"
+              :class="{ 'filter-bright-50': this.appStore.minions[minionID] }"
             />
             {{ dbs.minions[minionID].name }}
             <i
-              v-if="this.$store.getters.minions[minionID]"
+              v-if="this.appStore.minions[minionID]"
               class="fa-fw fal fa-check"
               :title="$t('encounters.obtained')"
             ></i>
@@ -177,8 +177,12 @@ import { getLodestoneURL } from "@/utilities/shared.js";
 import { updateEncounterIDs } from "@/utilities/backend.js";
 
 import dbs from "@/utilities/dbs.js";
+import { useAppStore } from "@/store/app";
 
 export default {
+  setup() {
+    return { appStore: useAppStore() };
+  },
   data() {
     return {
       isHovering: false,
@@ -190,13 +194,13 @@ export default {
   },
   computed: {
     dbs() {
-      return dbs[this.$store.getters.language];
+      return dbs[this.appStore.language];
     },
     title() {
       return this.duty.LodestoneID || this.duty.blur ? "" : this.duty.Name;
     },
     showPatchNums() {
-      let patchNumsSetting = this.$store.getters.settings.patchNumsOption || 0;
+      let patchNumsSetting = this.appStore.settings.patchNumsOption || 0;
 
       return (
         (patchNumsSetting == 0 && this.duty.blur) ||
@@ -208,12 +212,12 @@ export default {
   methods: {
     getLodestoneURL: getLodestoneURL,
     check() {
-      if (!this.$store.getters.hasCharacter) return;
+      if (!this.appStore.hasCharacter) return;
       if (this.duty.cleared == 0 || this.duty.cleared == 1) return;
 
       let uuid = ~~this.duty.UUID;
 
-      let encounterIDs = this.$store.getters.encounterIDs;
+      let encounterIDs = this.appStore.encounterIDs;
       if (encounterIDs.has(uuid)) {
         encounterIDs.set(uuid, false);
       } else {
@@ -227,9 +231,9 @@ export default {
         }
       });
 
-      this.$store.commit("setEncounterIDs", encounterIDsAsArray);
+      this.appStore.setEncounterIDs(encounterIDsAsArray);
 
-      let characterID = this.$store.getters.lodestoneData.Character.ID;
+      let characterID = this.appStore.lodestoneData.Character.ID;
       updateEncounterIDs(characterID, encounterIDsAsArray);
     },
   },

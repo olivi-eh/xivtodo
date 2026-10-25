@@ -3,10 +3,15 @@
 </template>
 
 <script>
+import { useAppStore } from "@/store/app";
+
 export default {
   name: "SignOut",
+  setup() {
+    return { appStore: useAppStore() };
+  },
   mounted() {
-    this.$store.commit("deleteUserData");
+    this.appStore.deleteUserData();
     this.$router.push("/");
   },
 };

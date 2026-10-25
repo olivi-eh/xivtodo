@@ -1,5 +1,5 @@
 import { createRouter, createWebHistory } from "vue-router";
-import store from "../store";
+import { useAppStore } from "../store/app";
 import Home from "../views/Home.vue";
 import { authenticate } from "../utilities/backend";
 
@@ -21,16 +21,17 @@ const routes = [
     path: "/auth",
     component: Home,
     beforeEnter: (_to) => {
+      const store = useAppStore();
       authenticate(_to.query.code)
         .then((userData) => {
-          store.commit("setUserData", userData);
+          store.setUserData(userData);
         })
         .catch((err) => {
-          store.commit("signingIn", err);
+          store.setSigningIn(err);
           console.log(err);
         });
 
-      store.commit("signingIn", true);
+      store.setSigningIn(true);
       return "/";
     },
   },
@@ -39,7 +40,7 @@ const routes = [
     name: "Profile",
     component: () => import("../views/Profile.vue"),
     beforeEnter: () => {
-      if (!store.getters.hasCharacter) {
+      if (!useAppStore().hasCharacter) {
         return "/";
       }
     },
@@ -94,7 +95,7 @@ const routes = [
     name: "Settings",
     component: () => import("../views/Settings.vue"),
     beforeEnter: () => {
-      if (!store.getters.userData) {
+      if (!useAppStore().userData) {
         return "/";
       }
     },

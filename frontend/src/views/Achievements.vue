@@ -43,13 +43,17 @@
 <script>
 import PageHeader from "@/components/PageHeader.vue";
 import achievementsJson from "@/assets/dbs/en/achievements.json";
+import { useAppStore } from "@/store/app";
 
 export default {
   name: "AchievementsView",
+  setup() {
+    return { appStore: useAppStore() };
+  },
   data() {
     return {
       db: achievementsJson.results.filter((e) => e.type.id == 1).sort((a, b) => a.id - b.id),
-      achievements: this.$store.getters.achievements,
+      achievements: this.appStore.achievements,
     };
   },
   components: {

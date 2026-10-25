@@ -1,5 +1,5 @@
 import db from "@/assets/db.json";
-import store from "../store";
+import { useAppStore } from "../store/app";
 
 function injectWeeklyChecklist(payload) {
   let weeklyChecklist = [...payload];
@@ -92,9 +92,10 @@ function injectDailyChecklist(payload) {
 }
 
 function swapChecklistItems(fromName, toName) {
-  let adhocChecklist = [...store.getters.checklistAdhocs];
-  let weeklyChecklist = [...store.getters.checklistWeeklies];
-  let dailyChecklist = [...store.getters.checklistDailies];
+  const store = useAppStore();
+  let adhocChecklist = [...store.checklistAdhocs];
+  let weeklyChecklist = [...store.checklistWeeklies];
+  let dailyChecklist = [...store.checklistDailies];
 
   let fromObj = null;
 
@@ -102,7 +103,7 @@ function swapChecklistItems(fromName, toName) {
     if (adhocChecklist[i].name == fromName) {
       fromObj = adhocChecklist[i];
       adhocChecklist.splice(i, 1);
-      store.commit("setChecklistAdhocs", adhocChecklist);
+      store.setChecklistAdhocs(adhocChecklist);
       break;
     }
   }
@@ -110,7 +111,7 @@ function swapChecklistItems(fromName, toName) {
     if (weeklyChecklist[i].name == fromName) {
       fromObj = weeklyChecklist[i];
       weeklyChecklist.splice(i, 1);
-      store.commit("setChecklistWeeklies", weeklyChecklist);
+      store.setChecklistWeeklies(weeklyChecklist);
       break;
     }
   }
@@ -118,7 +119,7 @@ function swapChecklistItems(fromName, toName) {
     if (dailyChecklist[i].name == fromName) {
       fromObj = dailyChecklist[i];
       dailyChecklist.splice(i, 1);
-      store.commit("setChecklistDailies", dailyChecklist);
+      store.setChecklistDailies(dailyChecklist);
       break;
     }
   }
@@ -128,21 +129,21 @@ function swapChecklistItems(fromName, toName) {
   for (let i = 0; i < adhocChecklist.length; i++) {
     if (adhocChecklist[i].name == toName) {
       adhocChecklist.splice(i, 0, fromObj);
-      store.commit("setChecklistAdhocs", adhocChecklist);
+      store.setChecklistAdhocs(adhocChecklist);
       break;
     }
   }
   for (let i = 0; i < weeklyChecklist.length; i++) {
     if (weeklyChecklist[i].name == toName) {
       weeklyChecklist.splice(i, 0, fromObj);
-      store.commit("setChecklistWeeklies", weeklyChecklist);
+      store.setChecklistWeeklies(weeklyChecklist);
       break;
     }
   }
   for (let i = 0; i < dailyChecklist.length; i++) {
     if (dailyChecklist[i].name == toName) {
       dailyChecklist.splice(i, 0, fromObj);
-      store.commit("setChecklistDailies", dailyChecklist);
+      store.setChecklistDailies(dailyChecklist);
       break;
     }
   }

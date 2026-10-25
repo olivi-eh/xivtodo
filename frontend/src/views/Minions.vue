@@ -43,13 +43,17 @@
 <script>
 import PageHeader from "@/components/PageHeader.vue";
 import minionsJson from "@/assets/dbs/en/minions.json";
+import { useAppStore } from "@/store/app";
 
 export default {
   name: "MountsView",
+  setup() {
+    return { appStore: useAppStore() };
+  },
   data() {
     return {
       db: minionsJson,
-      minions: this.$store.getters.minions,
+      minions: this.appStore.minions,
     };
   },
   components: {

@@ -71,7 +71,12 @@
 </style>
 
 <script>
+import { useAppStore } from "@/store/app";
+
 export default {
+  setup() {
+    return { appStore: useAppStore() };
+  },
   data() {
     return {
       maxLevelCommon: 100,
@@ -87,10 +92,10 @@ export default {
   },
   computed: {
     jobExists() {
-      return this.$store.getters.lodestoneData.Jobs[this.initial] != null;
+      return this.appStore.lodestoneData.Jobs[this.initial] != null;
     },
     currentLevel() {
-      return this.$store.getters.lodestoneData.Jobs[this.initial].Level || 0;
+      return this.appStore.lodestoneData.Jobs[this.initial].Level || 0;
     },
     jobUnlocked() {
       return this.currentLevel != 0;
