@@ -7,28 +7,7 @@
   "latestCountdownID": 50,
   "countdowns": [
     {
-      "title": "Yo-kai Watch",
-      "type": "event",
-      "url": "https://na.finalfantasyxiv.com/lodestone/special/2026/youkai-watch/u6bmhovibh",
-      "start": 1785830400,
-      "end": 1791212400
-    },
-    {
-      "title": "The Rising",
-      "type": "event",
-      "url": "https://na.finalfantasyxiv.com/lodestone/special/2026/The_Rising/cula62e5jx",
-      "start": 1787814000,
-      "end": 1789052400
-    },
-    {
-      "title": "Moogle Treasure Trove",
-      "type": "event",
-      "url": "https://na.finalfantasyxiv.com/lodestone/special/mogmog-collection/202609/lsekubsk45",
-      "start": 1788940800,
-      "end": 1792422000
-    },
-    {
-      "title": "Patch 7.56",
+      "title": "Patch 7.57",
       "type": "patch",
       "start": 1788861600
     }
