@@ -68,8 +68,12 @@ export default defineConfig({
       "@": fileURLToPath(new URL("./src", import.meta.url)),
     },
   },
+  // Both match the local Discord OAuth redirect URI, from which the backend derives its allowed CORS origin
   server: {
-    // Matches the local Discord OAuth redirect URI
+    port: 8080,
+    strictPort: true,
+  },
+  preview: {
     port: 8080,
     strictPort: true,
   },

@@ -3,15 +3,25 @@ package main
 import (
 	"log"
 	"net/http"
+	"net/url"
 	"os"
 	"server/handlers"
 	"time"
 )
 
-func withHeaders(handler http.Handler) http.Handler {
+// allowedOrigin derives the frontend origin from its OAuth redirect URI, which handlers require to be set
+func allowedOrigin() string {
+	redirectURI, err := url.Parse(os.Getenv("DISCORD_REDIRECT_URI"))
+	if err != nil || redirectURI.Scheme == "" || redirectURI.Host == "" {
+		log.Fatalln("fatal: The DISCORD_REDIRECT_URI env is not an absolute URL")
+	}
+	return redirectURI.Scheme + "://" + redirectURI.Host
+}
+
+func withHeaders(handler http.Handler, origin string) http.Handler {
 	fn := func(w http.ResponseWriter, r *http.Request) {
 		w.Header().Set("Content-Type", "application/json")
-		w.Header().Set("Access-Control-Allow-Origin", "*")
+		w.Header().Set("Access-Control-Allow-Origin", origin)
 		w.Header().Set("Cache-Control", "no-cache, no-store, must-revalidate")
 		w.Header().Set("Pragma", "no-cache")
 		w.Header().Set("Expires", "Thu, 01 Jan 1970 00:00:00 GMT")
@@ -39,14 +49,17 @@ func withHeaders(handler http.Handler) http.Handler {
 }
 
 func main() {
+	origin := allowedOrigin()
+	log.Println("allowing CORS requests from", origin)
+
 	mux := http.NewServeMux()
-	mux.Handle("/version", withHeaders(handlers.VersionHandler()))
-	mux.Handle("/auth", withHeaders(handlers.AuthHandler()))
-	mux.Handle("/users", withHeaders(handlers.UsersHandler()))
-	mux.Handle("/characters", withHeaders(handlers.CharactersHandler()))
-	mux.Handle("/settings", withHeaders(handlers.SettingsHandler()))
-	mux.Handle("/encounters", withHeaders(handlers.EncountersHandler()))
-	mux.Handle("/checklist", withHeaders(handlers.ChecklistHandler()))
+	mux.Handle("/version", withHeaders(handlers.VersionHandler(), origin))
+	mux.Handle("/auth", withHeaders(handlers.AuthHandler(), origin))
+	mux.Handle("/users", withHeaders(handlers.UsersHandler(), origin))
+	mux.Handle("/characters", withHeaders(handlers.CharactersHandler(), origin))
+	mux.Handle("/settings", withHeaders(handlers.SettingsHandler(), origin))
+	mux.Handle("/encounters", withHeaders(handlers.EncountersHandler(), origin))
+	mux.Handle("/checklist", withHeaders(handlers.ChecklistHandler(), origin))
 
 	host := "localhost:8181"
 	port := os.Getenv("PORT")

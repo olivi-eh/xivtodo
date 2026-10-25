@@ -52,16 +52,11 @@
    ```sh
    npm run dev # serve the frontend locally on http://localhost:8080
    npm run build # build the dist directory
-   npm run preview # serve the built dist directory
+   npm run preview # serve the built dist directory on http://localhost:8080
    npm run lint # lint the frontend
    ```
 
-By default, the frontend will attempt to use a local backend (`localhost:8181`). To develop against the production backend, create a `frontend/.env.local` file (ignored by git) that overrides the following environment variable before serving:
-```sh
-VITE_BACKEND_API_URI=https://api.xivtodo.com
-```
-
-**Note**: With that setup, you will not be able to sign in with Discord due to security policies. It is recommended to run both the frontend and backend locally.
+The frontend uses a local backend (`localhost:8181`), which you need to run as described below. The production backend only accepts requests from `https://xivtodo.com`, so a local frontend cannot use it. To point the frontend at a backend elsewhere, create a `frontend/.env.local` file (ignored by git) that overrides `VITE_BACKEND_API_URI`.
 
 ### Backend
 
@@ -91,7 +86,7 @@ VITE_BACKEND_API_URI=https://api.xivtodo.com
    gcloud emulators firestore start --host-port=localhost:8282
    ```
 
-5. Set the following environment variables. All three `DISCORD_*` variables are required, and the server exits on startup if any is missing:
+5. Set the following environment variables. All three `DISCORD_*` variables are required, and the server exits on startup if any is missing. The backend also only accepts CORS requests from the origin of `DISCORD_REDIRECT_URI`, so it must match where the frontend is served:
    ```sh
    export FIRESTORE_EMULATOR_HOST=localhost:8282
    export DISCORD_CLIENT_ID=<discord_client_id>
