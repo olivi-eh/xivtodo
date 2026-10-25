@@ -26,9 +26,8 @@
 ### Frontend
 
 1. Make sure you have the following requirements:
-   - Node.js 20+ installed locally
+   - Node.js 24+ installed locally (the exact major version is pinned in `frontend/.nvmrc`)
    - npm installed locally
-   - Vue's CLI installed locally (`npm install -g @vue/cli`)
 
 2. Clone the repository:
    ```sh
@@ -36,20 +35,25 @@
    cd xivtodo/frontend/
    ```
 
-3. Fetch dependencies:
+3. If you use a Node version manager such as [nvm](https://github.com/nvm-sh/nvm) or [nvm.fish](https://github.com/jorgebucaran/nvm.fish), install and activate the pinned version:
+   ```sh
+   nvm install
+   ```
+
+4. Fetch dependencies:
    ```sh
    npm install
    ```
 
-4. Run one of the following commands:
+5. Run one of the following commands:
    ```sh
-   npm run serve # serve the frontend locally
+   npm run dev # serve the frontend locally on http://localhost:8080
    npm run build # build the dist directory
+   npm run preview # serve the built dist directory
    npm run lint # lint the frontend
-   vue ui # open vue's interactive ui
    ```
 
-By default, the frontend will attempt to use a local backend (`localhost:8181`). To develop against the production backend, modify the following environment variable in the `.env` file before serving:
+By default, the frontend will attempt to use a local backend (`localhost:8181`). To develop against the production backend, create a `frontend/.env.local` file (ignored by git) that overrides the following environment variable before serving:
 ```sh
 VUE_APP_BACKEND_API_URI=https://api.xivtodo.com
 ```
@@ -58,11 +62,14 @@ VUE_APP_BACKEND_API_URI=https://api.xivtodo.com
 
 ### Backend
 
+> [!WARNING]
+> The backend always connects to the production Firestore project (`xiv-todo`, set in `backend/store/firestore.go`). Unless you intend to work with production data, run it against the local Firestore emulator as described below.
+
 1. Make sure you have the following requirements:
-   - Google Cloud project with the Firestore API enabled
-   - Service Account with RW permissions to Firestore
+   - Go 1.27+ installed locally (see `backend/go.mod`)
+   - [Google Cloud CLI](https://cloud.google.com/sdk/docs/install) installed locally
+   - A Java runtime installed locally, required by the Firestore emulator (e.g. `brew install openjdk`)
    - Discord application with an OAuth2 redirect to `http://localhost:8080/auth`
-   - Go 1.22+ installed locally
 
 2. Clone the repository:
    ```sh
@@ -72,21 +79,34 @@ VUE_APP_BACKEND_API_URI=https://api.xivtodo.com
 
 3. Fetch dependencies:
    ```sh
-   go mod
+   go mod download
    ```
 
-4. Set the following environment variables:
-   ```
-   GOOGLE_APPLICATION_CREDENTIALS=backend-sa.json # Google Cloud service account key
-   DISCORD_CLIENT_ID=<discord_client_id>
-   DISCORD_CLIENT_SECRET=<discord_client_secret>
-   DISCORD_REDIRECT_URI=http://localhost:8080/auth
-   ```
-
-5. Run the backend server:
+4. Install and start the Firestore emulator in a separate terminal. Its data is kept in memory and is discarded when it stops:
    ```sh
-   go run main
+   gcloud components install cloud-firestore-emulator
+   gcloud emulators firestore start --host-port=localhost:8282
    ```
+
+5. Set the following environment variables. All three `DISCORD_*` variables are required, and the server exits on startup if any is missing:
+   ```sh
+   export FIRESTORE_EMULATOR_HOST=localhost:8282
+   export DISCORD_CLIENT_ID=<discord_client_id>
+   export DISCORD_CLIENT_SECRET=<discord_client_secret>
+   export DISCORD_REDIRECT_URI=http://localhost:8080/auth
+   ```
+
+6. Run the backend server, which listens on `localhost:8181` by default (set `PORT` to change it):
+   ```sh
+   go run .
+   ```
+
+To work against the production Firestore instead, leave `FIRESTORE_EMULATOR_HOST` unset and authenticate with your own Google account, which needs read and write access to Firestore in the `xiv-todo` project:
+```sh
+gcloud auth application-default login
+```
+
+Prefer this over a downloaded service account key, as it avoids keeping a long-lived credential on disk. Never commit the Discord client secret or any Google credentials.
 
 ## Contributing
 

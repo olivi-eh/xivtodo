@@ -12,7 +12,7 @@ const store = createStore({
   },
   getters: {
     isDevEnv(state) {
-      return state.env.NODE_ENV == "development";
+      return state.env.DEV;
     },
     versionMatches(state) {
       return state.env.VUE_APP_BUILD_NUM == state.upstreamVersion || state.upstreamVersion == null;
@@ -182,7 +182,7 @@ const store = createStore({
         this.replaceState(Object.assign(state, JSON.parse(localStorage.getItem("store"))));
       }
 
-      state.env = process.env;
+      state.env = { ...import.meta.env };
     },
 
     signingIn(state, payload) {

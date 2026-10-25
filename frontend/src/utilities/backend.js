@@ -2,7 +2,7 @@ import store from "../store";
 import router from "../router";
 import { injectCharacterData } from "./character";
 
-const apiEndpoint = process.env.VUE_APP_BACKEND_API_URI;
+const apiEndpoint = import.meta.env.VUE_APP_BACKEND_API_URI;
 
 // The authorization code was rotated or revoked (e.g. by signing in elsewhere), so the local session is stale
 const signOutIfUnauthorized = (response) => {

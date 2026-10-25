@@ -38,7 +38,7 @@ const routes = [
   {
     path: "/profile",
     name: "Profile",
-    component: () => import(/* webpackChunkName: "profile" */ "../views/Profile.vue"),
+    component: () => import("../views/Profile.vue"),
     beforeEnter: (_to, _from, next) => {
       if (!store.getters.hasCharacter) {
         next("/");
@@ -49,52 +49,52 @@ const routes = [
   {
     path: "/signout",
     name: "SignOut",
-    component: () => import(/* webpackChunkName: "signout" */ "../views/SignOut.vue"),
+    component: () => import("../views/SignOut.vue"),
   },
   {
     path: "/encounters",
     name: "Encounters",
-    component: () => import(/* webpackChunkName: "encounters" */ "../views/Encounters.vue"),
+    component: () => import("../views/Encounters.vue"),
   },
   {
     path: "/questlines",
     name: "Questlines",
-    component: () => import(/* webpackChunkName: "questlines" */ "../views/Questlines.vue"),
+    component: () => import("../views/Questlines.vue"),
   },
   {
     path: "/challenges",
     name: "Challenges",
-    component: () => import(/* webpackChunkName: "challenges" */ "../views/Challenges.vue"),
+    component: () => import("../views/Challenges.vue"),
   },
   // {
   //   path: "/achievements",
   //   name: "Achievements",
-  //   component: () => import(/* webpackChunkName: "achievements" */ "../views/Achievements.vue"),
+  //   component: () => import("../views/Achievements.vue"),
   // },
   // {
   //   path: "/titles",
   //   name: "Titles",
-  //   component: () => import(/* webpackChunkName: "titles" */ "../views/Titles.vue"),
+  //   component: () => import("../views/Titles.vue"),
   // },
   // {
   //   path: "/minions",
   //   name: "Minions",
-  //   component: () => import(/* webpackChunkName: "minions" */ "../views/Minions.vue"),
+  //   component: () => import("../views/Minions.vue"),
   // },
   // {
   //   path: "/mounts",
   //   name: "Mounts",
-  //   component: () => import(/* webpackChunkName: "mounts" */ "../views/Mounts.vue"),
+  //   component: () => import("../views/Mounts.vue"),
   // },
   {
     path: "/checklist",
     name: "Checklist",
-    component: () => import(/* webpackChunkName: "checklist" */ "../views/Checklist.vue"),
+    component: () => import("../views/Checklist.vue"),
   },
   {
     path: "/settings",
     name: "Settings",
-    component: () => import(/* webpackChunkName: "settings" */ "../views/Settings.vue"),
+    component: () => import("../views/Settings.vue"),
     beforeEnter: (_to, _from, next) => {
       if (!store.getters.userData) {
         next("/");
@@ -105,22 +105,22 @@ const routes = [
   {
     path: "/character/:id",
     name: "Character",
-    component: () => import(/* webpackChunkName: "character" */ "../views/Character.vue"),
+    component: () => import("../views/Character.vue"),
   },
   {
     path: "/help",
     name: "Help",
-    component: () => import(/* webpackChunkName: "help" */ "../views/Help.vue"),
+    component: () => import("../views/Help.vue"),
   },
   {
     path: "/privacy",
     name: "Privacy",
-    component: () => import(/* webpackChunkName: "privacy" */ "../views/Privacy.vue"),
+    component: () => import("../views/Privacy.vue"),
   },
   {
     path: "/sandbox",
     name: "Sandbox",
-    component: () => import(/* webpackChunkName: "sandbox" */ "../views/Sandbox.vue"),
+    component: () => import("../views/Sandbox.vue"),
   },
   {
     path: "/:pathMatch(.*)",
@@ -131,7 +131,7 @@ const routes = [
 ];
 
 const router = createRouter({
-  history: createWebHistory(process.env.BASE_URL),
+  history: createWebHistory(import.meta.env.BASE_URL),
   routes,
   // eslint-disable-next-line no-unused-vars
   scrollBehavior(to, from, savedPosition) {

@@ -115,7 +115,7 @@
         </div>
         <div class="col-11 col-md-7 col-lg-5 px-0">
           <img
-            :src="require(`@/assets/screenshots/${this.$i18n.locale}-encounters.png`)"
+            :src="screenshotURI('encounters')"
             class="border rounded-3 mb-4"
             alt="Screenshot of encounters page"
             style="z-index: +1000; position: relative; width: 100%"
@@ -244,6 +244,10 @@
 
 <script>
 import PageHeader from "@/components/PageHeader.vue";
+import brandImg from "@/assets/img/brand.png";
+import brandDarkImg from "@/assets/img/brand_dark.png";
+
+const screenshots = import.meta.glob("../assets/screenshots/*.png", { eager: true, import: "default" });
 
 export default {
   name: "HomeView",
@@ -255,13 +259,16 @@ export default {
       const theme = this.$store.getters.theme;
 
       if (theme == "night") {
-        return require("@/assets/img/brand.png");
+        return brandImg;
       } else {
-        return require("@/assets/img/brand_dark.png");
+        return brandDarkImg;
       }
     },
   },
   methods: {
+    screenshotURI(page) {
+      return screenshots[`../assets/screenshots/${this.$i18n.locale}-${page}.png`];
+    },
     goto(refName) {
       var element = this.$refs[refName];
       var top = element.offsetTop;
