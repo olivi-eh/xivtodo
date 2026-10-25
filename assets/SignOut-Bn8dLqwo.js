@@ -1,0 +1,1 @@
+import{_ as e,u as t,x as n}from"./index-BKDhgPHx.js";var r={name:`SignOut`,mounted(){this.$store.commit(`deleteUserData`),this.$router.push(`/`)}};function i(t,r,i,a,o,s){return n(),e(`div`,null,`Signing out...`)}var a=t(r,[[`render`,i]]);export{a as default};

@@ -1,0 +1,1 @@
+function e(){let e=`https://`;switch(this.$store.getters.language){case`ja`:e+=`jp`;break;case`de`:e+=`de`;break;case`fr`:e+=`fr`;break;default:e+=`na`}return e+`.finalfantasyxiv.com/lodestone/`}export{e as t};
