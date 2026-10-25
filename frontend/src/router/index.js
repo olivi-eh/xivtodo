@@ -9,20 +9,18 @@ const routes = [
     path: "/",
     name: "Home",
     component: Home,
-    beforeEnter: (_to, _from, next) => {
+    beforeEnter: () => {
       if (sessionStorage.getItem("redirect") !== null) {
         const redirect = sessionStorage.redirect;
         delete sessionStorage.redirect;
-        next(redirect);
-      } else {
-        next();
+        return redirect;
       }
     },
   },
   {
     path: "/auth",
     component: Home,
-    beforeEnter: (_to, _from, next) => {
+    beforeEnter: (_to) => {
       authenticate(_to.query.code)
         .then((userData) => {
           store.commit("setUserData", userData);
@@ -33,18 +31,17 @@ const routes = [
         });
 
       store.commit("signingIn", true);
-      next("/");
+      return "/";
     },
   },
   {
     path: "/profile",
     name: "Profile",
     component: () => import("../views/Profile.vue"),
-    beforeEnter: (_to, _from, next) => {
+    beforeEnter: () => {
       if (!store.getters.hasCharacter) {
-        next("/");
+        return "/";
       }
-      next();
     },
   },
   {
@@ -96,11 +93,10 @@ const routes = [
     path: "/settings",
     name: "Settings",
     component: () => import("../views/Settings.vue"),
-    beforeEnter: (_to, _from, next) => {
+    beforeEnter: () => {
       if (!store.getters.userData) {
-        next("/");
+        return "/";
       }
-      next();
     },
   },
   {
