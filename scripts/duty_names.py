@@ -5,7 +5,7 @@ from bs4 import BeautifulSoup
 
 # This script takes the duties CSV file and generate text files
 # containing the duty names in each language.
-# --> Usage: python3 duty_names.py
+# --> Usage: uv run duty_names.py (from the directory containing duties.csv)
 
 names = {
     "fr": [],
@@ -24,7 +24,8 @@ with open("duties.csv", encoding='utf-8') as csvf:
                 continue
 
             url = "https://" + locale + ".finalfantasyxiv.com/lodestone/playguide/db/duty/" + row["LodestoneID"]
-            page = requests.get(url)
+            page = requests.get(url, timeout=30)
+            page.raise_for_status()
 
             soup = BeautifulSoup(page.content, "html.parser")
             results = soup.find("h2", class_="db-view__detail__lname_name")

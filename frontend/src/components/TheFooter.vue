@@ -43,8 +43,8 @@
 
     <!-- Right-side info -->
     <div class="footer-copyrights text-muted text-end my-auto d-none d-xl-block col-4">
-      {{ $t("footer.buildVersion", { buildNum: this.$store.state.env.VUE_APP_BUILD_NUM }) }}<br />
-      {{ $t("footer.buildDate", { buildDate: this.$store.state.env.VUE_APP_BUILD_DATE }) }}
+      {{ $t("footer.buildVersion", { buildNum: this.$store.state.env.VITE_BUILD_NUM }) }}<br />
+      {{ $t("footer.buildDate", { buildDate: this.$store.state.env.VITE_BUILD_DATE }) }}
     </div>
   </footer>
 </template>

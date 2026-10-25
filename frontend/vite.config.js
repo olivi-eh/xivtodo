@@ -4,8 +4,6 @@ import vue from "@vitejs/plugin-vue";
 
 export default defineConfig({
   plugins: [vue()],
-  // Keep the VUE_APP_ prefix so existing .env files and the deploy workflow keep working
-  envPrefix: "VUE_APP_",
   resolve: {
     alias: {
       "@": fileURLToPath(new URL("./src", import.meta.url)),

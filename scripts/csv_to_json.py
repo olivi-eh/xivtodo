@@ -4,7 +4,7 @@ import sys
 
 # This script converts multiple CSV files to a JSON file, grouping entries
 # together that has a same 'Category' field.
-# --> Usage: python3 csv_to_json.py db.json *.csv
+# --> Usage: uv run csv_to_json.py db.json *.csv
 
 def loadInput(csvFilePath, jsonObject):
     with open(csvFilePath, encoding='utf-8') as csvf: 

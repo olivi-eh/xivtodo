@@ -15,7 +15,7 @@ const store = createStore({
       return state.env.DEV;
     },
     versionMatches(state) {
-      return state.env.VUE_APP_BUILD_NUM == state.upstreamVersion || state.upstreamVersion == null;
+      return state.env.VITE_BUILD_NUM == state.upstreamVersion || state.upstreamVersion == null;
     },
     backendOffline(state) {
       return state.upstreamVersion == "OFFLINE";
@@ -37,10 +37,10 @@ const store = createStore({
         "https://discord.com/api/oauth2/authorize" +
         "?response_type=code" +
         "&client_id=" +
-        state.env.VUE_APP_DISCORD_CLIENT_ID +
+        state.env.VITE_DISCORD_CLIENT_ID +
         "&scope=identify" +
         "&redirect_uri=" +
-        encodeURIComponent(state.env.VUE_APP_DISCORD_REDIRECT_URI) +
+        encodeURIComponent(state.env.VITE_DISCORD_REDIRECT_URI) +
         "&prompt=consent"
       );
     },

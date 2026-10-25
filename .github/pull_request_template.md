@@ -20,12 +20,12 @@ Fixes # (link the issue here, e.g., Fixes #123)
 Please describe how you verified your changes locally:
 
 ### Frontend
-- [ ] Checked in browser via `npm run serve` (local development server)
+- [ ] Checked in browser via `npm run dev` (local development server)
 - [ ] Ran `npm run lint` and verified no linting issues
 - [ ] Verified responsive layout (mobile/tablet/desktop viewports)
 
 ### Backend
-- [ ] Ran backend locally using `go run main.go`
+- [ ] Ran backend locally using `go run .`
 - [ ] Verified Go formatting using `go fmt ./...`
 - [ ] Checked server logs and error handling
 

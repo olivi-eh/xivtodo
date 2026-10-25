@@ -37,11 +37,11 @@ jobs:
           APP_BUILD_NUM=$GITHUB_RUN_NUMBER.$GITHUB_SHA
           APP_BUILD_DATE=`date`
           cat << EOF > frontend/.env.production
-            VUE_APP_BUILD_NUM=$APP_BUILD_NUM
-            VUE_APP_BUILD_DATE=$APP_BUILD_DATE
-            VUE_APP_BACKEND_API_URI=https://api.xivtodo.com
-            VUE_APP_DISCORD_CLIENT_ID=933567168912719923
-            VUE_APP_DISCORD_REDIRECT_URI=https://xivtodo.com/auth
+            VITE_BUILD_NUM=$APP_BUILD_NUM
+            VITE_BUILD_DATE=$APP_BUILD_DATE
+            VITE_BACKEND_API_URI=https://api.xivtodo.com
+            VITE_DISCORD_CLIENT_ID=933567168912719923
+            VITE_DISCORD_REDIRECT_URI=https://xivtodo.com/auth
           EOF
 
       - name: Build and deploy to gh-pages

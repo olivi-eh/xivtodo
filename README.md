@@ -7,15 +7,18 @@
 [![de translation](https://img.shields.io/badge/dynamic/json?color=blue&label=de&style=flat&logo=crowdin&query=%24.progress.0.data.translationProgress&url=https%3A%2F%2Fbadges.awesome-crowdin.com%2Fstats-15746609-575411.json)](https://crowdin.com/project/xiv-todo)
 [![ja translation](https://img.shields.io/badge/dynamic/json?color=blue&label=ja&style=flat&logo=crowdin&query=%24.progress.2.data.translationProgress&url=https%3A%2F%2Fbadges.awesome-crowdin.com%2Fstats-15746609-575411.json)](https://crowdin.com/project/xiv-todo)
 
-[XIV ToDo](https://xivtodo.com) provides useful dashboards, tailored checklists and tools for Final Fantasy XIV. Whether you are a new player to the game or more experienced, you will find it useful! In its current form, XIV ToDo offers customizable daily and weekly checklists as well as automated completion trackers of emcounters and questlines, with much more to come!
+[XIV ToDo](https://xivtodo.com) provides useful dashboards, tailored checklists and tools for Final Fantasy XIV. Whether you are a new player to the game or more experienced, you will find it useful! In its current form, XIV ToDo offers customizable daily and weekly checklists as well as automated completion trackers of encounters and questlines, with much more to come!
 
 ## Features
 
 - Support for adding multiple characters.
-- Profile containing publicly accessible Lodestone information.
+- Profile containing publicly accessible Lodestone information, shareable through a public character page.
 - List of all encounters up-to-date with automatic character completion status.
 - List of all important questlines with automatic character completion status.
+- Challenges tracker covering deep dungeons, exploration, field operations, Blue Mage, and more.
 - Comprehensive list of dailies and weeklies with per-character completion and customization.
+- Countdowns to upcoming maintenance, patches, and events, plus the latest news and updates.
+- Available in English, French, German, and Japanese.
 
 ## Screenshots
 
@@ -55,7 +58,7 @@
 
 By default, the frontend will attempt to use a local backend (`localhost:8181`). To develop against the production backend, create a `frontend/.env.local` file (ignored by git) that overrides the following environment variable before serving:
 ```sh
-VUE_APP_BACKEND_API_URI=https://api.xivtodo.com
+VITE_BACKEND_API_URI=https://api.xivtodo.com
 ```
 
 **Note**: With that setup, you will not be able to sign in with Discord due to security policies. It is recommended to run both the frontend and backend locally.
@@ -107,6 +110,20 @@ gcloud auth application-default login
 ```
 
 Prefer this over a downloaded service account key, as it avoids keeping a long-lived credential on disk. Never commit the Discord client secret or any Google credentials.
+
+### Lodestone function
+
+The `godestone/` directory holds the `lodestone-character` Cloud Run function (entry point `LodestoneCharacter`, region `asia-northeast1`), which scrapes character data from the Lodestone using [godestone](https://github.com/xivapi/godestone). It is deployed from source, so it has no build script or `go.sum`. The backend always calls the deployed function (see `backend/utils/gcf.go`), including when it runs locally.
+
+### Data scripts
+
+The `scripts/` directory holds one-off Python scripts that regenerate the static data in `frontend/src/assets/`. Run them only when that data needs updating. They require [uv](https://docs.astral.sh/uv/), which installs the pinned Python version and dependencies on first run:
+```sh
+cd scripts/
+uv run fetch_collect_json.py # refresh the FFXIV Collect databases in frontend/src/assets/dbs/
+./gendb.sh # rebuild frontend/src/assets/db.json from the *.csv exports placed in scripts/
+uv run duty_names.py # write localized duty names from duties.csv to duty_names_<locale>.txt
+```
 
 ## Contributing
 
