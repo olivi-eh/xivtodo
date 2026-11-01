@@ -92,9 +92,11 @@ type ClassJob struct {
 	UnlockedState *ClassJobUnlockedState
 }
 
+// Lodestone entities are embedded by value: godestone omits the fields of entities it cannot resolve (e.g. content
+// newer than its database), which would leave an embedded pointer nil and make the Firestore encoder panic
 type AchievementInfo struct {
-	*IDdEntity // *NamedEntity
-	Date       time.Time
+	IDdEntity // NamedEntity
+	Date      time.Time
 }
 
 type AllAchievementInfo struct {
@@ -129,19 +131,19 @@ type GrandCompanyInfo struct {
 }
 
 type Title struct {
-	*TitleInternal
+	TitleInternal
 }
 
 type Minion struct {
-	*IDdEntity // *IconedNamedEntity
+	IDdEntity // IconedNamedEntity
 }
 
 type Mount struct {
-	*IDdEntity // *IconedNamedEntity
+	IDdEntity // IconedNamedEntity
 }
 
 type TitleInternal struct {
-	*GenderedEntity
+	GenderedEntity
 	Prefix bool
 }
 
