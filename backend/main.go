@@ -73,7 +73,7 @@ func main() {
 		Handler:           mux,
 		ReadHeaderTimeout: 10 * time.Second,
 		ReadTimeout:       30 * time.Second,
-		WriteTimeout:      60 * time.Second,
+		WriteTimeout:      180 * time.Second, // must exceed the Lodestone fetch timeout in utils/gcf.go
 		IdleTimeout:       120 * time.Second,
 	}
 	log.Fatal(server.ListenAndServe())

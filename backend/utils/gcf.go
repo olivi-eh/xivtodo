@@ -10,7 +10,8 @@ import (
 	"time"
 )
 
-var gcfClient = &http.Client{Timeout: 30 * time.Second}
+// gcfClient allows for full scrapes (character, achievements, minions, mounts), which can take close to a minute
+var gcfClient = &http.Client{Timeout: 120 * time.Second}
 
 func GetLodestoneProfile(w http.ResponseWriter, characterID string, basic bool) (*models.LodestoneProfile, error) {
 	query := url.Values{
