@@ -278,24 +278,18 @@
 
                 <li><hr class="dropdown-divider" /></li>
 
-                <!-- Discord username & sign-out -->
-                <li>
-                  <h6 class="dropdown-header">
-                    {{ this.appStore.discordUsername }}
-                  </h6>
-                </li>
-                <li>
-                  <router-link to="/signout" class="dropdown-item" @click="collapseNav">
-                    <i class="fa-fw fas fa-power-off"></i> {{ $t("page.signOut") }}
-                  </router-link>
-                </li>
-
-                <li><hr class="dropdown-divider" /></li>
-
                 <!-- Settings -->
                 <li>
                   <router-link to="/settings" class="dropdown-item" @click="collapseNav">
                     <i class="fa-fw fas fa-cog"></i> {{ $t("page.settings") }}
+                  </router-link>
+                </li>
+
+                <!-- Sign-out -->
+                <li>
+                  <router-link to="/signout" class="dropdown-item dropdown-item-danger" @click="collapseNav">
+                    <i class="fa-fw fas fa-power-off"></i> {{ $t("page.signOut") }}
+                    <span class="text-body-secondary">({{ this.appStore.discordUsername }})</span>
                   </router-link>
                 </li>
               </ul>
@@ -350,6 +344,11 @@ nav {
 .dropdown-menu-dark .dropdown-item.active,
 .dropdown-menu-dark .dropdown-item:focus {
   background-color: var(--bs-dark);
+}
+
+.dropdown-menu-dark .dropdown-item-danger:hover,
+.dropdown-menu-dark .dropdown-item-danger:focus {
+  background-color: rgba(var(--bs-danger-rgb), 0.15);
 }
 
 .offcanvas {
