@@ -29,6 +29,6 @@ type GenderedEntity struct {
 }
 
 type IconedNamedEntity struct {
-	*NamedEntity
+	NamedEntity
 	Icon string
 }
