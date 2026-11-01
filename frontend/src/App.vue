@@ -3,6 +3,10 @@
     <TheNavbar />
 
     <main class="flex-shrink-0">
+      <div class="container">
+        <AlertMsg type="normal" msg="I'm aware of some issues with character info not updating correctly. I'm looking into this; Thank you for your patience!" />
+      </div>
+
       <!-- Alert: Backend offline -->
       <div v-if="this.appStore.backendOffline" class="container">
         <AlertMsg type="danger" :msg="$t('message.backendUnavailable')" />
