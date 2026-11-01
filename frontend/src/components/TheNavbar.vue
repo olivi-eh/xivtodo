@@ -285,6 +285,8 @@
                   </router-link>
                 </li>
 
+                <li><hr class="dropdown-divider" /></li>
+
                 <!-- Sign-out -->
                 <li>
                   <router-link to="/signout" class="dropdown-item dropdown-item-danger" @click="collapseNav">
