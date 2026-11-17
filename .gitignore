@@ -29,3 +29,6 @@ pnpm-debug.log*
 # Python
 .venv/
 __pycache__/
+
+# Claude Code
+.claude/worktrees/
