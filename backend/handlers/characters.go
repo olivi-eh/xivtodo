@@ -66,6 +66,7 @@ func addCharacter(w http.ResponseWriter, userData *models.User, characterID stri
 	if CharacterInUser(userData, characterID) {
 		character = *userData.Characters[characterID]
 		character.Updated = time.Now().Unix()
+		keepCollectedEntities(lodestoneProfile, character.LodestoneData)
 		character.LodestoneData = lodestoneProfile
 	}
 
@@ -119,6 +120,29 @@ func CharacterInUser(userData *models.User, id string) bool {
 
 func userHasMaxCharacters(userData *models.User) bool {
 	return len(userData.Characters) >= 8
+}
+
+// keepCollectedEntities carries over stored achievements, minions and mounts when a refresh returns fewer of them.
+// None of these can be lost in game, so a shorter list means Lodestone served an incomplete scrape, and storing it
+// would wipe the character's progress. Achievements are the exception when the profile has since been made private.
+func keepCollectedEntities(fresh, stored *models.LodestoneProfile) {
+	if stored == nil {
+		return
+	}
+	achievementsPrivate := fresh.AllAchievementInfo != nil && fresh.AllAchievementInfo.Private
+	if !achievementsPrivate && len(fresh.Achievements) < len(stored.Achievements) {
+		log.Printf("refresh returned %d achievements, keeping %d stored", len(fresh.Achievements), len(stored.Achievements))
+		fresh.Achievements = stored.Achievements
+		fresh.AllAchievementInfo = stored.AllAchievementInfo
+	}
+	if len(fresh.Minions) < len(stored.Minions) {
+		log.Printf("refresh returned %d minions, keeping %d stored", len(fresh.Minions), len(stored.Minions))
+		fresh.Minions = stored.Minions
+	}
+	if len(fresh.Mounts) < len(stored.Mounts) {
+		log.Printf("refresh returned %d mounts, keeping %d stored", len(fresh.Mounts), len(stored.Mounts))
+		fresh.Mounts = stored.Mounts
+	}
 }
 
 func CharacterProfilePrivate(lodestoneData *models.LodestoneProfile) bool {
