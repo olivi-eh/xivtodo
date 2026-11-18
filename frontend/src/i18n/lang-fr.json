@@ -25,7 +25,7 @@
     "countdowns": "Compte à rebours",
     "newsUpdates": "Nouvelles et mises à jour",
     "language": "Langue",
-    "sandbox": "Sandbox"
+    "sandbox": "Bac à sable"
   },
   "navbar": {
     "changeActiveCharacter": "Personnage actif",
@@ -44,24 +44,25 @@
     "backendUnavailable": "XIV ToDo est actuellement inaccessible. Merci de réessayer plus tard, ou de consulter notre <a href='https://twitter.com/XIVToDo' class='alert-link' target='_blank' rel='noopener noreferrer'>Twitter</a> ou <a href='https://discord.gg/zfzhKhG3zj' class='alert-link' target='_blank' rel='noopener noreferrer'>Discord</a> pour obtenir une mise à jour du statut.",
     "signingDiscord": "Connexion via Discord...",
     "signingUnauthorizedError": "XIV ToDo n'a pas pu se connecter avec Discord. Assurez-vous d'utiliser des identifiants Discord valides.",
+    "sessionExpired": "Votre connexion a expiré. <a href='{url}' class='alert-link'>Reconnectez-vous avec Discord</a> pour continuer.",
     "signingUnknownError": "XIV ToDo n'a pas pu accéder à Discord. Veuillez réessayer ultérieurement ou consulter <a href='https://twitter.com/XIVToDo' class='alert-link' target='_blank' rel='noopener noreferrer'>Twitter</a> ou <a href='https://discord.gg/zfzhKhG3zj' class='alert-link' target='_blank' rel='noopener noreferrer'>Discord</a> pour obtenir une mise à jour sur l'état de la situation.",
     "updatingCharacter": "Mise à jour des données du personnage, cela peut prendre une minute...",
-    "achievementsNotPublic": "Les hauts faits pour ce personnage ne sont pas public dans Lodestone.",
-    "profileNotPublic": "Les hauts faits pour ce personnage ne sont pas public dans Lodestone.",
+    "achievementsNotPublic": "Les hauts faits de ce personnage ne sont pas publics dans Lodestone.",
+    "profileNotPublic": "Le profil de ce personnage n'est pas public dans Lodestone.",
     "notSignedIn": "Aucun personnage trouvé. <a href='{url}' class='alert-link'>Connectez-vous avec Discord</a> pour ajouter et suivre vos personnages.",
-    "noCharacters": "Aucun caractère trouvé. Vous pouvez ajouter vos personnages dans les <a href='/settings' class='alert-link'>Paramètres</a>.",
-    "lodestoneMaintenance": "There is currently a Lodestone maintenance ending in approximately {timeRemaining}.",
-    "lodestoneMaintenanceSoon": "An upcoming Lodestone maintenance is starting in {timeRemaining}.",
+    "noCharacters": "Aucun personnage trouvé. Vous pouvez ajouter vos personnages dans les <a href='/settings' class='alert-link'>Paramètres</a>.",
+    "lodestoneMaintenance": "Une maintenance de Lodestone est en cours et se terminera dans environ {timeRemaining}.",
+    "lodestoneMaintenanceSoon": "Une maintenance de Lodestone débutera dans {timeRemaining}.",
     "lodestoneMaintenanceNotUpdated": "La maintenance de Lodestone est terminée, mais XIV ToDo n'est pas encore à jour. Merci de bien vouloir patienter !"
   },
   "footer": {
-    "trademark": "FINAL FANTASY est une marque déposée de SQUARE ENIX holdings Co, Ltd.",
+    "trademark": "FINAL FANTASY est une marque déposée de Square Enix Holdings Co., Ltd.",
     "copyright": "FINAL FANTASY XIV © SQUARE ENIX CO., LTD.",
     "buildVersion": "{buildNum}",
     "buildDate": "{buildDate}"
   },
   "home": {
-    "intro": "XIV ToDo fournit des tableaux de bord utiles, des listes de contrôle sur mesure et des outils pour Final Fantasy XIV. Que vous soyez un nouveau joueur ou un vétéran, il y a quelque chose pour tout le monde! Dans sa forme actuelle, il propose des listes personnalisables pour vos activités journalières et hebdomadaires ainsi que des traqueurs automatisés de missions et de quêtes. Nous prévoyons ajouter de nouvelles fonctionnalités.",
+    "intro": "XIV ToDo fournit des tableaux de bord utiles, des listes de contrôle sur mesure et des outils pour Final Fantasy XIV. Que vous soyez un nouveau joueur ou un vétéran, il y a quelque chose pour tout le monde ! Dans sa forme actuelle, il propose des listes personnalisables pour vos activités journalières et hebdomadaires ainsi que des traqueurs automatisés de missions et de quêtes. Nous prévoyons d'ajouter de nouvelles fonctionnalités.",
     "addCharacter": "Ajouter un personnage",
     "learnMore": "En apprendre davantage",
     "viewProfile": "Voir votre profil",
@@ -79,7 +80,7 @@
       },
       "dailiesWeeklies": {
         "title": "Activités et tâches",
-        "description": "Liste complète des objectifs quotidiens et hebdomadaires qui peuvent être cochés et être automatiquement décochées lors de la réinitialisation."
+        "description": "Liste complète des objectifs quotidiens et hebdomadaires qui peuvent être cochés et sont automatiquement décochés lors de la réinitialisation."
       },
       "altFriendly": {
         "title": "Compatible avec alts",
@@ -96,7 +97,7 @@
     },
     "about": {
       "header": "À propos de XIV ToDo",
-      "text": "XIV ToDo est un projet lancé mi-2021 par {0}, un développeur de logiciels du Canada. Il a été motivé par l'absence de méthode pour visualiser rapidement quelles missions et quêtes avaient été completées par mes personnages. XIV ToDo est gratuit pour tout le monde et le restera. Vous pouvez {1} à n'importe quel sujet, question comme commentaire. Merci beaucoup d'utiliser ce site et de soutenir ce projet!",
+      "text": "XIV ToDo est un projet lancé mi-2021 par {0}, un développeur de logiciels du Canada. Il a été motivé par l'absence de méthode pour visualiser rapidement quelles missions et quêtes avaient été complétées par mes personnages. XIV ToDo est gratuit pour tout le monde et le restera. N'hésitez pas à {1} pour toute question ou tout commentaire. Merci beaucoup d'utiliser ce site et de soutenir ce projet !",
       "contact": "me contacter"
     }
   },
@@ -107,32 +108,32 @@
     },
     "addingCharacters": {
       "header": "Ajouter un personnage",
-      "text1": "Pour ajouter l'un de vos personnages, vous devez d'abord trouver son URL Lodestone. Vous pouvez le trouver en vous connectant à {0} et en recherchant le profil de votre personnage. Votre URL Lodestone ressemblera à cet exemple :",
-      "text2": "Une fois que vous avez trouvé l'URL de votre profil, vous pouvez le saisir dans la page {0} puis cliquer sur le bouton {1}. Vous pouvez ajouter jusqu'à 8 personnages, et basculez entre eux à tout moment en utilisant le menu déroulant à la fin de la barre de navigation principale."
+      "text1": "Pour ajouter l'un de vos personnages, vous devez d'abord trouver son URL Lodestone. Vous pouvez la trouver en vous connectant à {0} et en recherchant le profil de votre personnage. Votre URL Lodestone ressemblera à cet exemple :",
+      "text2": "Une fois que vous avez trouvé l'URL de votre profil, vous pouvez la saisir dans la page {0} puis cliquer sur le bouton {1}. Vous pouvez ajouter jusqu'à 8 personnages, et basculer entre eux à tout moment en utilisant le menu déroulant à la fin de la barre de navigation principale."
     },
     "freeTrialCharacters": {
-      "header": "Personnage de l'essai gratuit",
-      "text": "Les personnages de l'essai gratuit sont pris en charge dans XIV ToDo et peuvent être ajoutés, cependant, les paramètres de confidentialité de Lodestone ne sont pas disponibles durant l'essai gratuit, le suivi automatique des réalisations ne fonctionnera pas pour ces personnages."
+      "header": "Personnages de l'essai gratuit",
+      "text": "Les personnages de l'essai gratuit sont pris en charge dans XIV ToDo et peuvent être ajoutés. Cependant, comme les paramètres de confidentialité de Lodestone ne sont pas disponibles durant l'essai gratuit, le suivi automatique de la complétion ne fonctionnera pas pour ces personnages."
     },
     "enablingPublicAchievements": {
-      "header": "Activer les succès publics",
-      "text1": "Si vous ajoutez un personnage et que ses succès de rencontres et de quêtes ne sont pas enregistrés, il est probable que les succès ne soient pas définis comme visibles publiquement pour ce personnage. Vous pouvez vérifier cela en vous connectant à {0}, puis en accédant à la section {1}. À partir de là, assurez-vous que {2} est défini sur {3} et enregistrez les modifications.",
-      "text2": "Une fois que vos réalisations sont publiques, vous devrez peut-être rajouter votre personnage ou l'actualiser à partir de la page {0} sur XIV ToDo pour que cela prenne effet.",
+      "header": "Rendre les hauts faits publics",
+      "text1": "Si vous ajoutez un personnage et que ses missions et quêtes complétées ne sont pas enregistrées, il est probable que ses hauts faits ne soient pas visibles publiquement. Vous pouvez le vérifier en vous connectant à {0}, puis en accédant à la section {1}. À partir de là, assurez-vous que {2} est défini sur {3} et enregistrez les modifications.",
+      "text2": "Une fois que vos hauts faits sont publics, vous devrez peut-être rajouter votre personnage ou l'actualiser à partir de la page {0} sur XIV ToDo pour que cela prenne effet.",
       "lodestoneAccountManagement": "Paramètres du personnage",
       "lodestonePublic": "Public"
     },
     "customizingCharacterChecklists": {
       "header": "Personnalisation des tâches des personnages",
-      "text": "Les tâches quotidiennes et hebdomadaires peuvent être personnalisées en cliquant sur le bouton {0} en haut à droite de la page {1} . À partir de là, vous pouvez ajouter des entrées personnalisées ainsi que cacher les entrées que vous ne voulez pas voir. Pour arrêter la personnalisation, il vous suffit de cliquer à nouveau sur le bouton {2}."
+      "text": "Les tâches quotidiennes et hebdomadaires peuvent être personnalisées en cliquant sur le bouton {0} en haut à droite de la page {1}. À partir de là, vous pouvez ajouter des entrées personnalisées ainsi que cacher les entrées que vous ne voulez pas voir. Pour arrêter la personnalisation, il vous suffit de cliquer à nouveau sur le bouton {2}."
     },
     "encounterQuestlineCompletion": {
-      "header": "Complétion des rencontres et des quêtes",
-      "text1": "Les rencontres et les quêtes sont automatiquement marquées comme étant complétées une fois que les succès correspondants ont été obtenus. Étant donné que certaines rencontres et quêtes ne sont pas associées à des succès spécifiques, il n'est pas toujours possible d'assurer un suivi automatique concernant leur complétion. Vous pouvez corriger cela en les marquant manuellement comme étant complétées.",
-      "text2": "XIV ToDo se base sur les données des succès enregistrés sur Lodestone, qui prends généralement plusieurs heures avant de se mettre à jour. Une fois qu'un nouveau succès a été obtenu en jeu, la rencontre ou la quête correspondante peut donc mettre jusqu'à 48 heures avant d'être notée comme étant complétée sur XIV ToDo. Vous pouvez demander manuellement un rafraîchissement de vos données depuis la page {0}.",
+      "header": "Complétion des missions et des quêtes",
+      "text1": "Les missions et les quêtes sont automatiquement marquées comme étant complétées une fois que les hauts faits correspondants ont été obtenus. Étant donné que certaines missions et quêtes ne sont pas associées à des hauts faits spécifiques, il n'est pas toujours possible d'assurer un suivi automatique concernant leur complétion. Vous pouvez corriger cela en les marquant manuellement comme étant complétées.",
+      "text2": "XIV ToDo se base sur les données des hauts faits enregistrés sur Lodestone, qui prend généralement plusieurs heures avant de se mettre à jour. Une fois qu'un nouveau haut fait a été obtenu en jeu, la mission ou la quête correspondante peut donc mettre jusqu'à 48 heures avant d'être notée comme étant complétée sur XIV ToDo. Vous pouvez demander manuellement un rafraîchissement de vos données depuis la page {0}.",
       "textState": "Voici les quatre statuts possibles pour chaque mission et quête :",
       "stateClearedVerified": "Votre personnage actif a achevé cette mission (vérifié).",
       "stateCleared": "Votre personnage actif a achevé cette mission.",
-      "stateUnknown": "Les succès de votre personnage actif ne permettent pas de déterminer l'achèvement de la mission.",
+      "stateUnknown": "Les hauts faits de votre personnage actif ne permettent pas de déterminer l'achèvement de la mission.",
       "stateNotCleared": "Votre personnage actif n'a pas encore achevé cette mission."
     },
     "otherQuestions": {
@@ -176,6 +177,7 @@
       "sam": "Samouraï",
       "rpr": "Faucheur",
       "vpr": "Rôdeur vipère",
+      "bst": "Dresseur",
       "brd": "Barde",
       "mch": "Machiniste",
       "dnc": "Danseur",
@@ -207,7 +209,7 @@
     }
   },
   "encounters": {
-    "msqContent": "Proviens de l'épopée",
+    "msqContent": "Provient de l'épopée",
     "unlockedInExp": "Débloqué dans cette extension",
     "dungeons": "Donjons",
     "vcDungeons": "Donjons spéciaux",
@@ -243,7 +245,7 @@
     "wachumeqimeqiDeliveryQuests": "Quêtes de classe : bazar aux Mille Perles"
   },
   "challenges": {
-    "deepDungeons": "Donjons sans fonds",
+    "deepDungeons": "Donjons sans fond",
     "potd": "Palais des morts",
     "potdSolo": "Palais des morts (solo)",
     "hoh": "Pilier des Cieux",
@@ -261,15 +263,15 @@
     "sharedFateDT": "ALÉA (DT)",
     "bozjanSouthernFront": "Front sud de Bozja",
     "zadnor": "Hauts plateaux de Zadnor",
-    "occultCrescent": "Occult Crescent",
+    "occultCrescent": "Île de Lunule",
     "variantDungeons": "Donjons à embranchements",
     "treasureHuntClears": "Chasse aux trésors",
     "trusts": "Adjuration",
     "islandSanctuary": "Félicité insulaire",
     "achievementFates": "ALÉA de défi",
-    "mentorStatus": "Mentor Status",
-    "mentorBattle": "Battle Mentor",
-    "mentorTrade": "Trade Mentor",
+    "mentorStatus": "Statut de mentor",
+    "mentorBattle": "Mentor de combat",
+    "mentorTrade": "Mentor (artisanat/récolte)",
     "blueMage": "Mage bleu",
     "blueARR": "Des bleus (ARR)",
     "blueHW": "Des bleus (HW)",
@@ -303,7 +305,7 @@
     "addCharacter": "Ajouter un personnage",
     "myCharacters": "Mes personnages",
     "myCharactersHelp": "Une fois que vous aurez ajouté vos personnages, ils apparaîtront ici.",
-    "characterNotPublic": "Les hauts faits pour ce personnage ne sont pas public dans Lodestone.",
+    "characterNotPublic": "Les hauts faits de ce personnage ne sont pas publics dans Lodestone.",
     "lastUpdated": "Dernière mise à jour {time}",
     "general": "Paramètres généraux",
     "contentSpoilers": {
@@ -327,16 +329,16 @@
       "hint": "Préférence dans l'apparence du site."
     },
     "updateSettings": "Mettre à jour les paramètres",
-    "characterNotFound": "Personnage non dans Lodestone",
-    "characterNotFoundAlt": "Ce personnage n'existe pas dans Lodestone. Si vous avez récemment transféré de monde, réessayez de le mettre à jour plus tard",
-    "achievementsNotPublic": "Les hauts faits ne sont pas public",
-    "achievementsNotPublicAlt": "Les hauts faits pour ce personnage ne sont pas public dans Lodestone",
+    "characterNotFound": "Personnage absent de Lodestone",
+    "characterNotFoundAlt": "Ce personnage n'existe pas dans Lodestone. Si vous avez récemment changé de monde, réessayez de le mettre à jour plus tard",
+    "achievementsNotPublic": "Les hauts faits ne sont pas publics",
+    "achievementsNotPublicAlt": "Les hauts faits de ce personnage ne sont pas publics dans Lodestone",
     "message": {
       "settingsUpdated": "Paramètres mis à jour !",
       "settingsUpdateClientError": "Impossible de mettre à jour les paramètres. Vous avez peut-être entré des paramètres invalides.",
       "settingsUpdateUnknownError": "Impossible de mettre à jour les paramètres. Veuillez réessayer plus tard.",
       "characterAdded": "Le personnage <b>{name}</b> a été ajouté ! Vous pouvez maintenant accéder à votre <a href='/profile' class='alert-link'>profil</a> et à toutes les pages de complétion du personnage.",
-      "characterAddedNotPublic": "Le personnage <b>{name}</b> a été ajouté, mais leurs hauts faits ne sont pas public. Vous pouvez modifier ce paramètre <a href='https://fr.finalfantasyxiv.com/lodestone/my/setting/account/' class='alert-link' target='_blank' rel='noopener noreferrer'>ici</a>, puis mettre à jour les données du personnage.",
+      "characterAddedNotPublic": "Le personnage <b>{name}</b> a été ajouté, mais ses hauts faits ne sont pas publics. Vous pouvez modifier ce paramètre <a href='https://fr.finalfantasyxiv.com/lodestone/my/setting/account/' class='alert-link' target='_blank' rel='noopener noreferrer'>ici</a>, puis mettre à jour les données du personnage.",
       "characterAddNotFoundError": "Le profil de personnage que vous avez entré n'existe pas, ou son profil de personnage est caché dans Lodestone.",
       "characterAddClientError": "Impossible d'ajouter le personnage. Vous avez peut-être déjà ajouté ce personnage, ou avez atteint la limite de personnages.",
       "characterAddServerError": "Impossible d'atteindre Lodestone. Il peut y avoir une maintenance en cours. Veuillez réessayer plus tard.",
@@ -379,7 +381,7 @@
       "currentlyAvailable": "En cours",
       "eventEnded": "Cet événement est terminé",
       "available": "Disponible",
-      "ending": "Fini",
+      "ending": "Se termine",
       "starting": "Commence"
     }
   }

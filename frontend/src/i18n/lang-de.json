@@ -43,15 +43,16 @@
   "message": {
     "backendUnavailable": "XIV ToDo ist momentan nicht erreichbar. Versuche es später noch einmal, oder schau auf <a href='https://twitter.com/XIVToDo' class='alert-link' target='_blank' rel='noopener noreferrer'>Twitter</a> oder <a href='https://discord.gg/zfzhKhG3zj' class='alert-link' target='_blank' rel='noopener noreferrer'>Discord</a> nach einem Statusupdate.",
     "signingDiscord": "Anmelden mit Discord...",
-    "signingUnauthorizedError": "XIV ToDo konnte sich nicht mit Discord authentifizieren. Stelle sicher, dass du gültige Discord Zugangsdaten verwendest.",
+    "signingUnauthorizedError": "XIV ToDo konnte sich nicht mit Discord authentifizieren. Stelle sicher, dass du gültige Discord-Zugangsdaten verwendest.",
+    "sessionExpired": "Deine Anmeldung ist abgelaufen. <a href='{url}' class='alert-link'>Melde dich erneut mit Discord an</a>, um fortzufahren.",
     "signingUnknownError": "XIV ToDo konnte Discord nicht erreichen. Versuche es später noch einmal oder schaue für ein eventuelles Statusupdate auf <a href='https://twitter.com/XIVToDo' class='alert-link' target='_blank' rel='noopener noreferrer'>Twitter</a> oder <a href='https://discord.gg/zfzhKhG3zj' class='alert-link' target='_blank' rel='noopener noreferrer'>Discord</a> vorbei.",
     "updatingCharacter": "Aktualisiere Charakterinformationen, dies kann kurz dauern...",
     "achievementsNotPublic": "Die Errungenschaften dieses Charakters sind im Lodestone nicht auf öffentlich sichtbar gestellt.",
     "profileNotPublic": "Das Profil für diesen Charakter ist im Lodestone nicht öffentlich einsehbar.",
     "notSignedIn": "Keine Charaktere gefunden. <a href='{url}' class='alert-link'>Melde dich mit Discord an</a>, um welche hinzuzufügen und nachzuverfolgen.",
     "noCharacters": "Keine Charaktere gefunden. Über die <a href='/settings' class='alert-link'>Einstellungen</a> kannst du diese hinzufügen.",
-    "lodestoneMaintenance": "There is currently a Lodestone maintenance ending in approximately {timeRemaining}.",
-    "lodestoneMaintenanceSoon": "An upcoming Lodestone maintenance is starting in {timeRemaining}.",
+    "lodestoneMaintenance": "Derzeit findet eine Wartung des Lodestone statt, die in etwa {timeRemaining} endet.",
+    "lodestoneMaintenanceSoon": "In {timeRemaining} beginnt eine Wartung des Lodestone.",
     "lodestoneMaintenanceNotUpdated": "Die Wartung des Lodestone wurde beendet, jedoch ist XIV ToDo noch nicht vollständig aktualisiert. Vielen Dank für deine Geduld!"
   },
   "footer": {
@@ -61,7 +62,7 @@
     "buildDate": "{buildDate}"
   },
   "home": {
-    "intro": "XIV ToDo bietet nützliche Dashboards, maßgeschneiderte Checklisten und Tools für Final Fantasy XIV. Egal, ob du ein neuer Spieler oder schon etwas erfahrener bist - es gibt für jeden etwas! In seiner aktuellen Form bietet er anpassbare tägliche und wöchentliche Checklisten sowie automatisierte Abschlussverfolgung von Spielinhalten und Auftragsreihen, später wird noch viel mehr dazukommen.",
+    "intro": "XIV ToDo bietet nützliche Dashboards, maßgeschneiderte Checklisten und Tools für Final Fantasy XIV. Egal, ob du ein neuer Spieler oder schon etwas erfahrener bist - es gibt für jeden etwas! In seiner aktuellen Form bietet es anpassbare tägliche und wöchentliche Checklisten sowie automatisierte Abschlussverfolgung von Spielinhalten und Auftragsreihen, später wird noch viel mehr dazukommen.",
     "addCharacter": "Charakter hinzufügen",
     "learnMore": "Mehr erfahren",
     "viewProfile": "Profil anzeigen",
@@ -78,12 +79,12 @@
         "description": "Füge deinen Charakter hinzu, um schnell zu visualisieren, welche Inhalte du abgeschlossen hast und welche noch ausstehen."
       },
       "dailiesWeeklies": {
-        "title": "Tägliche & Wöchentliche Aufgaben",
+        "title": "Tägliche & wöchentliche Aufgaben",
         "description": "Umfassende Liste der täglichen und wöchentlichen Ziele, die abgehakt werden können und beim Reset automatisch zurückgesetzt werden."
       },
       "altFriendly": {
         "title": "Twink-freundlich",
-        "description": "Unterstützung für das Hinzufügen beliebig vieler Twinks, wobei alle Funktionen Charakterspezifisch erhalten bleiben."
+        "description": "Unterstützung für das Hinzufügen beliebig vieler Twinks, wobei alle Funktionen charakterspezifisch erhalten bleiben."
       },
       "spoilerFree": {
         "title": "Spoiler-frei",
@@ -112,32 +113,32 @@
     },
     "freeTrialCharacters": {
       "header": "Charaktere der kostenlosen Testversion",
-      "text": "Charaktere aus der kostenlosen Testversion werden in XIV ToDo zwar unterstützt und können auch hinzugefügt werden, jedoch sind deren Privatspähre-Einstellungen im Lodestone nicht verfügbar. Dementsprechend wird der automatische Vervollständigungstracker für diese nicht funktionieren."
+      "text": "Charaktere aus der kostenlosen Testversion werden in XIV ToDo zwar unterstützt und können auch hinzugefügt werden, jedoch sind deren Privatsphäre-Einstellungen im Lodestone nicht verfügbar. Dementsprechend wird der automatische Vervollständigungstracker für diese nicht funktionieren."
     },
     "enablingPublicAchievements": {
       "header": "Errungenschaften auf öffentlich setzen",
-      "text1": "Wenn für deinen Charakter die Inhalte und Auftragsreihen nicht erkannt werden, dann ist es wahrscheinlich, dass die Errungenschaften nicht auf öffentlich sichtbar gestellt sind. Du kannst dies überprüfen, indem du dich in den {0} einloggst und dann die {1} überprüfst. Von dort, stelle sicher, dass die {2} auf {3} gestellt sind und speichere diese.",
+      "text1": "Wenn für deinen Charakter die Inhalte und Auftragsreihen nicht erkannt werden, dann ist es wahrscheinlich, dass die Errungenschaften nicht auf öffentlich sichtbar gestellt sind. Du kannst dies überprüfen, indem du dich in den {0} einloggst und dann die {1} überprüfst. Stelle dort sicher, dass die {2} auf {3} gestellt sind, und speichere die Änderungen.",
       "text2": "Sobald deine Errungenschaften öffentlich sind, müsstest du deinen Charakter evtl. erneut hinzufügen oder ihn in den {0} aktualisieren, damit diese auf XIV ToDo wirksam werden.",
       "lodestoneAccountManagement": "Charakterverwaltung",
       "lodestonePublic": "Öffentlich"
     },
     "customizingCharacterChecklists": {
-      "header": "Anpassbare Charakter Checklisten",
+      "header": "Charakter-Checklisten anpassen",
       "text": "Tägliche und wöchentliche Checklisten können angepasst werden, indem man die {0}-Schaltfläche in der oberen rechten Ecke der {1} anklickt. Von dort kannst du sowohl eigene Einträge hinzufügen, als auch diejenigen verstecken, die du nicht sehen möchtest. Sobald du fertig bist, kannst du erneut auf {2} drücken, um deine Änderungen zu übernehmen."
     },
     "encounterQuestlineCompletion": {
       "header": "Abschluss von Inhalten und Auftragsreihen",
-      "text1": "Inhalte und Auftragsreihen werden automatisch als beendet markiert, sobald die Errungenschaft dafür erreicht wurde. Da Inhalte oder Auftragsreihen nicht immer direkt im Spiel einer Errungenschaft zugeordnet sind, ist es nicht immer möglich eine genaue Verfolgung des Fortschritts zu gewährleisten. Du kannst dies korrigieren indem du manuell den Inhalt oder Auftragsreihe als beendet markierst.",
-      "text2": "XIV ToDo überprüft die Errungenschaften deines Charakters vom Lodestone, was ein paar Stunden dauern kann bis diese aktuell sind. Sobald eine neue Errungenschaft im Spiel erreicht wurde, kann es bis zu 48 Stunden dauern bis der Inhalt oder die Auftragsreihe auf XIV ToDo als beendet angezeigt wird. Du kannst deinen Charakter auch manuell in den {0} synchronisieren.",
-      "textState": "Die folgenden vier Möglichkeiten gibt es für jeden Inhalt und Auftragsreihe:",
-      "stateClearedVerified": "Dein aktiver Charakter hat diesen Inhalt beendet. (Verifiziert)",
+      "text1": "Inhalte und Auftragsreihen werden automatisch als beendet markiert, sobald die Errungenschaft dafür erreicht wurde. Da Inhalte oder Auftragsreihen nicht immer direkt im Spiel einer Errungenschaft zugeordnet sind, ist es nicht immer möglich, eine genaue Verfolgung des Fortschritts zu gewährleisten. Du kannst dies korrigieren, indem du den Inhalt oder die Auftragsreihe manuell als beendet markierst.",
+      "text2": "XIV ToDo überprüft die Errungenschaften deines Charakters vom Lodestone, was ein paar Stunden dauern kann, bis diese aktuell sind. Sobald eine neue Errungenschaft im Spiel erreicht wurde, kann es bis zu 48 Stunden dauern, bis der Inhalt oder die Auftragsreihe auf XIV ToDo als beendet angezeigt wird. Du kannst deinen Charakter auch manuell in den {0} synchronisieren.",
+      "textState": "Die folgenden vier Möglichkeiten gibt es für jeden Inhalt und jede Auftragsreihe:",
+      "stateClearedVerified": "Dein aktiver Charakter hat diesen Inhalt beendet (verifiziert).",
       "stateCleared": "Dein aktiver Charakter hat diesen Inhalt beendet.",
-      "stateUnknown": "Über deines aktiven Charakters derzeitige Errungenschaften konnte nicht genau ermittelt werden, ob dieser Inhalt beendet wurde.",
+      "stateUnknown": "Anhand der aktuellen Errungenschaften deines aktiven Charakters kann nicht ermittelt werden, ob dieser Inhalt beendet wurde.",
       "stateNotCleared": "Dein aktiver Charakter hat diesen Inhalt noch nicht beendet."
     },
     "otherQuestions": {
       "header": "Weitere Fragen",
-      "text": "Kontaktiere mich {0}, auf {1} oder auf {2} und ich werde so bald wie möglich antworten.",
+      "text": "Kontaktiere mich {0}, auf {1} oder auf {2}, und ich werde so bald wie möglich antworten.",
       "textHere": "hier"
     }
   },
@@ -176,6 +177,7 @@
       "sam": "Samurai",
       "rpr": "Schnitter",
       "vpr": "Viper",
+      "bst": "Bestienbändiger",
       "brd": "Barde",
       "mch": "Maschinist",
       "dnc": "Tänzer",
@@ -243,7 +245,7 @@
     "wachumeqimeqiDeliveryQuests": "Wachumeqimeqi Markt-Lieferungen"
   },
   "challenges": {
-    "deepDungeons": "Tiefes Gewölbe",
+    "deepDungeons": "Tiefe Gewölbe",
     "potd": "Palast der Toten",
     "potdSolo": "Palast der Toten (Solo)",
     "hoh": "Himmelssäule",
@@ -263,18 +265,18 @@
     "zadnor": "Zadnor",
     "occultCrescent": "Kreszentia",
     "variantDungeons": "Unstete Gewölbe",
-    "treasureHuntClears": "Schatzkarten Abschlüsse",
+    "treasureHuntClears": "Schatzsuche-Abschlüsse",
     "trusts": "Seite an Seite",
     "islandSanctuary": "Inselparadies",
-    "achievementFates": "FATE Errungenschaften",
-    "mentorStatus": "Mentor Status",
-    "mentorBattle": "Kampf-Mentor",
-    "mentorTrade": "Berufe-Mentor",
+    "achievementFates": "FATE-Errungenschaften",
+    "mentorStatus": "Mentorstatus",
+    "mentorBattle": "Mentor (Krieger/Magier)",
+    "mentorTrade": "Mentor (Handwerker/Sammler)",
     "blueMage": "Blaumagier",
-    "blueARR": "BMA Inhalte (ARR)",
-    "blueHW": "BMA Inhalte (HW)",
-    "blueSB": "BMA Inhalte (SB)",
-    "blueShB": "BMA Inhalte (ShB)",
+    "blueARR": "BMA-Inhalte (ARR)",
+    "blueHW": "BMA-Inhalte (HW)",
+    "blueSB": "BMA-Inhalte (SB)",
+    "blueShB": "BMA-Inhalte (ShB)",
     "maskedCarnivale": "Große Maskerade"
   },
   "checklist": {
@@ -336,7 +338,7 @@
       "settingsUpdateClientError": "Die Einstellungen konnten nicht aktualisiert werden. Möglicherweise wurden ungültige Angaben eingegeben.",
       "settingsUpdateUnknownError": "Die Einstellungen konnten nicht aktualisiert werden. Bitte versuche es später erneut.",
       "characterAdded": "Charakter <b>{name}</b> hinzugefügt! Du hast nun Zugriff auf dein <a href='/profile' class='alert-link'>Profil</a> und alle Charakter-Checklisten.",
-      "characterAddedNotPublic": "Charakter <b>{name}</b> hinzugefügt, aber deine Errungenschaften sind nicht öffentlich einsehbar. Diese Einstellung kann <a href='https://de.finalfantasyxiv.com/lodestone/my/setting/account/' class='alert-link' target='_blank' rel='noopener noreferrer'>im Lodestone</a> geändert werden. Anschließend muss dein Charakter erneut aktualisiert werden.",
+      "characterAddedNotPublic": "Charakter <b>{name}</b> hinzugefügt, aber seine Errungenschaften sind nicht öffentlich einsehbar. Diese Einstellung kann <a href='https://de.finalfantasyxiv.com/lodestone/my/setting/account/' class='alert-link' target='_blank' rel='noopener noreferrer'>im Lodestone</a> geändert werden. Anschließend muss dein Charakter erneut aktualisiert werden.",
       "characterAddNotFoundError": "Das eingegebene Charakterprofil existiert nicht oder ist nicht im Lodestone sichtbar.",
       "characterAddClientError": "Der Charakter konnte nicht hinzugefügt werden. Möglicherweise ist dieser Charakter bereits hinzugefügt oder du hast das Limit erreicht.",
       "characterAddServerError": "Der Lodestone konnte nicht erreicht werden. Möglicherweise ist dieser derzeit in Wartung. Bitte versuche es später erneut.",
@@ -354,7 +356,7 @@
     "customize": "Anpassen",
     "dragToReorder": "Ziehen zum Umordnen",
     "countTotal": "{count} insgesamt",
-    "updatingWait": "Aktualisiert, bitte warten...",
+    "updatingWait": "Wird aktualisiert, bitte warten...",
     "addingWait": "Wird hinzugefügt, bitte warten...",
     "portraitAlt": "Porträt deines Charakters",
     "moreDetails": "Mehr Details",

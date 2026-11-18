@@ -128,7 +128,7 @@
     },
     "encounterQuestlineCompletion": {
       "header": "Encounter and questline completion",
-      "text1": "Encounter and questlines are automatically marked as cleared once the relevant achievements have been obtained. Since encounters or questlines don't always map directly to in-game achievement, automated completion tracking is not always fully accurate. You can correct the tracking by manually marking the encounter or questline as cleared.",
+      "text1": "Encounter and questlines are automatically marked as cleared once the relevant achievements have been obtained. Since encounters or questlines don't always map directly to in-game achievements, automated completion tracking is not always fully accurate. You can correct the tracking by manually marking the encounter or questline as cleared.",
       "text2": "XIV ToDo takes in-game achievements data from the Lodestone, which can take a few hours to be up-to-date. Once a new in-game achievement is obtained, it may take up to 48 hours for the relevant encounter or questline to be marked as complete in XIV ToDo. You can also manually initiate a refresh of the data from the {0} page.",
       "textState": "The following are the four possible statuses for each encounter and questline:",
       "stateClearedVerified": "Your active character has cleared this encounter (verified).",
@@ -330,7 +330,7 @@
     },
     "updateSettings": "Update settings",
     "characterNotFound": "Character not in Lodestone",
-    "characterNotFoundAlt": "This character does not exist in Lodestone. If you recently transfered world, try updating again later",
+    "characterNotFoundAlt": "This character does not exist in Lodestone. If you recently transferred world, try updating again later",
     "achievementsNotPublic": "Achievements are not public",
     "achievementsNotPublicAlt": "The achievements for this character are not set to public in Lodestone",
     "message": {
