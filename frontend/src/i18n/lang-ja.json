@@ -31,31 +31,32 @@
     "changeActiveCharacter": "アクティブなキャラクター",
     "preferredLanguage": "好みの言語",
     "feedback": "フィードバック",
-    "settingsAndCharacters": "Settings & Characters",
-    "noCharacters": "Add your characters in Settings"
+    "settingsAndCharacters": "設定・キャラクター",
+    "noCharacters": "設定からキャラクターを追加してください"
   },
   "pageHeader": {
     "ofCharacter": "{characterName}",
     "clearedByCharacter": "{characterName} がクリアしました",
-    "forCharacter": "for {characterName}",
+    "forCharacter": "{characterName}",
     "obtainedByCharacter": "{characterName} が取得"
   },
   "message": {
-    "backendUnavailable": "XIV ToDo is currently unreachable. Try again later, or look on <a href='https://twitter.com/XIVToDo' class='alert-link' target='_blank' rel='noopener noreferrer'>Twitter</a> or <a href='https://discord.gg/zfzhKhG3zj' class='alert-link' target='_blank' rel='noopener noreferrer'>Discord</a> for a status update.",
+    "backendUnavailable": "現在XIV ToDoに接続できません。しばらくしてから再度お試しいただくか、<a href='https://twitter.com/XIVToDo' class='alert-link' target='_blank' rel='noopener noreferrer'>Twitter</a>または<a href='https://discord.gg/zfzhKhG3zj' class='alert-link' target='_blank' rel='noopener noreferrer'>Discord</a>で最新の状況をご確認ください。",
     "signingDiscord": "Discordでサインイン中...",
     "signingUnauthorizedError": "XIV ToDoはDiscordで認証できませんでした。有効なDiscord認証情報を使用していることを確認してください。",
-    "signingUnknownError": "XIV ToDo was unable to reach Discord. Try again later, or look on <a href='https://twitter.com/XIVToDo' class='alert-link' target='_blank' rel='noopener noreferrer'>Twitter</a> or <a href='https://discord.gg/zfzhKhG3zj' class='alert-link' target='_blank' rel='noopener noreferrer'>Discord</a> for a status update.",
+    "sessionExpired": "ログインの有効期限が切れました。続けるには、もう一度<a href='{url}' class='alert-link'>Discordでログイン</a>してください。",
+    "signingUnknownError": "XIV ToDoはDiscordに接続できませんでした。しばらくしてから再度お試しいただくか、<a href='https://twitter.com/XIVToDo' class='alert-link' target='_blank' rel='noopener noreferrer'>Twitter</a>または<a href='https://discord.gg/zfzhKhG3zj' class='alert-link' target='_blank' rel='noopener noreferrer'>Discord</a>で最新の状況をご確認ください。",
     "updatingCharacter": "キャラクターデータを更新しています。数分かかる場合があります...",
     "achievementsNotPublic": "このキャラクターのアチーブメントはLodestoneで公開されていません。",
-    "profileNotPublic": "The profile for this character is not set to public in Lodestone.",
-    "notSignedIn": "No characters found. <a href='{url}' class='alert-link'>Sign in with Discord</a> to add and track your characters.",
-    "noCharacters": "No characters found. You can add your characters from the <a href='/settings' class='alert-link'>Settings</a>.",
-    "lodestoneMaintenance": "There is currently a Lodestone maintenance ending in approximately {timeRemaining}.",
-    "lodestoneMaintenanceSoon": "An upcoming Lodestone maintenance is starting in {timeRemaining}.",
-    "lodestoneMaintenanceNotUpdated": "Lodestone maintenance has ended, but XIV ToDo is not yet fully updated. Thank you for your patience!"
+    "profileNotPublic": "このキャラクターのプロフィールはLodestoneで公開されていません。",
+    "notSignedIn": "キャラクターが見つかりません。キャラクターを追加して進捗を管理するには、<a href='{url}' class='alert-link'>Discordでログイン</a>してください。",
+    "noCharacters": "キャラクターが見つかりません。<a href='/settings' class='alert-link'>設定</a>からキャラクターを追加できます。",
+    "lodestoneMaintenance": "現在Lodestoneのメンテナンス中です。終了まで約{timeRemaining}です。",
+    "lodestoneMaintenanceSoon": "あと{timeRemaining}でLodestoneのメンテナンスが開始されます。",
+    "lodestoneMaintenanceNotUpdated": "Lodestoneのメンテナンスは終了しましたが、XIV ToDoのデータ更新はまだ完了していません。今しばらくお待ちください。"
   },
   "footer": {
-    "trademark": "FINAL FANTASY is a registered trademark of Square Enix Holdings Co., Ltd.",
+    "trademark": "FINAL FANTASYは、株式会社スクウェア・エニックス・ホールディングスの登録商標です。",
     "copyright": "FINAL FANTASY XIV © SQUARE ENIX CO., LTD.",
     "buildVersion": "{buildNum}",
     "buildDate": "{buildDate}"
@@ -71,74 +72,74 @@
     "feature": {
       "encountersQuestlines": {
         "title": "コンテンツ＆クエスト",
-        "description": "Complete listing of all encounters, main and side story questlines available in the game."
+        "description": "ゲーム内のすべてのコンテンツ、メインクエスト、サイドストーリークエストを網羅しています。"
       },
       "contentCompletion": {
-        "title": "Content completion",
-        "description": "Add your character to quickly visualize which content you've cleared and which ones are still pending."
+        "title": "コンテンツ進捗",
+        "description": "キャラクターを追加すると、クリア済みのコンテンツと未クリアのコンテンツをひと目で確認できます。"
       },
       "dailiesWeeklies": {
         "title": "デイリー&ウィークリー",
-        "description": "Comprehensive list of daily and weekly objectives which can be ticked off and get automatically cleared on reset."
+        "description": "デイリー・ウィークリーの目標を網羅したチェックリストです。チェックした項目はリセット時に自動でクリアされます。"
       },
       "altFriendly": {
-        "title": "Alt-friendly",
-        "description": "Support for adding as many alt characters as you need, with all features being kept character-specific."
+        "title": "サブキャラ対応",
+        "description": "サブキャラクターを必要なだけ追加でき、すべての機能はキャラクターごとに個別に管理されます。"
       },
       "spoilerFree": {
         "title": "ネタバレなし",
-        "description": "Main story content is blurred by default until they are cleared to avoid accidental spoilers."
+        "description": "うっかりネタバレしないよう、メインストーリーのコンテンツはクリアするまで初期設定でぼかし表示されます。"
       },
       "customizable": {
         "title": "カスタマイズ可能",
-        "description": "Personalization is available like hiding select objectives from the checklists, with more to come soon."
+        "description": "チェックリストから特定の目標を非表示にするなどのカスタマイズが可能です。今後さらに機能を追加予定です。"
       }
     },
     "about": {
       "header": "XIV ToDoについて",
-      "text": "XIV ToDo is a project started in mid-2021 by {0}, a software developer from Canada. After realizing that there were no methods for quickly visualizing which of the numerous encounters and questlines that had been cleared by my characters, the idea had sparked. XIV ToDo is and remains free for everyone to enjoy. You can {1} with any question or feedback. Thank you so much for using and supporting this project!",
-      "contact": "contact me"
+      "text": "XIV ToDoは、カナダのソフトウェア開発者である{0}が2021年半ばに始めたプロジェクトです。自分のキャラクターが数多くのコンテンツやクエストのうちどれをクリアしたのか、手軽に確認する方法がないことに気づいたのがきっかけでした。XIV ToDoはこれからも、どなたでも無料でご利用いただけます。ご質問やご意見があれば、お気軽に{1}。このプロジェクトをご利用・ご支援いただき、本当にありがとうございます！",
+      "contact": "お問い合わせください"
     }
   },
   "help": {
     "discordSignIn": {
       "header": "Discord サインイン",
-      "text": "To use XIV ToDo, you must sign in with a Discord account. This is an official authentication integration provided by Discord and is very secure, since no confidential information is ever stored."
+      "text": "XIV ToDoを利用するには、Discordアカウントでログインする必要があります。これはDiscordが提供する公式の認証機能で、機密情報が保存されることは一切ないため、非常に安全です。"
     },
     "addingCharacters": {
       "header": "キャラクターの追加",
-      "text1": "To add one of your characters, you first find its Lodestone URL. You can find it by logging into {0} and searching for your character profile. Your Lodestone URL will look similar to this example:",
-      "text2": "Once you have found your profile URL, you can input it in the {0} page and then click the {1} button. You can add as many as 8 characters, and switch between them at any time using the dropdown at the end of the main navigation bar."
+      "text1": "キャラクターを追加するには、まずそのキャラクターのLodestone URLを確認します。{0}にログインし、自分のキャラクタープロフィールを検索すると見つかります。Lodestone URLは次の例のような形式です：",
+      "text2": "プロフィールURLが分かったら、{0}ページで入力し、{1}ボタンをクリックしてください。キャラクターは最大8人まで追加でき、メインナビゲーションバーの右端にあるドロップダウンからいつでも切り替えられます。"
     },
     "freeTrialCharacters": {
       "header": "フリートライアルキャラクター",
-      "text": "Free trial characters are supported in XIV ToDo and can be added, but since the Lodestone privacy settings are unavailable on the free trial, the automatic completion tracker will not work for those characters."
+      "text": "フリートライアルのキャラクターもXIV ToDoに追加できますが、フリートライアルではLodestoneの公開設定が利用できないため、自動完了トラッカーは機能しません。"
     },
     "enablingPublicAchievements": {
       "header": "アチーブメント公開の有効化",
-      "text1": "If you add a character and their encounter and questline completions aren't getting registered, it's likely that the achievements are not set to visible publicly for that character. You can verify this by logging into {0}, and then accessing the {1} section. From there, make sure {2} is set to {3} and save the changes.",
-      "text2": "Once your achievements are public, you may need to re-add your character or refresh it from the {0} page on XIV ToDo for it to take effect.",
+      "text1": "キャラクターを追加してもコンテンツやクエストのクリア状況が反映されない場合、そのキャラクターのアチーブメントが公開に設定されていない可能性があります。{0}にログインし、{1}から確認できます。{2}が{3}に設定されていることを確認し、変更を保存してください。",
+      "text2": "アチーブメントを公開した後、設定を反映させるには、キャラクターを追加し直すか、XIV ToDoの{0}ページから更新する必要がある場合があります。",
       "lodestoneAccountManagement": "キャラクター管理",
       "lodestonePublic": "公開"
     },
     "customizingCharacterChecklists": {
       "header": "キャラクターチェックリストのカスタマイズ",
-      "text": "Daily and weekly checklists can be customized by clicking on the {0} button near the top right of the {1} page. From there, you can add custom entries as well as hide entries that you don't want to see. To stop customizing, simply click the {2} button again."
+      "text": "デイリーとウィークリーのチェックリストは、{1}ページの右上付近にある{0}ボタンをクリックするとカスタマイズできます。独自の項目を追加したり、表示したくない項目を非表示にしたりできます。カスタマイズを終了するには、もう一度{2}ボタンをクリックしてください。"
     },
     "encounterQuestlineCompletion": {
       "header": "コンテンツとクエストの完了",
-      "text1": "Encounter and questlines are automatically marked as cleared once the relevant achievements have been obtained. Since encounters or questlines don't always map directly to in-game achievement, automated completion tracking is not always fully accurate. You can correct the tracking by manually marking the encounter or questline as cleared.",
-      "text2": "XIV ToDo takes in-game achievements data from the Lodestone, which can take a few hours to be up-to-date. Once a new in-game achievement is obtained, it may take up to 48 hours for the relevant encounter or questline to be marked as complete in XIV ToDo. You can also manually initiate a refresh of the data from the {0} page.",
-      "textState": "The following are the four possible statuses for each encounter and questline:",
-      "stateClearedVerified": "Your active character has cleared this encounter (verified).",
-      "stateCleared": "Your active character has cleared this encounter.",
-      "stateUnknown": "Your active character's current achievements cannot determine encounter clear.",
-      "stateNotCleared": "Your active character has not cleared this encounter yet."
+      "text1": "コンテンツとクエストは、関連するアチーブメントを獲得すると自動的にクリア済みになります。コンテンツやクエストが必ずしもゲーム内のアチーブメントと直接対応しているわけではないため、自動判定が完全に正確とは限りません。コンテンツやクエストを手動でクリア済みにすることで、判定を修正できます。",
+      "text2": "XIV ToDoはゲーム内のアチーブメントデータをLodestoneから取得しており、Lodestoneへの反映には数時間かかる場合があります。ゲーム内で新しいアチーブメントを獲得してから、XIV ToDoで関連するコンテンツやクエストがクリア済みになるまで、最大48時間かかることがあります。{0}ページから手動でデータを更新することもできます。",
+      "textState": "各コンテンツとクエストには、次の4つのステータスがあります：",
+      "stateClearedVerified": "アクティブなキャラクターはこのコンテンツをクリア済みです（確認済み）。",
+      "stateCleared": "アクティブなキャラクターはこのコンテンツをクリア済みです。",
+      "stateUnknown": "アクティブなキャラクターの現在のアチーブメントからは、クリア状況を判定できません。",
+      "stateNotCleared": "アクティブなキャラクターはまだこのコンテンツをクリアしていません。"
     },
     "otherQuestions": {
       "header": "その他の質問",
-      "text": "Contact me {0}, on {1} or on {2} and I will reply as soon as possible.",
-      "textHere": "here"
+      "text": "{0}、{1}または{2}からお問い合わせください。できるだけ早くお返事します。",
+      "textHere": "こちら"
     }
   },
   "profile": {
@@ -158,7 +159,7 @@
     "dps": "DPS",
     "crafters": "クラフター",
     "gatherers": "ギャザラー",
-    "exploratoryMissions": "Exploratory missions",
+    "exploratoryMissions": "特殊フィールド探索",
     "elementalLevel": "エレメンタルレベル",
     "resistanceRank": "レジスタンスランク",
     "job": {
@@ -176,6 +177,7 @@
       "sam": "侍",
       "rpr": "リーパー",
       "vpr": "ヴァイパー",
+      "bst": "魔獣使い",
       "brd": "吟遊詩人",
       "mch": "機工士",
       "dnc": "踊り子",
@@ -207,29 +209,29 @@
     }
   },
   "encounters": {
-    "msqContent": "Main Scenario Quests content",
-    "unlockedInExp": "Unlocked in this expansion",
+    "msqContent": "メインクエストで攻略するコンテンツ",
+    "unlockedInExp": "この拡張パッケージで開放",
     "dungeons": "ダンジョン",
-    "vcDungeons": "V&C Dungeons",
+    "vcDungeons": "特殊ダンジョン探索",
     "trials": "討伐・討滅戦",
     "raids": "レイド",
     "heTrials": "極",
     "heRaids": "零式",
-    "exploratory": "Exploratory Missions",
+    "exploratory": "特殊フィールド探索",
     "guildhests": "ギルドオーダー",
-    "viewRewards": "View rewards",
-    "obtained": "Obtained",
-    "tradeable": "Tradeable"
+    "viewRewards": "報酬を見る",
+    "obtained": "入手済み",
+    "tradeable": "取引可能"
   },
   "questlines": {
-    "stories": "Stories",
-    "jobsRolesRelics": "Jobs, Roles, & Relics",
+    "stories": "ストーリー",
+    "jobsRolesRelics": "ジョブ・ロール・レリック",
     "mainScenarioQuests": "メインクエスト",
     "sideStoryQuests": "サイドストーリークエスト",
-    "encounterQuests": "Encounter Quests",
-    "relicQuests": "Relic Quests",
+    "encounterQuests": "コンテンツ関連クエスト",
+    "relicQuests": "レリックウェポン",
     "tribalQuests": "友好部族クエスト",
-    "alliedTribalQuests": "Intersocietal Quests",
+    "alliedTribalQuests": "友好部族エクストラストーリー",
     "customDeliveryQuests": "お得意様取引",
     "jobQuests": "ジョブクエスト",
     "combatJobQuests": "戦闘ジョブクエスト",
@@ -253,45 +255,45 @@
     "pt": "ピルグリム・トラバース",
     "ptSolo": "ピルグリム・トラバース(ソロ)",
     "exploration": "探検",
-    "exploratoryMissions": "Exploratory Missions",
+    "exploratoryMissions": "特殊フィールド探索",
     "sightseeingLogs": "探検手帳",
-    "miscellaneous": "Miscellaneous",
+    "miscellaneous": "その他",
     "sharedFateShB": "FATE (漆黒)",
     "sharedFateEW": "FATE (暁月)",
     "sharedFateDT": "FATE (黄金)",
     "bozjanSouthernFront": "南方ボズヤ戦線",
     "zadnor": "ザトゥノル高原",
-    "occultCrescent": "Occult Crescent",
-    "variantDungeons": "Variant Dungeons",
-    "treasureHuntClears": "Treasure Hunt Clears",
-    "trusts": "Trusts",
+    "occultCrescent": "蜃気楼の島 クレセントアイル",
+    "variantDungeons": "ヴァリアントダンジョン",
+    "treasureHuntClears": "トレジャーハント踏破",
+    "trusts": "フェイス",
     "islandSanctuary": "無人島開拓",
     "achievementFates": "アチーブメントFATE",
-    "mentorStatus": "Mentor Status",
+    "mentorStatus": "メンター",
     "mentorBattle": "バトルメンター",
-    "mentorTrade": "制作採集メンター",
+    "mentorTrade": "製作採集メンター",
     "blueMage": "青魔道士",
-    "blueARR": "BLU Encounters (ARR)",
-    "blueHW": "BLU Encounters (HW)",
-    "blueSB": "BLU Encounters (SB)",
-    "blueShB": "BLU Encounters (ShB)",
+    "blueARR": "青魔道士コンテンツ(新生)",
+    "blueHW": "青魔道士コンテンツ(蒼天)",
+    "blueSB": "青魔道士コンテンツ(紅蓮)",
+    "blueShB": "青魔道士コンテンツ(漆黒)",
     "maskedCarnivale": "マスクカーニバル"
   },
   "checklist": {
-    "thingsToDo": "Things to do",
+    "thingsToDo": "やること",
     "weeklies": "ウィークリー",
     "dailies": "デイリー",
     "scratchpad": "メモ欄",
-    "scratchpadDesc": "Checklist without deadlines",
-    "scratchpadHelp": "Once you add checklist items, they will appear here.",
-    "customWeekly": "Custom weekly",
-    "customDaily": "Custom daily",
-    "customItem": "Custom item",
-    "addCustomWeekly": "Add custom weekly",
-    "addCustomDaily": "Add custom daily",
-    "addCustomItem": "Add custom item",
+    "scratchpadDesc": "期限のないチェックリスト",
+    "scratchpadHelp": "チェックリストの項目を追加すると、ここに表示されます。",
+    "customWeekly": "カスタムウィークリー",
+    "customDaily": "カスタムデイリー",
+    "customItem": "カスタム項目",
+    "addCustomWeekly": "カスタムウィークリーを追加",
+    "addCustomDaily": "カスタムデイリーを追加",
+    "addCustomItem": "カスタム項目を追加",
     "untilReset": "リセットまで {time}",
-    "hiddenTasks": "1つの非表示タスク | {count} の非表示タスク"
+    "hiddenTasks": "1件の非表示タスク | {count}件の非表示タスク"
   },
   "settings": {
     "characters": "キャラクター",
@@ -307,7 +309,7 @@
     "lastUpdated": "最終更新: {time}",
     "general": "一般",
     "contentSpoilers": {
-      "label": "ネタバレあり",
+      "label": "ネタバレ設定",
       "option0": "未クリアのストーリー関連コンテンツをぼかす",
       "option1": "全てのストーリー関連コンテンツをぼかす",
       "option2": "すべてのコンテンツを表示",
@@ -327,22 +329,22 @@
       "hint": "サイトの外観に関する設定です。"
     },
     "updateSettings": "設定を更新する",
-    "characterNotFound": "Character not in Lodestone",
+    "characterNotFound": "Lodestoneに見つかりません",
     "characterNotFoundAlt": "このキャラクターはLodestoneには存在しません。最近ワールドを変更した場合は、後でもう一度更新をお試しください。",
     "achievementsNotPublic": "アチーブメントが公開されていません",
     "achievementsNotPublicAlt": "このキャラクターのアチーブメントはLodestoneで公開されていません。",
     "message": {
-      "settingsUpdated": "Settings updated!",
-      "settingsUpdateClientError": "Could not update settings. You may have entered invalid settings.",
-      "settingsUpdateUnknownError": "Could not update settings. Please try again later.",
-      "characterAdded": "Character <b>{name}</b> added! You can now access your <a href='/profile' class='alert-link'>Profile</a> and all character completion pages.",
-      "characterAddedNotPublic": "Character <b>{name}</b> added, but their achievements are not set to public. You can change that setting <a href='https://na.finalfantasyxiv.com/lodestone/my/setting/account/' class='alert-link' target='_blank' rel='noopener noreferrer'>here</a>, and then update the character's data.",
-      "characterAddNotFoundError": "The character profile you have entered does not exist, or its character profile is hidden in Lodestone.",
-      "characterAddClientError": "Could not add character. You may have already added this character, or have reached the limit of characters.",
-      "characterAddServerError": "Could not reach Lodestone. There may be an ongoing maintenance. Please try again later.",
-      "characterRemoveConfirm": "Are you sure you want to remove {name}?",
-      "characterRemoved": "Character <b>{name}</b> removed!",
-      "characterRemoveError": "Character <b>{name}</b> could not be removed. Please try again later."
+      "settingsUpdated": "設定を更新しました！",
+      "settingsUpdateClientError": "設定を更新できませんでした。無効な設定が入力された可能性があります。",
+      "settingsUpdateUnknownError": "設定を更新できませんでした。しばらくしてから再度お試しください。",
+      "characterAdded": "キャラクター<b>{name}</b>を追加しました！<a href='/profile' class='alert-link'>プロフィール</a>や各達成状況ページにアクセスできるようになりました。",
+      "characterAddedNotPublic": "キャラクター<b>{name}</b>を追加しましたが、アチーブメントが公開に設定されていません。<a href='https://jp.finalfantasyxiv.com/lodestone/my/setting/account/' class='alert-link' target='_blank' rel='noopener noreferrer'>こちら</a>から設定を変更した後、キャラクターのデータを更新してください。",
+      "characterAddNotFoundError": "入力されたキャラクタープロフィールは存在しないか、Lodestoneで非公開に設定されています。",
+      "characterAddClientError": "キャラクターを追加できませんでした。このキャラクターがすでに追加されているか、キャラクター数の上限に達している可能性があります。",
+      "characterAddServerError": "Lodestoneに接続できませんでした。メンテナンス中の可能性があります。しばらくしてから再度お試しください。",
+      "characterRemoveConfirm": "{name}を削除してもよろしいですか？",
+      "characterRemoved": "キャラクター<b>{name}</b>を削除しました！",
+      "characterRemoveError": "キャラクター<b>{name}</b>を削除できませんでした。しばらくしてから再度お試しください。"
     }
   },
   "shared": {
@@ -357,7 +359,7 @@
     "updatingWait": "更新中、しばらくお待ちください",
     "addingWait": "追加中、お待ちください",
     "portraitAlt": "あなたのキャラクターのポートレート",
-    "moreDetails": "More details",
+    "moreDetails": "詳細はこちら",
     "expansion": {
       "arr": "新生エオルゼア",
       "hw": "蒼天のイシュガルド",
@@ -376,11 +378,11 @@
       "hoursAgo": "{hours} 時間前",
       "minutesAgo": "{minutes} 分前",
       "coupleSecondsAgo": "数秒前",
-      "currentlyAvailable": "Currently available",
-      "eventEnded": "This event has ended",
-      "available": "Available",
-      "ending": "Ending",
-      "starting": "Starting"
+      "currentlyAvailable": "開催中",
+      "eventEnded": "このイベントは終了しました",
+      "available": "開始:",
+      "ending": "終了:",
+      "starting": "開始:"
     }
   }
 }
